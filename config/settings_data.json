@@ -718,16 +718,19 @@
       "16214309328180c397": {
         "type": "index-hero",
         "settings": {
-          "image": "shopify://shop_images/DSC09203_2.jpg",
+          "image": "shopify://shop_images/Mask_group_1.png",
           "height": "use_screen_two_thirds",
           "overlay_opacity": 35,
           "title": "Vintage Zodiac Jewelry",
           "description": "Choose your charm, choose your chain!",
-          "text_align": "align--top-center",
+          "text_align": "align--middle-center",
           "color": "palette--contrast--dark",
-          "link_text": "Featured Necklaces",
-          "link": "shopify://collections/necklaces",
-          "button_style": "btn"
+          "link_text": "Shop All",
+          "link": "shopify://collections",
+          "button_style": "primary-button",
+          "link_text2": "Charm Builder",
+          "link2": "shopify://pages/charm-builder",
+          "button_style2": "secondary-button"
         }
       }
     },
