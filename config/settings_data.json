@@ -89,8 +89,8 @@
         "type": "header",
         "settings": {
           "header_style": "split",
-          "logo": "shopify://shop_images/46CC5B9D-3D03-48E2-AC1D-1281344AAFE0.png",
-          "logo_max_limit": 400,
+          "logo": "shopify://shop_images/zodiacjules.png",
+          "logo_max_limit": 215,
           "main_menu_linklist": "main-menu",
           "enable_search": true,
           "enable_account": true,
