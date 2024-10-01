@@ -1,0 +1,62 @@
+<div class="productSliderWrapper">
+    <div class="productSliderInner sectionpadding">
+        <div class="wrapper">
+            <div class="productSliderTitle sectionTitle">
+                <h2>{{ section.settings.title }}</h2>
+            </div>
+            <div class="productSlider">
+                <div class="productSlider__inner">
+                    <div class="productslidernav">                        
+                        <div class="ps-button-prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="48" viewBox="0 0 40 48" fill="none">
+                            <rect width="40" height="48" transform="matrix(-1 0 0 1 40 0)" fill="white"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M22.8531 17.1582C22.8067 17.108 22.7515 17.0683 22.6908 17.0411C22.6301 17.014 22.565 17 22.4992 17C22.4335 17 22.3684 17.014 22.3076 17.0411C22.2469 17.0683 22.1918 17.108 22.1453 17.1582L16.1469 23.619C16.1003 23.669 16.0634 23.7284 16.0382 23.7938C16.013 23.8592 16 23.9293 16 24.0001C16 24.071 16.013 24.1411 16.0382 24.2065C16.0634 24.2719 16.1003 24.3313 16.1469 24.3813L22.1453 30.8421C22.2392 30.9432 22.3665 31 22.4992 31C22.632 31 22.7593 30.9432 22.8531 30.8421C22.947 30.741 22.9997 30.6039 22.9997 30.4609C22.9997 30.3179 22.947 30.1808 22.8531 30.0797L17.2076 24.0001L22.8531 17.9205C22.8997 17.8705 22.9366 17.8111 22.9618 17.7457C22.987 17.6803 23 17.6102 23 17.5394C23 17.4685 22.987 17.3984 22.9618 17.333C22.9366 17.2676 22.8997 17.2082 22.8531 17.1582Z" fill="black"/>
+                            </svg>
+                        </div>
+                        <div class="ps-button-next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="48" viewBox="0 0 40 48" fill="none">
+                            <rect width="40" height="48" fill="white"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1469 17.1582C17.1933 17.108 17.2485 17.0683 17.3092 17.0411C17.3699 17.014 17.435 17 17.5008 17C17.5665 17 17.6316 17.014 17.6924 17.0411C17.7531 17.0683 17.8082 17.108 17.8547 17.1582L23.8531 23.619C23.8997 23.669 23.9366 23.7284 23.9618 23.7938C23.987 23.8592 24 23.9293 24 24.0001C24 24.071 23.987 24.1411 23.9618 24.2065C23.9366 24.2719 23.8997 24.3313 23.8531 24.3813L17.8547 30.8421C17.7608 30.9432 17.6335 31 17.5008 31C17.368 31 17.2407 30.9432 17.1469 30.8421C17.053 30.741 17.0003 30.6039 17.0003 30.4609C17.0003 30.3179 17.053 30.1808 17.1469 30.0797L22.7924 24.0001L17.1469 17.9205C17.1003 17.8705 17.0634 17.8111 17.0382 17.7457C17.013 17.6803 17 17.6102 17 17.5394C17 17.4685 17.013 17.3984 17.0382 17.333C17.0634 17.2676 17.1003 17.2082 17.1469 17.1582Z" fill="black"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="swiper  slideproducts">
+                        <div class="swiper-wrapper">                        
+                        {% for product in section.settings.collection.products %}
+                        <div class="swiper-slide">
+                        {% render 'product-grid-item', product: product %}
+                        </div>
+                        {% endfor %}
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Our Best sellers"
+    },
+    {
+    "type": "collection",
+    "id": "collection",
+    "label": "Collection"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Product slider",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

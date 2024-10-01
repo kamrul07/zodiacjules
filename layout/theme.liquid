@@ -121,9 +121,12 @@
   {{ content_for_header }}
   {% include 'judgeme_core' %}
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer="defer"></script>
     <script src="{{ 'html2canvas.js' | asset_url }}" defer="defer"></script> 
      <script src="{{ 'html2canvas.min.js' | asset_url }}" defer="defer"></script> 
     <script src="{{ 'custom-charm.js' | asset_url }}" defer="defer"></script> 
+    <script src="{{ 'theme-custom.js' | asset_url }}" defer="defer"></script> 
+    <link rel="stylesheet"href="//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
    {{ 'custom.css' | asset_url | stylesheet_tag }}
    {{ 'theme-custom.css' | asset_url | stylesheet_tag }}
 </head>
