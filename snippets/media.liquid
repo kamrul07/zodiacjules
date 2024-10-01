@@ -1,0 +1,62 @@
+{% comment %}
+  * Returns a media object for a product slideshow, or quickview slideshoe
+
+  -  media {object} - The media object we will use
+  -  product {object} - The current product
+
+  {% render 'media', media: media, section: section %}
+{% endcomment %}
+{%- assign image_size = '1024x1024' -%}
+{% capture data_player %}data-player="{{ section.id }}-{{ media.id }}"{% endcapture %}
+{% if media.media_type == "image" %}
+  {%- assign data_player = '' -%}
+{% endif %}
+<div class="product__media"
+  data-media-slide
+  data-media-id="{{ media.id }}"
+  data-thumb="{{ media.preview_image.src | img_url: '200x200', crop: 'center' }}"
+  data-type="{{ media.media_type }}"
+  aria-label="{{ media.alt | escape }}"
+  {{ data_player }}>
+  {% case media.media_type %}
+    {% when 'image' %}
+      <div {% if media.aspect_ratio < 1 %}style="width:{{ media.aspect_ratio | times: 100 }}%; margin: 0 auto;"{% endif %}>
+        <div class="lazy-image mobile-zoom-wrapper" style="padding-top:{{ 1 | divided_by: media.aspect_ratio | times: 100}}%; background-image:  url('{{ media | img_url: '1x1' }}');">
+          {%- assign img_api = media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img data-product-image class="fade-in lazyload lazypreload"
+            data-image-id="{{ media.id }}"
+            alt="{{ media.alt | escape }}"
+            aria-label="{{ media.alt | escape }}"
+            data-src="{{ img_api }}"
+            data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
+            data-sizes="auto"
+            {% if media.alt contains 'variant--' %}
+              data-variant="media.alt"
+            {% endif %}/>
+            {% if section.settings.zoom_enable %}
+              <button class="media__zoom__icon" data-zoom-button>
+                {% render 'icon-zoom' %}
+                <span class="visually-hidden">{{ 'general.accessibility.zoom' | t }}</span>
+              </button>
+            {% endif %}
+        </div>
+      </div>
+    {% when 'model' %}
+      <div class="media__contain" style="padding-top:100%;">
+        {{ media | model_viewer_tag: image_size: image_size, reveal: 'interaction', toggleable: true, data-model-id: media.id, interaction-prompt-threshold: 500 }}
+      </div>
+    {% when 'video' %}
+      <div class="media__contain" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
+        {{ media | video_tag: class: 'media-video', image_size: image_size }}
+      </div>
+    {% when 'external_video' %}
+      <div data-video-id="{{ media.external_id }}"></div>
+      <div class="media__contain" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
+        {{ media | external_video_tag }}
+      </div>
+    {% else %}
+      <div style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
+        {{ media | media_tag: class: "media__other" }}
+      </div>
+  {% endcase %}
+</div>

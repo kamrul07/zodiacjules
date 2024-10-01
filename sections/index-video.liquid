@@ -1,0 +1,160 @@
+<!-- /sections/index-video.liquid -->
+
+<div class="section--image homepage-video fade-in-child preventOverflow {{ section.settings.height }} {{ section.settings.color }}" data-section-id="{{ section.id }}" data-section-type="video" data-overlay-header>
+  <div class="flex-absolute {{ section.settings.text_align }}">
+    <div class="wrapper preventOverflowContent">
+      {% unless section.settings.title == '' %}
+        <h1 class="title--overlay h2">{{ section.settings.title | escape }}</h1>
+      {% endunless %}
+      {% unless section.settings.description == '' %}
+        <p class="content--overlay h5--body">{{ section.settings.description }}</p>
+      {% endunless %}
+      {% if section.settings.video_link != '' and section.settings.show_play %}
+        <div class="cta--overlay">
+          {% render 'video-popup', video: section.settings.video_link, unique: section.id %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="image-overlay image-overlay-{{ section.settings.overlay_opacity }}"></div>
+
+  {% if section.settings.autoplay == true and section.settings.video_link.id != '' %}
+    <div class="video-autoplay-wrapper"
+      data-video-autoplay
+      data-player="{{ section.id }}-{{ section.settings.video_link.id  }}-bg"
+      data-video-type="{{ section.settings.video_link.type }}"
+      style="opacity: 0">
+      <div data-video-id="{{ section.settings.video_link.id  }}"></div>
+      <div data-replace></div>
+    </div>
+  {% endif %}
+
+  <div class="background__video__cover">
+    {% render 'hero', img_object: section.settings.image.src, frame_height_class: section.settings.height %}
+  </div>
+
+  {% if section.settings.height == 'use_screen_full' %}
+    <div class="scroll_icon_wrap">
+      <button data-scroll-down class="scroll_link bloop" aria-label="{{ 'general.accessibility.scroll' | t }}">
+        <span class="scroll_icon">{% render 'icon-scroll-down' %}</span>
+      </button>
+    </div>
+  {% endif %}
+</div>
+
+
+
+
+{% schema %}
+{
+  "name": "Video",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "video_url",
+      "id": "video_link",
+      "label": "Video link",
+      "accept": ["youtube", "vimeo"],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Section height",
+      "default": "use_screen_two_thirds",
+      "options": [
+        { "value": "use_screen_full", "label": "Full screen height"},
+        { "value": "use_screen_three_quarters", "label": "Three quarters of screen height"},
+        { "value": "use_screen_two_thirds", "label": "Two thirds of screen height"},
+        { "value": "use_screen_one_half", "label": "One half of screen height"},
+        { "value": "use_screen_one_third", "label": "One third of screen height"},
+        { "value": "use_pixels_800", "label": "800px" },
+        { "value": "use_pixels_650", "label": "650px" },
+        { "value": "use_pixels_500", "label": "500px" },
+        { "value": "use_image", "label": "Image height"}
+      ]
+    },
+    {
+      "type":    "range",
+      "id":      "overlay_opacity",
+      "min":     0,
+      "max":     100,
+      "step":    5,
+      "label":   "Image overlay opacity",
+      "info":    "Increase contrast for legible text.",
+      "default": 15
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "default": false,
+      "label": "Autoplay video in background"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_play",
+      "default": true,
+      "label": "Show play button"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured video"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Subheading",
+      "default": "This area is used to describe your video’s details."
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Alignment",
+      "default": "align--middle-center",
+      "options": [
+        { "value": "align--top-left", "label": "Top left"},
+        { "value": "align--top-center", "label": "Top center"},
+        { "value": "align--top-right", "label": "Top right"},
+        { "value": "align--middle-left", "label": "Middle left"},
+        { "value": "align--middle-center", "label": "Absolute center"},
+        { "value": "align--middle-right", "label": "Middle right"},
+        { "value": "align--bottom-left", "label": "Bottom left"},
+        { "value": "align--bottom-center", "label": "Bottom center"},
+        { "value": "align--bottom-right", "label": "Bottom right"}
+      ]
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Text color",
+      "default": "palette--contrast--dark",
+      "options": [
+        { "value": "palette--contrast--dark", "label": "White"},
+        { "value": "palette--primary", "label": "Primary accent"},
+        { "value": "palette--secondary", "label": "Secondary accent"},
+        { "value": " ", "label": "Text color"},
+        { "value": "palette--contrast", "label": "Black"},
+        { "value": "palette--primary--dark", "label": "Primary dark accent"},
+        { "value": "palette--secondary--dark", "label": "Secondary dark accent"},
+        { "value": "palette--dark", "label": "Inverted text color"}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video",
+      "category": "Video"
+    }
+  ]
+}
+{% endschema %}

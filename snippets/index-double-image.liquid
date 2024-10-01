@@ -1,0 +1,30 @@
+{% comment %}
+  * A cropped image that can be swapped in for mobile display
+
+  * section {object} - current section
+  * block {float} - current block
+
+  {% render 'index-double-image', block: block, section: section %}
+ {% endcomment %}
+
+<div data-overflow-frame class="grid__item small-up--one-half double__block section--image {{ block.settings.color }}" {{ block.shopify_attributes }}>
+  <div class="flex-absolute {{ block.settings.text_align }}">
+    <div data-overflow-content class="wrapper">
+      {% unless block.settings.title == '' %}
+        <h2 class="home__subtitle">{{ block.settings.title | escape }}</h2>
+      {% endunless %}
+      {% unless block.settings.description == '' %}
+        <div class="rte rte--column"><p>{{ block.settings.description }}<p></div>
+      {% endunless %}
+      {% unless block.settings.link_text == '' %}
+        <a class="{{ block.settings.button_style }} btn--small uppercase" href="{{ block.settings.link }}">
+      {{ block.settings.link_text | escape }}</a>
+    {% endunless %}
+    </div>
+  </div>
+  <div class="image-overlay image-overlay-{{ block.settings.overlay_opacity }}"></div>
+  {% if block.settings.link_text == '' and block.settings.link %}
+    <a class="link-over-image" href="{{ block.settings.link }}" aria-label="{{ block.settings.title }}"></a>
+  {% endif %}
+  {% render 'hero', img_object: block.settings.image, frame_height_class: section.settings.height %}
+</div>

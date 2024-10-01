@@ -1,0 +1,880 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "current": {
+    "color_announcement_bg": "#454851",
+    "color_announcement_text": "#ffffff",
+    "color_header_bg": "#ffffff",
+    "color_header_text": "#454851",
+    "color_nav_border": "#f7f7f7",
+    "color_body_bg": "#ffffff",
+    "color_body_text": "#656565",
+    "color_primary": "#b79b74",
+    "color_secondary": "#585e71",
+    "color_bg_light": "#f2f2f2",
+    "color_bg_inverse": "#9ea3ad",
+    "color_text_inverse": "#ffffff",
+    "color_primary_inverse": "#f0dcd3",
+    "color_secondary_inverse": "#9ea3ad",
+    "color_bg_accent_inverse": "#454851",
+    "product_background_color": "#ffffff",
+    "color_footer_bg": "#454851",
+    "color_footer_text": "#ffffff",
+    "type_header_font": "playfair_display_n4",
+    "type_heading_size": 105,
+    "font_title_capitalize": false,
+    "type_accent_font": "oxygen_n7",
+    "type_accent_size": 105,
+    "type_base_font": "oxygen_n4",
+    "type_body_size": 105,
+    "button_radius": 2,
+    "animations_enable": true,
+    "parallax_enable": true,
+    "collection_text_alignment": "text-center",
+    "product_grid_style": "under",
+    "image_hover_enable": true,
+    "image_autoheight_enable": true,
+    "product_grid_aspect_ratio": 1,
+    "swatches_enable": true,
+    "tag_sellout": true,
+    "tag_sale": true,
+    "tag_new": false,
+    "tag_new_limit": 14,
+    "social_twitter_link": "",
+    "social_facebook_link": "https://www.facebook.com/ZodiacJules-105271775087695",
+    "social_instagram_link": "https://www.instagram.com/shopzodiacjules/",
+    "social_pinterest_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "social_tumblr_link": "",
+    "social_medium_link": "",
+    "social_snapchat_link": "",
+    "share_enable_facebook": false,
+    "share_enable_pinterest": false,
+    "share_enable_twitter": false,
+    "favicon": "shopify://shop_images/Favicon.jpg",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify://shop_images/46CC5B9D-3D03-48E2-AC1D-1281344AAFE0.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Playfair Display",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#E37648",
+    "checkout_button_color": "#f4a482",
+    "checkout_error_color": "#585e71",
+    "color_account_bg": "#f3f3f3",
+    "color_account_text": "#656565",
+    "color_splash": "#f4a482",
+    "color_border": "#dddddd",
+    "homepage_background_light": "#f7f7f7",
+    "homepage_background_dark": "#2e3438",
+    "product_slideshow_arrows": "#cccccc",
+    "color_footer_social_link": "#a9a9a9",
+    "padding": 32,
+    "checkout_use_body_background_image": false,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "header_style": "split",
+          "logo": "shopify://shop_images/46CC5B9D-3D03-48E2-AC1D-1281344AAFE0.png",
+          "logo_max_limit": 400,
+          "main_menu_linklist": "main-menu",
+          "enable_search": true,
+          "enable_account": true,
+          "use_icons": true,
+          "header_sticky": "sticky",
+          "transparent_home": false,
+          "transparent_collection": false,
+          "transparent_blog": false,
+          "transparent_article": false,
+          "transparent_page": false,
+          "transparent_text_color": "#ffffff"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "linklist": {
+            "type": "linklist",
+            "settings": {
+              "linklist": "shop"
+            }
+          },
+          "ac9dd7dc-3215-4987-b198-68aff98e5bf7": {
+            "type": "linklist",
+            "settings": {
+              "linklist": "customer-service"
+            }
+          },
+          "newsletter": {
+            "type": "newsletter",
+            "settings": {
+              "richtext": "<p>Be the first to know about our new arrivals, special sales, &amp; more!</p>"
+            }
+          }
+        },
+        "block_order": [
+          "linklist",
+          "ac9dd7dc-3215-4987-b198-68aff98e5bf7",
+          "newsletter"
+        ],
+        "settings": {
+          "footer_secondary_linklist": "footer",
+          "footer_payment_enable": true,
+          "footer_social_enable": true,
+          "show_locale_selector": false,
+          "show_currency_selector": false
+        }
+      },
+      "product": {
+        "type": "product",
+        "blocks": {
+          "0eeda1c1-3e7c-4640-8ac8-48105d27b900": {
+            "type": "tab_page",
+            "settings": {
+              "title": "Returns & Exchanges",
+              "raw_content": "returns-exchanges"
+            }
+          },
+          "793628f2-b225-41b8-a3cc-ed17655c600a": {
+            "type": "tab_richtext",
+            "settings": {
+              "title": "Shipping",
+              "raw_content": "<p>Free Shipping within the United States.</p><p>$17 Flat-rate Shipping fee for rest of the world. </p>"
+            }
+          }
+        },
+        "block_order": [
+          "0eeda1c1-3e7c-4640-8ac8-48105d27b900",
+          "793628f2-b225-41b8-a3cc-ed17655c600a"
+        ],
+        "settings": {
+          "image_width": "half",
+          "align": "product__align-left",
+          "variant_form": "dropdown",
+          "form_position": "above",
+          "product_breadcrumbs": true,
+          "show_quantity": true,
+          "show_remaining": true,
+          "enable_payment_button": false,
+          "product_show_vendor": false,
+          "social_enable": true,
+          "product_reviews_enable": true,
+          "enable_video_looping": true,
+          "zoom_enable": true,
+          "info_page": "",
+          "tabs_position": "below"
+        }
+      },
+      "collection": {
+        "type": "collection",
+        "blocks": {
+          "829aa5e0-2042-448a-8a90-e3146a673c0a": {
+            "type": "tag_group",
+            "settings": {
+              "title": "Filter by Type",
+              "group_tags": "Charms, Necklaces, Chains, Bracelets, Earrings, Rings"
+            }
+          }
+        },
+        "block_order": [
+          "829aa5e0-2042-448a-8a90-e3146a673c0a"
+        ],
+        "settings": {
+          "grid_setting_large": 4,
+          "grid_setting_small": 2,
+          "product_limit": 20,
+          "enable_layout_toggle": true,
+          "collection_sorting": true,
+          "text_align": "align--middle-center",
+          "show_title": true,
+          "show_title_below": false,
+          "show_description": true,
+          "show_description_below": false,
+          "show_image": true,
+          "image_height": "use_screen_one_third",
+          "overlay_opacity": 20,
+          "color": "palette--contrast--dark",
+          "hide_sidebar": true,
+          "collection_custom_nav_list": "",
+          "collection_standard_nav": false,
+          "collection_tag_nav": false
+        }
+      },
+      "blog": {
+        "type": "blog",
+        "settings": {
+        }
+      },
+      "article": {
+        "type": "article",
+        "settings": {
+        }
+      },
+      "index-product": {
+        "type": "index-product",
+        "settings": {
+        }
+      },
+      "index-collection": {
+        "type": "index-collection",
+        "settings": {
+          "title": "Featured Products",
+          "collection": "featured-collection",
+          "grid": 4,
+          "rows": 1,
+          "bg": "section bg--accent",
+          "show_view_all": false
+        }
+      },
+      "index-video": {
+        "type": "index-video",
+        "settings": {
+          "video_link": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "height": "use_screen_two_thirds",
+          "overlay_opacity": 15,
+          "autoplay": false,
+          "show_play": true,
+          "title": "Featured video",
+          "description": "This area is used to describe your video’s details.",
+          "text_align": "align--middle-center",
+          "color": "palette--contrast--dark"
+        }
+      },
+      "index-collection-grid": {
+        "type": "index-collection-grid",
+        "blocks": {
+          "index-collection-grid-1": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "charm-builder-1",
+              "title": "Charm Builder",
+              "link_text": "Craft your own",
+              "button_link": "shopify://pages/charm-builder"
+            }
+          },
+          "index-collection-grid-2": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "charms",
+              "title": "Charms",
+              "link_text": "View products",
+              "button_link": "shopify://collections/charms"
+            }
+          },
+          "db540b51-3557-46e7-9fbd-1039cfb5dd53": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "chains",
+              "title": "Chains",
+              "link_text": "View products",
+              "image": "shopify://shop_images/HeavyPaperclipNecklacePNG.png",
+              "button_link": "shopify://collections/chains"
+            }
+          },
+          "c8c0c9e2-9ab7-42b0-a5c2-57091efe9459": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "necklaces",
+              "title": "Necklaces",
+              "link_text": "View products",
+              "button_link": "shopify://collections/necklaces"
+            }
+          }
+        },
+        "block_order": [
+          "index-collection-grid-1",
+          "index-collection-grid-2",
+          "db540b51-3557-46e7-9fbd-1039cfb5dd53",
+          "c8c0c9e2-9ab7-42b0-a5c2-57091efe9459"
+        ],
+        "settings": {
+          "title": "Shop by Collection",
+          "grid": 2,
+          "bg": "section",
+          "color": "palette--contrast--dark",
+          "button_style": "btn--outline",
+          "overlay_opacity": 40,
+          "aspect_ratio": 0.6
+        }
+      },
+      "index-double": {
+        "type": "index-double",
+        "blocks": {
+          "index-double-0": {
+            "type": "image",
+            "settings": {
+              "overlay_opacity": 15,
+              "title": "",
+              "description": "",
+              "text_align": "align--middle-center",
+              "color": "palette--contrast--dark",
+              "link_text": "",
+              "button_style": "btn"
+            }
+          },
+          "index-double-1": {
+            "type": "text",
+            "settings": {
+              "title": "Image and text",
+              "richtext": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+              "text_align": "align--middle-center",
+              "bg": "section",
+              "link_text": "",
+              "button_style": "btn"
+            }
+          }
+        },
+        "block_order": [
+          "index-double-0",
+          "index-double-1"
+        ],
+        "settings": {
+          "height": "use_screen_one_half"
+        }
+      },
+      "index-columns": {
+        "type": "index-columns",
+        "blocks": {
+          "index-columns-1": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "C. Amsac",
+              "text": "<p>I love buying from this shop.  The necklaces are beautiful and she ships everything so quickly.  I have bought several items from them and will continue. Thank you.</p>",
+              "button_label": "",
+              "button_link": "",
+              "enable_video": false,
+              "video_link": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+            }
+          },
+          "index-columns-0": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "F. Chee",
+              "text": "<p>This piece is beautiful beyond words! So stunning and original.  I actually recall seeing this in an article years ago when the pendant was worn by Tea Leoni and had been chasing it for years after trying to find something similar and was so thrilled to see the piece.  Will be buying more for sure.  </p>",
+              "button_label": "",
+              "button_link": "",
+              "enable_video": false,
+              "video_link": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+            }
+          },
+          "index-columns-2": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "title": "K. Rosenberg",
+              "text": "<p>Amazing customer service with a kind, personalized touch.  Thank you so much for all of your help providing a magical birthday gift.  She loved the pendants!</p>",
+              "button_label": "",
+              "button_link": "",
+              "enable_video": false,
+              "video_link": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+            }
+          }
+        },
+        "block_order": [
+          "index-columns-1",
+          "index-columns-0",
+          "index-columns-2"
+        ],
+        "disabled": true,
+        "settings": {
+          "title": "Customer Love",
+          "bg": "section--dark",
+          "align_text": "text-center",
+          "scale_image": false,
+          "aspect_ratio": 0.5
+        }
+      },
+      "index-slideshow": {
+        "type": "index-slideshow",
+        "blocks": {
+          "index-slideshow-0": {
+            "type": "image",
+            "settings": {
+              "overlay_opacity": 15,
+              "title": "Image slide",
+              "description": "Tell your brand's story through images.",
+              "text_align": "align--middle-center",
+              "link_text": "View products",
+              "button_style": "btn"
+            }
+          },
+          "index-slideshow-1": {
+            "type": "image",
+            "settings": {
+              "overlay_opacity": 15,
+              "title": "Image slide",
+              "description": "Tell your brand's story through images.",
+              "text_align": "align--middle-center",
+              "link_text": "View products",
+              "button_style": "btn"
+            }
+          }
+        },
+        "block_order": [
+          "index-slideshow-0",
+          "index-slideshow-1"
+        ],
+        "settings": {
+          "autoplay": false,
+          "autoplay_speed": 8,
+          "height": "use_screen_two_thirds",
+          "color": "palette--contrast--dark"
+        }
+      },
+      "index-blog": {
+        "type": "index-blog",
+        "settings": {
+          "title": "News",
+          "homepage_blog": "news",
+          "homepage_blog_count": 2,
+          "bg": "section",
+          "color": "palette--contrast--dark",
+          "aspect_ratio": 0.7
+        }
+      },
+      "index-logos": {
+        "type": "index-logos",
+        "blocks": {
+          "index-logos-0": {
+            "type": "logo_image",
+            "settings": {
+            }
+          },
+          "index-logos-1": {
+            "type": "logo_image",
+            "settings": {
+            }
+          },
+          "index-logos-2": {
+            "type": "logo_image",
+            "settings": {
+            }
+          },
+          "index-logos-3": {
+            "type": "logo_image",
+            "settings": {
+            }
+          },
+          "index-logos-4": {
+            "type": "logo_image",
+            "settings": {
+            }
+          }
+        },
+        "block_order": [
+          "index-logos-0",
+          "index-logos-1",
+          "index-logos-2",
+          "index-logos-3",
+          "index-logos-4"
+        ],
+        "settings": {
+          "title": "",
+          "bg": "section"
+        }
+      },
+      "index-map": {
+        "type": "index-map",
+        "settings": {
+          "height": "use_screen_one_half",
+          "heading": "Our store",
+          "address": "<p>123 Fake St.<br/>Whistler, Canada</p><p>Mon - Fri, 10am - 9pm<br/>Weekends, 11am - 4pm</p>",
+          "button": "Directions",
+          "button_style": "btn",
+          "style": "light",
+          "zoom": 11,
+          "bg": "section",
+          "api_key": "",
+          "map_address": "4300 Main St, Whistler"
+        }
+      },
+      "announcement": {
+        "type": "announcement",
+        "settings": {
+          "enable": true,
+          "message": "Cancer Season - June 21-July 22",
+          "more": "Free shipping over $50 in the United states",
+          "url": "",
+          "enable_account": false,
+          "enable_search": false
+        }
+      },
+      "page-images": {
+        "type": "page-images",
+        "settings": {
+          "image_height": "use_screen_one_third",
+          "overlay_opacity": 30,
+          "palette": "palette--contrast--dark",
+          "text_align": "align--middle-center"
+        }
+      },
+      "page-faq": {
+        "type": "page-faq",
+        "blocks": {
+          "page-faq-0": {
+            "type": "text",
+            "settings": {
+              "title": "How long does it take to ship my jewelry?",
+              "content": "<p>Most items will ship within 2-4 days.</p>"
+            }
+          },
+          "page-faq-1": {
+            "type": "text",
+            "settings": {
+              "title": "How long will it take to arrive to me?",
+              "content": "<p>Most items will arrive within 1-3 days after leaving our studio in Studio City, California. </p>"
+            }
+          },
+          "page-faq-2": {
+            "type": "text",
+            "settings": {
+              "title": "Can I get “rush” shipping?",
+              "content": "<p>Yes, Choose Priority Mail and we will ship within 1-2 days.</p>"
+            }
+          },
+          "1660f1fa-27e5-4c2f-a8f6-e12f324c355d": {
+            "type": "text",
+            "settings": {
+              "title": "Can I send a gift note?",
+              "content": "<p>Yes, you may send a note to the recipient. We will print it out and include it in the package. In the cart section before checkout, you may enter a gift note.</p>"
+            }
+          },
+          "8be5c454-94a0-4a34-9ca4-a433dd754d52": {
+            "type": "text",
+            "settings": {
+              "title": "Do you accept returns/exchanges?",
+              "content": "<p>Yes we do. For returns, contact us within 5 days of delivery for returns. For exchanges, contact us within 14 days of delivery for exchange of merchandise.</p><p>Please contact us for a RA number or to exchange.</p>"
+            }
+          },
+          "fa6e73cf-edb9-4613-bb91-87d75980c452": {
+            "type": "text",
+            "settings": {
+              "title": "Can I do a phone order?",
+              "content": "<p>Yes, we are more than happy to help over the phone - Call us at 818 508-1993 during our regular business hours.</p>"
+            }
+          }
+        },
+        "block_order": [
+          "page-faq-0",
+          "page-faq-1",
+          "page-faq-2",
+          "1660f1fa-27e5-4c2f-a8f6-e12f324c355d",
+          "8be5c454-94a0-4a34-9ca4-a433dd754d52",
+          "fa6e73cf-edb9-4613-bb91-87d75980c452"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "password": {
+        "type": "password",
+        "settings": {
+          "logo": "shopify://shop_images/46CC5B9D-3D03-48E2-AC1D-1281344AAFE0.png",
+          "image": "shopify://shop_images/Home-Page-Banner-LR.jpg",
+          "richtext": "<p>Enter your email below to be the first to know when we launch our new website!</p>"
+        }
+      },
+      "list-collections": {
+        "type": "list-collections",
+        "blocks": {
+          "c4d22ecf-49b2-4a43-a86f-b090d6cf686d": {
+            "type": "collection",
+            "settings": {
+              "collection": "charms"
+            }
+          },
+          "00f68d90-2211-401c-bce1-03c524fcc4e3": {
+            "type": "collection",
+            "settings": {
+              "collection": "necklaces"
+            }
+          },
+          "b52979f9-b312-4c37-a722-6ab75306d3d0": {
+            "type": "collection",
+            "settings": {
+              "collection": "chains"
+            }
+          },
+          "72765a81-8d75-48a0-91d5-168ce52db134": {
+            "type": "collection",
+            "settings": {
+              "collection": "bracelets"
+            }
+          }
+        },
+        "block_order": [
+          "c4d22ecf-49b2-4a43-a86f-b090d6cf686d",
+          "00f68d90-2211-401c-bce1-03c524fcc4e3",
+          "b52979f9-b312-4c37-a722-6ab75306d3d0",
+          "72765a81-8d75-48a0-91d5-168ce52db134"
+        ],
+        "settings": {
+          "style": "collection",
+          "aspect_ratio": 1,
+          "grid_collection": 2,
+          "grid": 4,
+          "rows": 1
+        }
+      },
+      "related": {
+        "type": "related",
+        "settings": {
+          "related_products_enable": true,
+          "limit": 4,
+          "product_recommendations_heading": "Related products"
+        }
+      },
+      "162145515981879045": {
+        "type": "index-page",
+        "settings": {
+          "home_page_content": "about-me",
+          "home_page_show_title": false,
+          "bg": "section"
+        }
+      },
+      "1621455257be99694d": {
+        "type": "index-newsletter",
+        "settings": {
+          "title": "Let's stay in touch!",
+          "richtext": "<p>Be the first to know about our new arrivals, special sales, &amp; more!</p>",
+          "bg": "section bg--accent"
+        }
+      },
+      "cart": {
+        "type": "cart",
+        "settings": {
+          "enable_ajax": true,
+          "cart_vendor_enable": false,
+          "cart_notes_enable": true,
+          "cart_show_quantity": true,
+          "cart_show_additional_buttons": true
+        }
+      },
+      "16214595871ef77f92": {
+        "type": "maestrooo-instagram",
+        "disabled": true,
+        "settings": {
+          "title": "Let's get Social!",
+          "subheading": "<p>Tag us with <strong>#zodiacjules</strong> for a chance to be featured in our feed!</p>",
+          "button_text": "",
+          "button_link": "",
+          "layout": "grid",
+          "image_size": "medium",
+          "full_width": true,
+          "add_spacing": true,
+          "rows_count": 1,
+          "show_author": false,
+          "show_caption": true,
+          "show_date": true,
+          "click_action": "open_instagram",
+          "heading_color": "#454851",
+          "subheading_color": "#000000",
+          "button_background": "#454851",
+          "button_color": "#ffffff",
+          "overlay_color": "#000000",
+          "overlay_text_color": "#ffffff",
+          "overlay_opacity": 65
+        }
+      },
+      "16215383423eadcc03": {
+        "type": "judgeme_carousel_section",
+        "settings": {
+          "maxwidth": 1600
+        }
+      },
+      "1662999178c3941b07": {
+        "type": "instafeed",
+        "settings": {
+          "heading_size": 23,
+          "feed_width": 75,
+          "html_area": ""
+        }
+      },
+      "1662999409de73a4df": {
+        "type": "index-richtext",
+        "settings": {
+          "title": "Let's get social!",
+          "home_page_richtext": "<p>Tag us with <strong>#zodiacjules</strong> for a chance to be featured in our feed!</p>",
+          "text_align": "align--middle-center",
+          "bg": "section"
+        }
+      },
+      "16214309328180c397": {
+        "type": "index-hero",
+        "settings": {
+          "image": "shopify://shop_images/DSC09203_2.jpg",
+          "height": "use_screen_two_thirds",
+          "overlay_opacity": 35,
+          "title": "Vintage Zodiac Jewelry",
+          "description": "Choose your charm, choose your chain!",
+          "text_align": "align--top-center",
+          "color": "palette--contrast--dark",
+          "link_text": "Featured Necklaces",
+          "link": "shopify://collections/necklaces",
+          "button_style": "btn"
+        }
+      }
+    },
+    "content_for_index": [
+      "16214309328180c397",
+      "index-collection-grid",
+      "16215383423eadcc03",
+      "index-columns",
+      "162145515981879045",
+      "16214595871ef77f92",
+      "1662999409de73a4df",
+      "1662999178c3941b07",
+      "1621455257be99694d"
+    ]
+  },
+  "presets": {
+    "Light": {
+      "color_announcement_bg": "#f7f7f7",
+      "color_announcement_text": "#656565",
+      "color_header_bg": "#ffffff",
+      "color_header_text": "#656565",
+      "color_nav_border": "#f7f7f7",
+      "color_body_bg": "#ffffff",
+      "color_body_text": "#656565",
+      "color_primary": "#f4a482",
+      "color_secondary": "#585e71",
+      "color_bg_light": "#f7f7f7",
+      "color_bg_inverse": "#2e3438",
+      "color_text_inverse": "#ffffff",
+      "color_primary_inverse": "#fcd8c8",
+      "color_secondary_inverse": "#c6dae5",
+      "color_bg_accent_inverse": "#222324",
+      "product_background_color": "#ffffff",
+      "color_footer_bg": "#ffffff",
+      "color_footer_text": "#656565",
+      "color_account_bg": "#f3f3f3",
+      "color_account_text": "#656565",
+      "color_splash": "#f4a482",
+      "color_border": "#dddddd",
+      "homepage_background_light": "#f7f7f7",
+      "homepage_background_dark": "#2e3438",
+      "product_slideshow_arrows": "#cccccc",
+      "color_footer_social_link": "#a9a9a9",
+      "type_header_font": "ovo_n4",
+      "type_heading_size": 100,
+      "font_title_capitalize": false,
+      "type_accent_font": "itc_johnston_n5",
+      "type_accent_size": 100,
+      "type_base_font": "harmonia_sans_n4",
+      "type_body_size": 100,
+      "animations_enable": true,
+      "parallax_enable": true,
+      "padding": 32,
+      "button_radius": 0,
+      "collection_text_alignment": "text-center",
+      "product_grid_style": "hover",
+      "image_hover_enable": true,
+      "image_autoheight_enable": true,
+      "product_grid_aspect_ratio": 1,
+      "swatches_enable": true,
+      "tag_sellout": false,
+      "tag_sale": true,
+      "tag_new": false,
+      "tag_new_limit": 14,
+      "checkout_use_body_background_image": false,
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#E37648",
+      "checkout_button_color": "#f4a482",
+      "checkout_error_color": "#585e71"
+    },
+    "Bright": {
+      "color_announcement_bg": "#333333",
+      "color_announcement_text": "#ffffff",
+      "color_header_bg": "#ffffff",
+      "color_header_text": "#333333",
+      "color_nav_border": "#ededed",
+      "color_body_bg": "#ffffff",
+      "color_body_text": "#000000",
+      "color_primary": "#1391a4",
+      "color_secondary": "#285056",
+      "color_bg_inverse": "#333333",
+      "color_primary_inverse": "#70ccda",
+      "color_secondary_inverse": "#497178",
+      "color_bg_accent_inverse": "#000810",
+      "product_background_color": "#fcfcfc",
+      "color_footer_bg": "#f7f7f7",
+      "color_footer_text": "#333333",
+      "type_header_font": "bembo_book_n7",
+      "type_heading_size": 100,
+      "font_title_capitalize": false,
+      "type_accent_font": "avenir_next_n5",
+      "type_accent_size": 100,
+      "type_base_font": "avenir_next_n4",
+      "type_body_size": 100,
+      "collection_text_alignment": "text-center",
+      "product_grid_style": "hover",
+      "checkout_use_body_background_image": false,
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#1391a4",
+      "checkout_button_color": "#1391a4",
+      "checkout_error_color": "#DE7878"
+    },
+    "Dark": {
+      "color_announcement_bg": "#212121",
+      "color_announcement_text": "#d4d4d4",
+      "color_header_bg": "#353535",
+      "color_header_text": "#ffffff",
+      "color_nav_border": "#000000",
+      "color_body_bg": "#ffffff",
+      "color_body_text": "#3c3c3c",
+      "color_primary": "#C73535",
+      "color_secondary": "#000000",
+      "color_bg_light": "#f7f7f7",
+      "color_bg_inverse": "#2e3438",
+      "color_text_inverse": "#e6e6e6",
+      "color_primary_inverse": "#e3baba",
+      "color_secondary_inverse": "#ffffff",
+      "color_bg_accent_inverse": "#222324",
+      "product_background_color": "#ffffff",
+      "color_footer_bg": "#383838",
+      "color_footer_text": "#e3e3e3",
+      "type_header_font": "basic_commercial_n7",
+      "type_heading_size": 100,
+      "font_title_capitalize": false,
+      "type_accent_font": "karla_n4",
+      "type_accent_size": 115,
+      "type_base_font": "basic_commercial_n4",
+      "type_body_size": 125,
+      "collection_text_alignment": "text-center",
+      "product_grid_style": "under",
+      "checkout_use_body_background_image": false,
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Open Sans",
+      "checkout_body_font": "Open Sans",
+      "checkout_accent_color": "#8b1e1e",
+      "checkout_button_color": "#e73131",
+      "checkout_error_color": "#ff862b"
+    }
+  }
+}

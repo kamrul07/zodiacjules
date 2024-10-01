@@ -1,0 +1,83 @@
+{%- liquid
+
+  assign expands = false
+  assign block_count = 0
+
+  if section
+    assign index = index | append: ""
+    for block in section.blocks
+      if block.settings.position == index
+        if block.type == 'collection'
+          assign block_count = block_count | plus: block.settings.limit
+        else 
+          assign block_count = block_count | plus: 1
+        endif
+      endif 
+    endfor
+  endif
+
+  if link.levels > 0 or block_count > 0
+    assign expands = true
+    assign key = link.url | append: link.title | append: link.levels | md5 
+  endif
+
+-%}
+
+{% capture link_markup %}
+  {%- if link.url == "#" -%}
+    <span class="sliderow__title" >{{ link.title | escape }}</span>
+  {%- else -%}
+    <a class="sliderow__title" href="{{ link.url }}">{{ link.title | escape }}</a>
+  {%- endif -%}
+{% endcapture %}
+
+<div class="sliderule__wrapper">
+  {%- if expands -%}
+    <button class="sliderow"
+      data-animates
+      data-sliderule-open="sliderule-{{ key }}">
+      <span class="sliderow__title">{{ link.title | escape }}</span>
+      <span class="sliderule__chevron--right">
+        {% render 'icon-arrow-medium-right' %}
+        <span class="visually-hidden">{{ 'general.accessibility.expand_menu' | t }}</span>
+      </span>
+    </button>
+
+    <div class="mobile__menu__dropdown sliderule__panel" 
+      data-sliderule 
+      id="sliderule-{{ key }}">
+
+      <div class="sliderow" data-animates>
+        <button class="drawer__button"
+          data-sliderule-close="sliderule-{{ key }}">
+          <span class="sliderule__chevron--left">
+            {% render 'icon-arrow-medium-left' %}
+            <span class="visually-hidden">{{ 'general.accessibility.hide_menu' | t }}</span>
+          </span>
+        </button>
+        {{link_markup}}
+      </div>
+
+      {% for link in link.links %}
+        {% render 'nav-item-mobile', link: link %}
+      {% endfor %}
+
+      {%- if section -%}
+        <div class="sliderule-grid blocks-{{block_count}}">
+          {% for block in section.blocks %}
+            {% comment %} Render block content {% endcomment %}
+            {%- if block.settings.position == index -%}
+              {% render 'header-block', block: block %}
+            {%- endif -%}
+          {% endfor %} 
+        </div>
+      {%- endif -%}
+
+    </div>
+  {%- else -%}
+    {% comment %} Single menu item, no nesting {% endcomment %}
+    <div class="sliderow" data-animates>
+      {{link_markup}}
+    </div>
+  {%- endif -%}
+</div>

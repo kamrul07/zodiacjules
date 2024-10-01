@@ -1,0 +1,29 @@
+<!-- /snippets/newsletter-form.liquid -->
+{% form 'customer' %}
+  {% if form.posted_successfully? %}
+    <p><em>{{ 'general.newsletter_form.subscribed' | t }}</em></p>
+  {% elsif form.errors %}
+    {% for field in form.errors %}
+      <p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+    {% endfor %}
+  {% endif %}
+
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  <input type="hidden" name="contact[accepts_marketing]" value="true">
+  <div class="input-group input-group--inner-button float__wrapper">
+    <label for="email">{{ 'general.newsletter_form.email' | t }}</label>
+    <input class="input-group-field" 
+    type="email" 
+    placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" 
+    id="mail" 
+    aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" 
+    autocorrect="off" 
+    autocapitalize="off" 
+    name="contact[email]" />
+    <span class="input-group-button">
+      <button type="submit" class="btn btn--secondary uppercase" name="subscribe" id="subscribe">
+        {{ 'general.newsletter_form.submit' | t }}
+      </button>
+    </span>
+  </div>
+{% endform %}

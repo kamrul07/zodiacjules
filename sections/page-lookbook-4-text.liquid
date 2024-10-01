@@ -1,0 +1,146 @@
+<!-- /sections/index-custom-text.liquid-->
+
+{% case section.blocks.size %}
+  {% when 1 %}
+    {%- assign grid_item_width_large = 'medium-up--one-whole' -%}
+    {%- assign grid_item_width_small = 'small-down--one-whole' -%}
+  {% when 2 %}
+    {%- assign grid_item_width_large = 'medium-up--one-half' -%}
+    {%- assign grid_item_width_small = 'small-down--one-half' -%}
+  {% when 3 %}
+    {%- assign grid_item_width_large = 'medium-up--one-third' -%}
+    {%- assign grid_item_width_small = 'small-down--one-third' -%}
+  {% when 4 %}
+    {%- assign grid_item_width_large = 'medium-up--one-quarter' -%}
+    {%- assign grid_item_width_small = 'small-down--one-half' -%}
+  {% when 5 %}
+    {%- assign grid_item_width_large = 'medium-up--one-fifth' -%}
+    {%- assign grid_item_width_small = 'small-down--one-third' -%}
+  {% else %}
+    {%- assign grid_item_width_large = 'medium-up--one-sixth' -%}
+    {%- assign grid_item_width_small = 'small-down--one-third' -%}
+{% endcase %}
+
+<div class="frame"
+  data-section-id="{{ section.id }}"
+  data-section-type="gallery-text"
+  data-padding="true">
+  {% if section.settings.show %}
+  <div data-gallery-enabled class="has-padding">
+    <div class="wrapper">
+      <div class="gallery">
+        {% for block in section.blocks %}
+          {%- unless block.settings.width_desktop == 'auto' -%}
+            {% capture grid_item_width_large %}medium-up--{{ block.settings.width_desktop }}{% endcapture %}
+          {%- endunless -%}
+          {%- unless block.settings.width_mobile == 'auto' -%}
+            {% capture grid_item_width_small %}small-down--{{ block.settings.width_mobile }}{% endcapture %}
+          {%- endunless -%}
+          <div class="gallery__item {{ grid_item_width_large }} {{ grid_item_width_small }}" {{ block.shopify_attributes }}>
+            <div class="gallery__text border--line {{ block.settings.align }} {{ block.settings.border_position }}">
+              {% if block.settings.title != '' %}
+                <h2 class="custom__title">
+                  {{ block.settings.title | escape }}
+                </h2>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <div class="custom__text rte">
+                  {{ block.settings.text }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+
+{% schema %}
+{
+  "name": "Lookbook text",
+  "class": "gallery__section__outer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show",
+      "label": "Enable section",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Custom Text"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Alignment",
+          "default": "align--top-left",
+          "options": [
+            { "value": "align--top-left", "label": "Left"},
+            { "value": "align--top-center", "label": "Center"},
+            { "value": "align--top-right", "label": "Right"}
+          ]
+        },
+        {
+          "type": "select",
+          "id": "width_desktop",
+          "label": "Desktop width",
+          "default": "auto",
+          "options": [
+            { "value": "auto", "label": "Auto"},
+            { "value": "one-quarter", "label": "25%"},
+            { "value": "one-third", "label": "33%"},
+            { "value": "one-half", "label": "50%"},
+            { "value": "two-thirds", "label": "66%"},
+            { "value": "three-quarters", "label": "75%"},
+            { "value": "one-whole", "label": "100%"}
+          ]
+        },
+        {
+          "type": "select",
+          "id": "width_mobile",
+          "label": "Mobile width",
+          "default": "auto",
+          "options": [
+            { "value": "auto", "label": "Auto"},
+            { "value": "one-quarter", "label": "25%"},
+            { "value": "one-third", "label": "33%"},
+            { "value": "one-half", "label": "50%"},
+            { "value": "two-thirds", "label": "66%"},
+            { "value": "three-quarters", "label": "75%"},
+            { "value": "one-whole", "label": "100%"}
+          ]
+        }
+      ]
+    }
+  ],
+    "default": {
+      "blocks": [
+        {
+          "type": "text"
+        }
+      ]
+    }
+}
+{% endschema %}

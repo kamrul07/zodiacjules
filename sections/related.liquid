@@ -1,0 +1,54 @@
+<!-- /sections/related.liquid -->
+
+{% if section.settings.related_products_enable %}
+  <div class="related-section" data-related-section data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" data-limit="{{ section.settings.limit }}" data-section-type="related">
+    {% if recommendations.performed %}
+      {% if recommendations.products_count > 0 %}
+        <div class="related__wrapper wrapper">
+          <div class="grid pt2">
+            <div class="grid__item">
+              <h2 class="home__subtitle">{{ section.settings.product_recommendations_heading }}</h2>
+              <div class="js-grid" data-grid-large="{{ recommendations.products_count }}" data-grid-small="2">
+                {% for product in recommendations.products %}
+                  {% render 'product-grid-item', product: product %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="related__placeholder"></div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "related_products_enable",
+      "label": "Show related products",
+      "info": "Dynamic recommendations change and improve with time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)",
+      "default": true
+    },
+    {
+      "type":    "range",
+      "id":      "limit",
+      "min":     1,
+      "max":     8,
+      "step":    1,
+      "label":   "Product limit",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "product_recommendations_heading",
+      "label": "Heading",
+      "default": "Related products"
+    }
+  ]
+}
+{% endschema %}

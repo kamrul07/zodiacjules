@@ -1,0 +1,8 @@
+{% comment %}
+  * output settings JSON
+
+  * settings {object} section settings
+
+  {%- render 'settings-json-section', settings: section.settings -%}
+{% endcomment %}
+{ "settings":{{ settings | json }}  }

@@ -1,0 +1,235 @@
+{% assign product = all_products[section.settings.home_product] %}
+
+{% if product.empty? %}
+  <div class="homepage-product product-section {{ section.settings.bg }}">
+    {% unless section.settings.title == '' %}
+      <h2 class="home__subtitle">{{ section.settings.title | escape }}</h2>
+    {% endunless %}
+      {% render 'onboarding-product' %}
+  </div>
+{% else %}
+  <div class="homepage-product product-section {{ section.settings.bg }}" data-section-id="{{ section.id }}" data-section-type="product">
+    {% unless section.settings.title == '' %}
+      <h2 class="home__subtitle">{{ section.settings.title | escape }}</h2>
+    {% endunless %}
+    {% render 'product', product: product, section: section %}
+    <script data-settings="{{ section.id }}" type="application/json">
+      {%- render 'settings-json-section', settings: section.settings -%}
+    </script>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Featured product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured product"
+    },
+    {
+      "type": "product",
+      "id": "home_product",
+      "label": "Product"
+    },
+    {
+      "type": "select",
+      "id": "bg",
+      "label": "Background color",
+      "default": "section",
+      "options": [
+        { "value": "section", "label": "Default"},
+        { "value": "section bg--accent", "label": "Light"},
+        { "value": "section--dark", "label": "Dark"},
+        { "value": "section--dark bg--accent", "label": "Dark accent"}
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_width",
+      "label": "Image width",
+      "default": "wide",
+      "options": [
+         { "value": "full", "label": "Full width image"},
+         { "value": "wide", "label": "Wide image"},
+         { "value": "half", "label": "Balanced"},
+         { "value": "narrow", "label": "Narrow image"}
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Text alignment",
+      "default": "product__align-center",
+      "options": [
+         { "value": "product__align-center", "label": "Center"},
+         { "value": "product__align-left", "label": "Left"}
+      ]
+    },
+    {
+      "type": "select",
+      "id": "variant_form",
+      "label": "Variant option style",
+      "options": [
+         { "value": "button", "label": "Buttons"},
+         { "value": "dropdown", "label": "Dropdown"}
+      ]
+    },
+    {
+      "type": "select",
+      "id": "form_position",
+      "options": [
+        { "value": "below", "label": "Description above form"},
+        { "value": "above", "label": "Description below form"}
+      ],
+      "label": "Description position",
+      "default": "below"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "Show quantity selection",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_remaining",
+      "label": "Show inventory coundown",
+      "default": true,
+      "info": "Count down the last 10 items in stock."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_payment_button",
+      "label": "Show dynamic checkout button",
+      "info": "Lets customers check out directly using a familiar payment method. [Learn More](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "product_show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Media",
+      "info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "Enable video looping",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "zoom_enable",
+      "label": "Enable image zoom",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Optional sizing popup"
+    },
+    {
+      "id": "info_page",
+      "type": "page",
+      "label": "Select page"
+    },
+    {
+      "type": "header",
+      "content": "Optional product tabs"
+    },
+    {
+      "type": "select",
+      "id": "tabs_position",
+      "options": [
+        { "value": "sidebar", "label": "Tabs beside image"},
+        { "value": "below", "label": "Tabs below"}
+      ],
+      "label": "Tabs position",
+      "default": "below",
+      "info": "Learn more about [product tabs](https://groupthought.com/link/pipeline/docs/tabs)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab_description",
+      "name": "Description H6",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Heading 6 titles will be converted to tab headings, tab content will be everything between the Heading 6 titles. [Product Tabs Documentation](http://help.groupthought.com/article/36-tabs)."
+        }
+      ]
+    },
+    {
+      "type": "tab_richtext",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Label",
+          "default": "Text tab",
+          "info": "Example: Warranty policy"
+        },
+        {
+          "type": "richtext",
+          "id": "raw_content",
+          "label": "Tab content",
+          "default": "<p>This tab content type will accept <strong>rich text</strong> to help with adding styles and links to additional pages or content. Use this to add supplementary information to help your buyers.</p>"
+        }
+      ]
+    },
+    {
+      "type": "tab_html",
+      "name": "HTML",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Label",
+          "default": "HTML tab",
+          "info": "Example: Sizing video"
+        },
+        {
+          "type": "html",
+          "id": "raw_content",
+          "label": "Tab content",
+          "default": "<p>This tab content type will accept HTML code for advanced styling. Use this to add video embeds, or other advanced HTML content.</p>"
+        }
+      ]
+    },
+    {
+      "type": "tab_page",
+      "name": "Page",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Label",
+          "default": "Page tab",
+          "info": "Example: Size chart"
+        },
+        {
+          "type": "page",
+          "id": "raw_content",
+          "label": "Tab content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured product",
+      "category": "Product"
+    }
+  ]
+}
+
+{% endschema %}

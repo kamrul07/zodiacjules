@@ -1,0 +1,180 @@
+{% assign display_map = false %}
+{%- if section.settings.api_key != blank and section.settings.map_address -%}
+  {% assign display_map = true %}
+{%- endif -%}
+
+<div class="map-section grid--full homepage-double {{ section.settings.height }}{% if display_map %} map-section--display-map{% endif %}"
+     data-overflow-wrapper
+     data-section-id="{{ section.id }}"
+     data-section-type="index-map"
+     data-style="{{ section.settings.style }}"
+     data-zoom="{{ section.settings.zoom }}"
+     data-address="{{ section.settings.map_address | escape }}"
+     data-api-key="{{ section.settings.api_key }}">
+
+  <div data-overflow-frame class="grid__item medium-up--one-half small--one-half double__block {{ section.settings.bg }}" {{ block.shopify_attributes }}>
+    <div class="flex-absolute align--middle-center">
+      <div data-overflow-content class="wrapper">
+        {% if section.settings.heading != blank %}
+          <h2 class="home__subtitle">{{ section.settings.heading | escape }}</h2>
+        {% endif %}
+        {% if section.settings.address != blank %}
+          <div class="rte rte--column">
+            <span>{{ section.settings.address }}</span>
+          </div>
+        {% endif %}
+        {% if section.settings.button != blank and section.settings.map_address != blank %}
+          <p>
+            <a href="https://maps.google.com?daddr={{ section.settings.map_address | escape }}" target="_blank" rel="noopener" class="{{ section.settings.button_style }} btn--small uppercase">
+            {{ section.settings.button | escape }}
+            </a>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div data-overflow-frame class="map-section__content map-section__background-wrapper grid__item medium-up--one-half small--one-half double__block section--image {{ block.settings.color }}">
+    <div class="map-section__image">
+      {%- if section.settings.image -%}
+        {%- assign img_object = section.settings.image -%}
+        <div class="background-size-cover lazyload" data-bgset="{% render 'bgset', image: img_object %}" role="img" aria-label="{{ img_object.alt }}"></div>
+      {%- else -%}
+        {%- assign img_object = 'blank.svg' | asset_url -%}
+        <div class="palette--contrast--dark image-overlay image-overlay-15"></div>
+        <div class="background-size-cover lazyload" data-bgset="{% render 'bgset', image: img_object %}" role="img" aria-label="{{ img_object.alt }}"></div>
+      {%- endif -%}
+    </div>
+    <noscript>
+      <div class="background-size-cover" style="background-image: url('{{ img_object | img_url: '540x' }}');"></div>
+    </noscript>
+    {% if display_map %}
+      <div class="map-section__container {{ section.settings.height }}" data-map-container>
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Map",
+    "settings": [
+      {
+        "type": "select",
+        "id": "height",
+        "label": "Section height",
+        "default": "use_screen_one_half",
+        "options": [
+          { "value": "use_screen_full", "label": "Full screen height"},
+          { "value": "use_screen_two_thirds", "label": "Two thirds of screen height"},
+          { "value": "use_screen_one_half", "label": "One half of screen height"},
+          { "value": "use_screen_one_third", "label": "One third of screen height"},
+          { "value": "use_pixels_800", "label": "800px" },
+          { "value": "use_pixels_650", "label": "650px" },
+          { "value": "use_pixels_500", "label": "500px" },
+          { "value": "use_image", "label": "Image height"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Address & Directions"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Our store"
+      },
+      {
+        "type": "richtext",
+        "id": "address",
+        "label": "Address and hours",
+        "default": "<p>123 Fake St.<br>Whistler, Canada</p><p>Mon - Fri, 10am - 9pm<br>Weekends, 11am - 4pm</p>"
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Map link label",
+        "default": "Directions"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Button style",
+        "default": "btn",
+        "options": [
+          { "value": "btn", "label": "Solid button"},
+          { "value": "btn--soft", "label": "Soft button"},
+          { "value": "btn--outline", "label": "Outlined button"}
+        ]
+      },
+      {
+        "type": "select",
+        "id": "style",
+        "label": "Map style",
+        "default": "light",
+        "options": [
+          { "value": "default", "label": "Default" },
+          { "value": "light", "label": "Desaturated"},
+          { "value": "light_blank", "label": "Desaturated without labels"},
+          { "value": "white_label", "label": "White"},
+          { "value": "white_blank", "label": "White without labels"},
+          { "value": "dark_label", "label": "Black"},
+          { "value": "dark_blank", "label": "Black without labels"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "zoom",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "label": "Zoom",
+        "info":"Low numbers are less zoomed",
+        "default": 11
+      },
+      {
+        "type": "select",
+        "id": "bg",
+        "label": "Background color",
+        "default": "section",
+        "options": [
+          { "value": "section", "label": "Default"},
+          { "value": "section bg--accent", "label": "Light"},
+          { "value": "section--dark", "label": "Dark"},
+          { "value": "section--dark bg--accent", "label": "Dark accent"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Map"
+      },
+      {
+        "id": "api_key",
+        "type": "text",
+        "label": "Google Maps API key",
+        "info": "You’ll need to [register a Google Maps API Key](https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key) to display the map"
+      },
+      {
+        "id": "map_address",
+        "type": "text",
+        "label": "Map address",
+        "info": "Google Maps will find the exact location",
+        "default": "4300 Main St, Whistler"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Displayed if the map isn’t loaded"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Map",
+        "category": "Store Information"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,103 @@
+{% if section.settings.enable %}
+  <div class="announcement__wrapper"
+    data-announcement-wrapper
+    data-section-id="{{ section.id }}"
+    data-section-type="announcement">
+    <div class="wrapper">
+      <div class="announcement__bar">
+
+        {%- if shop.customer_accounts_enabled and section.settings.enable_account -%}
+          <a class="announcement__left" href="{{ routes.account_url }}">
+            {% render 'icon-account' %}
+            <span class="visually-hidden">{{ 'customer.account.title' | t }}</span>
+          </a>
+        {%- else -%}
+          <div class="announcement__left"></div>
+        {%- endif -%}
+
+
+        {%- if section.settings.message != '' or section.settings.more != '' -%}
+
+          {%- capture message -%}
+            {%- if section.settings.message != ''-%}
+              <span class="announcement__main">{{ section.settings.message | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.message != '' and section.settings.more != '' -%}
+              <span class="announcement__divider"></span>
+            {%- endif -%}
+            {%- if section.settings.more != ''-%}
+              <span class="announcement__more">{{ section.settings.more | escape }}</span>
+            {%- endif -%}
+          {%- endcapture -%}
+
+          <div data-ticker-frame class="announcement__message">
+            <div data-ticker-scale class="ticker--unloaded announcement__scale">
+              <div data-ticker-text class="announcement__text">
+              {% if section.settings.url != blank %}
+                <a href="{{ section.settings.url }}">
+                {{ message }}
+                </a>
+              {% else %}
+                {{ message }}
+              {% endif %}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+
+        {%- if section.settings.enable_search -%}
+          <a class="announcement__right" href="{{ routes.search_url }}" data-popdown-toggle="search-popdown">
+            {% render 'icon-search' %}
+            <span class="visually-hidden">{{ 'general.search.submit' | t }}</span>
+          </a>
+        {% else %}
+          <div class="announcement__right"></div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Announcement text",
+      "default": "Announcement text"
+    },
+    {
+      "type": "text",
+      "id": "more",
+      "label": "More info",
+      "default": "More info"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Announcement link"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_account",
+      "default": true,
+      "label": "Show account link in header"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_search",
+      "default": true,
+      "label": "Show search in header"
+    }
+  ]
+}
+{% endschema %}

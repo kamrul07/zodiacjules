@@ -1,0 +1,75 @@
+<!-- /sections/index-page.liquid -->
+
+{% if section.settings.home_page_content != blank or page.empty? %}
+  {% assign page = pages[section.settings.home_page_content] %}
+  {% assign page_src = page.content | escape %}
+  {% if page_src contains '&lt;img' or page.template_suffix contains 'wide' %}
+    {% assign homepage_page_grid = 'one-whole' %}
+  {% else %}
+    {% assign homepage_page_grid = 'medium-up--five-sixths medium-up--push-one-twelfth' %}
+  {% endif %}
+  <div class="homepage-page {{ section.settings.bg }}">
+    <div {% unless page.template_suffix == 'wide' %}class="wrapper"{% endunless %}>
+      <div class="grid">
+        <div class="grid__item {{ homepage_page_grid }}">
+          {% if section.settings.home_page_show_title %}
+            <h2 class="home__subtitle">{{ page.title | escape }}</h2>
+          {% endif %}
+          <div class="rte homepage-page__content">
+            {{ page.content }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="homepage-page {{ section.settings.bg }}">
+    <div class="wrapper">
+      <div class="grid">
+        <div class="grid__item one-whole">
+          <div class="rte homepage-page__content">
+            {{ 'home_page.onboarding.no_content' | t }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+
+
+{% schema %}
+{
+  "name": "Page",
+  "settings": [
+    {
+      "id": "home_page_content",
+      "type": "page",
+      "label": "Page"
+    },
+    {
+      "type": "checkbox",
+      "id": "home_page_show_title",
+      "label": "Show page title",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "bg",
+      "label": "Background color",
+      "default": "section",
+      "options": [
+        { "value": "section", "label": "Default"},
+        { "value": "section bg--accent", "label": "Light"},
+        { "value": "section--dark", "label": "Dark"},
+        { "value": "section--dark bg--accent", "label": "Dark accent"}
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Page",
+    "category": "Text"
+  }]
+}
+{% endschema %}

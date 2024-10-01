@@ -1,0 +1,207 @@
+<!-- /snippets/collection-filters-sidebar.liquid -->
+{% comment %}
+  The collection sidebar containing tag filering and link-based navigation
+
+  * collection {object} - The current collection
+  * section {object} - The current section
+
+  {% render 'collection-filters-sidebar', section: section, collection: collection %}
+{% endcomment %}
+
+{% unless section.settings.collection_custom_nav_list == blank or section.settings.collection_custom_nav_list.empty? %}
+  {% assign custom_nav_list = section.settings.collection_custom_nav_list | handleize %}
+  <p class="sidebar__heading">{{ linklists[custom_nav_list].title }}</p>
+  <div class="collection-nav accessibleNav">
+    {% for link in linklists[custom_nav_list].links %}
+      {% if link.links == blank %}
+        <div class="sidebar__item {% if link.active %} sidebar__item--active{% endif %}">
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {% render 'icon-box' %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% for link in linklists[custom_nav_list].links %}
+    {% if link.links != blank %}
+    <p class="sidebar__heading">{{ link.title }}</p>
+    <div class="collection-nav">
+      {% for childlink in link.links %}
+        <div class="sidebar__item{% if childlink.active %} sidebar__item--active{% endif %}">
+          <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+          {% render 'icon-box' %}
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+{% endunless %}
+
+{% if section.settings.collection_standard_nav %}
+  {% if collections.size > 1 %}
+    <p class="sidebar__heading">{{ 'collections.sidebar.collections' | t }}</p>
+    <ul class="collection-nav">
+      <li class="sidebar__item{% unless collection.id %} sidebar__item--active{% endunless %}">
+        <a href="{{ routes.all_products_collection_url }}">
+          {{ 'collections.sidebar.all_collections' | t }}
+        </a>
+        {% render 'icon-box' %}
+      </li>
+      {% for collection_link in collections %}
+        {% unless collection_link.handle == 'frontpage' %}
+          <li class="sidebar__item{% if collection.handle == collection_link.handle %} sidebar__item--active{% endif %}">
+            <a href="{{ routes.collections_url }}/{{ collection_link.handle }}">{{ collection_link.title }}</a>
+            {% render 'icon-box' %}
+          </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endif %}
+
+{%- assign collection_handle = 'all' -%}
+{%- if collection.handle -%}
+  {%- assign collection_handle = collection.handle -%}
+{%- endif -%}
+
+{%- if section.settings.collection_tag_nav and collection.all_tags.size > 0 -%}
+
+  {%- assign tags_underscore = false -%}
+  {%- for tag in collection.all_tags -%}
+    {% if tag contains '_' %}
+      {%- assign tags_underscore = true -%}
+    {% endif %}
+  {%- endfor -%}
+
+  {%- if section.blocks.size > 0 -%}
+
+    {%- capture current_tags_url -%}
+      {%- for tag in current_tags -%}{{ tag | handleize }}+{%- endfor -%}
+    {%- endcapture -%}
+    {%- if current_tags_url == '+' -%}{%- assign current_tags_url = '' -%}{%- endif -%}
+    {% assign current_tags_compare = current_tags_url | prepend: '+' %}
+
+    {%- capture shop_tags -%}
+      {%- for tag in collection.tags -%}{{ tag | handleize }}+{%- endfor -%}
+    {%- endcapture -%}
+    {% assign shop_tags_compare = shop_tags | prepend: '+' %}
+
+    {%- for block in section.blocks -%}
+      {%- assign settings_tag_array = block.settings.group_tags | split: ',' -%}
+      <p class="sidebar__heading">
+        {{ block.settings.title }}
+      </p>
+      <ul class="collection-nav collection-nav--grouped">
+        {%- for settings_tag in settings_tag_array -%}
+          {% comment %} Normalize merchant settings input {% endcomment %}
+          {%- assign settings_tag_handle = settings_tag | handleize -%}
+          {%- assign settings_tag_handle_plus = settings_tag | handleize | append: '+' | prepend: '+' -%}
+
+          {%- assign link_style = 'link--disable' -%}
+
+          {% comment %} If tag is currently active setup URLs to remove tag {% endcomment %}
+          {%- if current_tags_compare contains settings_tag_handle_plus -%}
+            {%- assign link_style = 'link--remove' -%}
+            {%- assign removed_tag_array = '' -%}
+            {%- for product_tag in current_tags -%}
+              {%- assign product_tag_handle = product_tag | handleize -%}
+              {%- unless settings_tag_handle == product_tag_handle -%}
+                {%- assign removed_tag_array = removed_tag_array | append: product_tag_handle | append: '[!ヽ(´ー｀)/!]' -%}
+              {%- endunless -%}
+            {%- endfor -%}
+            {%- assign removed_tag_array = removed_tag_array | split: '[!ヽ(´ー｀)/!]' -%}
+            {%- capture removed_tag_url -%}
+              {%- for tag in removed_tag_array -%}{{ tag | handleize }}{%- unless forloop.last -%}+{%- endunless -%}{%- endfor -%}
+            {%- endcapture -%}
+
+            <li class="sidebar__item sidebar__item--active {{ link_style }}">
+              <a href="{{ routes.collections_url }}/{{ collection_handle }}/{{ removed_tag_url }}" title="✕ {{settings_tag}}">
+                {{ settings_tag }}
+              </a>
+              {% render 'icon-box' %}
+              {% render 'icon-reset' %}
+            </li>
+          {%- else -%}
+            {% if shop_tags_compare contains settings_tag_handle_plus %}
+              {%- assign link_style = 'link--add' -%}
+            {%- endif -%}
+            <li class="sidebar__item {{ link_style }}">
+              <a href="{{ routes.collections_url }}/{{ collection_handle }}/{{ current_tags_url }}{{ settings_tag_handle }}" title="+ {{settings_tag}}">
+                {{ settings_tag }}
+              </a>
+              {% render 'icon-box' %}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endfor -%}
+
+  {%- elsif tags_underscore -%}
+    {% comment %}
+      Use the old underscore method
+    {% endcomment %}
+    {% assign all_groups = '' %}
+    {% for tag in collection.all_tags %}
+      {% if tag contains '_' %}
+        {% capture all_groups %}{% unless all_groups == blank  %}{{ all_groups }}|{% endunless %}{{ tag | split: '_' | first }}{% endcapture %}
+      {% endif %}
+    {% endfor %}
+    {% assign group_array = all_groups | split: '|' | uniq %}
+
+    {%- for group_object in group_array -%}
+      <p class="sidebar__heading">
+        <a href="{{ routes.collections_url }}/{{ collection_handle }}/" class="link--clear">
+          {{ group_object | replace: "-", " " }}
+          {% render 'icon-reset' %}
+        </a>
+      </p>
+      <ul class="collection-nav collection-nav--grouped">
+        {%- for tag in collection.all_tags -%}
+          {%- assign group = tag | split: '_' | first -%}
+          {%- if group != tag and group_object == group -%}
+            {%- if current_tags contains tag -%}
+              <li class="sidebar__item sidebar__item--active link--remove">
+                {{ tag | remove_first: group_object | remove_first: '_' | replace: "-", " " | link_to_remove_tag: tag }}
+                {% render 'icon-box' %}
+                {% render 'icon-reset' %}
+              </li>
+            {%- elsif collection.tags contains tag -%}
+              <li class="sidebar__item link--add">
+                {{ tag | remove_first: group_object | remove_first: '_' | replace: "-", " " | link_to_add_tag: tag }}
+                {% render 'icon-box' %}
+              </li>
+            {%- else -%}
+              <li class="sidebar__item link--disable">
+                <span>{{ tag | remove_first: group_object | remove_first: '_' | replace: "-", " " }}</span>
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endfor -%}
+  {%- else -%}
+    <p class="sidebar__heading">{{ 'collections.sidebar.filter' | t }}</p>
+    <ul class="collection-nav">
+      <li class="sidebar__item">
+        <a href="{{ routes.collections_url }}/{{ collection_handle }}/" class="link--clear">{{ 'collections.sidebar.all_tags' | t }}</a>
+      </li>
+      {% for tag in collection.all_tags %}
+        {% if current_tags contains tag %}
+          <li class="sidebar__item sidebar__item--active link--remove">
+            {{ tag | link_to_remove_tag: tag}}
+            {% render 'icon-box' %}
+            {% render 'icon-reset' %}
+          </li>
+        {% else %}
+          <li class="sidebar__item">
+            {% comment %}
+              Use link_to_add_tag if you want to allow filtering
+              by multiple tags
+            {% endcomment %}
+            {{ tag | link_to_add_tag: tag }}
+            {% render 'icon-box' %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {%- endif -%}
+{%- endif -%}

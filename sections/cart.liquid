@@ -1,0 +1,142 @@
+<!-- /sections/cart.liquid -->
+
+{% assign hide_quantity = 'quantity--hide' %}
+{%- if section.settings.cart_show_quantity -%}
+	{% assign hide_quantity = '' %}
+{%- endif -%}
+
+{% assign hide_vendor = 'vendor--hide' %}
+{%- if section.settings.cart_vendor_enable -%}
+	{% assign hide_vendor = '' %}
+{%- endif -%}
+
+{% assign hide_notes = 'notes--hide' %}
+{%- if section.settings.cart_notes_enable -%}
+	{% assign hide_notes = '' %}
+{%- endif -%}
+
+{% assign no_ajax = 'no--ajax' %}
+{%- if section.settings.enable_ajax -%}
+	{% assign no_ajax = '' %}
+{%- endif -%}
+
+{% assign continue_link = section.settings.cart_continue_browsing | default: routes.all_products_collection_url %}
+
+<div class="cart {{ hide_quantity }} {{ hide_vendor }} {{ hide_notes }} {{ no_ajax }}"  data-section-id="{{ section.id }}" data-section-type="cart" data-ajax-enable="{{ section.settings.enable_ajax }}">
+	{% if cart.item_count == 0 %}
+		{% comment %}
+	    The cart is empty
+	  {% endcomment %}
+	  <div class="cart--empty align--middle-center">
+		  <div class="wrapper">
+	    	<p class="h4--body m0">{{ 'cart.general.empty' | t }}</p>
+				<div class="image-overlay image-overlay-5"></div>
+			</div>
+	  </div>
+		<a href="{{ continue_link }}" class="cart__circle__wrapper">
+			<div class="cart__circle">
+				{% render 'icon-cart' %}
+			</div>
+			<p class="cart__continue__link">
+				{{ 'cart.general.continue_browsing' | t }}
+			</p>
+		</a>
+
+	{% else %}
+		<div class="wrapper pt2 pb4">
+			 <form action="{{ routes.cart_url }}" method="post" novalidate class="cart cartForm">
+			 	<h3>{{ 'cart.general.title' | t }}</h3>
+
+			  <div class="errors" data-form-errors style="display: none;"></div>
+				
+				<div class="cart__row medium-down--hide cart__header-labels">
+					<div class="grid--full">
+						<div class="grid__item medium-up--one-half ">
+							<a href="{{ section.settings.cart_continue_browsing | default: routes.all_products_collection_url }}" class="cart__heading cart__return">
+								{% render 'icon-arrow-long-left' %}
+								&nbsp;
+								{{ 'cart.general.continue_browsing' | t }}
+							</a>
+						</div>
+						<div class="grid__item medium-up--one-half">
+							<div class="grid--full">
+								<div class="grid__item one-third medium-down--one-third">
+									<span class="cart__heading">{{ 'cart.label.price' | t }}</span>
+								</div>
+								<div class="grid__item one-third medium-down--one-third text-center cart__qty__th">
+									<span class="cart__heading">{{ 'cart.label.quantity' | t }}</span>
+								</div>
+								<div class="grid__item one-third medium-down--one-third text-right">
+									<span class="cart__heading">{{ 'cart.label.total' | t }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% comment %}
+				  The following snippet is refreshed via ajax with
+					cart.ajax.liquid when the quantity is adjusted.
+				{% endcomment %}
+				<div data-cart-form-wrapper>
+					{% render 'cart-form', cart: cart %}
+				</div>
+
+		    {% if additional_checkout_buttons and section.settings.cart_show_additional_buttons %}
+		      <div class="grid__item additional-checkout-buttons">
+		        {{ content_for_additional_checkout_buttons }}
+		      </div>
+		    {% endif %}
+		  </form>
+		</div>
+	{% endif %}
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Cart page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_ajax",
+      "label": "Enable auto refresh",
+      "info": "Disable if apps require manual page reload",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "cart_vendor_enable",
+      "label": "Show product vendor"
+    },
+    {
+      "type": "checkbox",
+      "id": "cart_notes_enable",
+      "label": "Show cart notes"
+    },
+    {
+      "type": "checkbox",
+      "id": "cart_show_quantity",
+      "label": "Show quantity selectors",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "cart_continue_browsing",
+      "label": "Empty cart link",
+      "info": "Continue browsing link for the empty cart"
+    },
+		{
+			"type": "header",
+			"content": "Additional checkout buttons"
+		},
+		{
+			"type": "checkbox",
+			"id": "cart_show_additional_buttons",
+			"label": "Show additional checkout options on cart",
+			"info": "Move buttons for Apple Pay, Amazon Pay and PayPal express from the first step of the checkout to the cart.",
+			"default": false
+		}
+  ]
+}
+{% endschema %}

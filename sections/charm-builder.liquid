@@ -1,0 +1,297 @@
+<style>
+  .custom-page-width{
+    width:1480px;
+    max-width:100%;
+    margin:0 auto;
+    padding:0 20px;
+  }
+</style> 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">   
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+
+ 
+ 
+
+<div class="charm_main_div" currency_symbol="{{ cart.currency.symbol }}">
+  <form method="post" action="/cart/add" style="display:none;">
+    {% comment %}
+  <input  type='hidden' class='items_id1' name='items[0][id]' value=''/>
+ <input type='hidden' class='items1' name='items[0][quantity]' value='1'/>  
+  <input id="final_img" type="hidden" name="items[0][properties][final_img]" value="">
+    {% endcomment %}
+</form>
+  <div class="chain_var_id" chain_vr_id="" style="display:none;"></div>
+  <div class="price_hide" style="display:none;">
+    <span class="price  pr_0"></span>
+  </div>
+  <div class="outer_div fist_div">
+  <div class="custom-page-width wrapper"> 
+    <div class="nav_top">
+    {% for block in section.blocks %}
+      {% if block.type == 'txt_img' %}
+      <div class="inner_nav">
+        <span class="number">{{ forloop.index }}</span>
+        <span class="text">{{ block.settings.text }}</span>
+        <span class="image"><img src="{{ block.settings.nav_image | img_url: 'master' }}" height="" width="" loading="lazy"></span>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="canvas_outer">
+      <div class="left_div">
+        <div class="inner">
+        <img class="first_img" src="https://cdn.shopify.com/s/files/1/0268/8365/3667/files/Animation_4.svg?v=1705413094">
+        <img style="display:none;" class="second_img" src="https://cdn.shopify.com/s/files/1/0601/4936/6877/files/Group_188.png?v=1697539294">
+          <div class="draggable_outer">
+          {% include 'drag-img' %}
+          </div>
+        </div>
+      </div>
+      <div class="right_div">
+        <div class="inner">
+        <p>All charm necklaces are made to order and will ship within a week. Sizes may slightly vary from digital previews to real products.</p>
+      <div class="button_outer">
+        <span class="first_btn cts">Choose Your Chain</span>
+        <span class="second_btn cts">Choose Your Charms</span>
+      </div>
+          <div class="tab_one" style="display:none;">
+            <div class="outer_product_tab">
+              
+  {% for product in section.settings.collection1.products %}
+<div class="inner_div" var-id-ft="{{ product.first_available_variant.id }}">
+  <div class="inner_main">
+  <div class="product_img">
+    <img src="{{ product.featured_image |img_url: 'master' }}">
+  </div>
+  <div class="product_contant">
+    <h3 class="product_title">{{ product.title }}</h3>
+    <p class="product_price" price="{{ product.price }}">{{ product.price | money }}</p>
+    {%- unless product.has_only_default_variant -%}
+    <div class="variant_div">
+      <span>Select chain Style</span>
+ {%- for option in product.options_with_values -%}  
+      <div class="inner_var">
+     <label>{{ option.name }}</label> 
+   <select>
+     {%- for value in option.values -%}
+       <option>{{ value }}</option>
+       {% endfor %}
+   </select>
+      </div>
+      {%- endfor -%}
+    </div>
+    {% endunless %}
+    <div class="add_btn">
+      <span>Select Chain</span>
+    </div>
+  </div>
+  </div>
+  <div class="var_id" style="display:none;">
+    <select>
+ {% for variant in product.variants %}
+   <option vr_id="{{ variant.id }}" op1="{{ variant.option1 }}" op2="{{ variant.option2 }}" tp_op="{{ variant.title }}">{{ variant.title }}</option>
+   {% endfor %}
+    </select>
+  </div>
+</div>
+    {% endfor %}
+            </div>
+          </div>
+          <div class="tab_two" style="display:none;">
+            <div class="outer_product_tab_nav">
+              <div class="nav_coll">
+                {% for block in section.blocks %}
+      {% if block.type == 'charms' %}
+        {% assign first_part = block.settings.collection | split: '-' | first %}
+        <span class="coll_nm" nav_val="{{ block.settings.collection }}">{{ first_part }}</span>
+        {% endif %}
+                  {% endfor %}
+              </div>
+               {% for block in section.blocks %}
+                      {% if block.type == 'charms' %}
+               <div class="outer_product_tab" data_val="{{ block.settings.collection }}" style="display:none;">
+                  {% for product in block.settings.collection.products %}
+<div class="inner_div test"  var-id-ft="{{ product.first_available_variant.id }}">
+   <div class="inner_main">
+  <div class="product_img">
+    <img src="{{ product.featured_image |img_url: 'master' }}">
+  </div>
+      <div class="product_contant">
+    <h3 class="product_title">{{ product.title }}</h3>
+    <p class="product_price" price="{{ product.price }}">{{ product.price | money }}</p>
+    {%- unless product.has_only_default_variant -%}
+    <div class="variant_div">
+      <span>Select chain Style</span>
+ {%- for option in product.options_with_values -%}  
+      <div class="inner_var">
+     <label>{{ option.name }}</label> 
+   <select>
+     {%- for value in option.values -%}
+       <option>{{ value }}</option>
+       {% endfor %}
+   </select>
+      </div>
+      {%- endfor -%}
+            <div class="inner_var">
+              <label>Text</label> 
+             <input type="text" class="properties_txt" name="properties">
+            </div>
+    </div>
+    {% endunless %}
+    <div class="add_btn">
+      <span>Select Charm</span>
+    </div>
+  </div>
+   </div>
+  <div class="var_id" style="display:none;">
+    <select>
+ {% for variant in product.variants %}
+   <option vr_id="{{ variant.id }}" op1="{{ variant.option1 }}" op2="{{ variant.option2 }}" tp_op="{{ variant.title }}">{{ variant.title }}</option>
+   {% endfor %}
+    </select>
+  </div>
+</div>
+    {% endfor %}
+              </div>
+              {% endif %}
+                    {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="add_btn_outer">
+      <div class="page-width">
+       <div class="btn_outer_main">
+        <span class="price_totel">Total Price {{ cart.currency.symbol }}<span>0.00</span></span>
+        <span class="add_btn">Add to Cart</span>
+       </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart_item_div second_div" style="display:none;">
+    <div class="custom-page-width">
+      <div class="outer_flx">
+        <div class="left_div">
+          <div class="final_img">
+    <img src="">
+  </div>
+        </div>
+        <div class="right_div">
+          <div class="cart_data"></div>
+          <div class="bottom_bar_pc">
+            <div class="pr_bottom">
+              Subtotal:<span></span>
+            </div>
+            <div class="checkout_bottom">
+              <a href="/" class="continueshop">Continue Shopping</a>
+              <a href="/checkout" class="btn--outline btn--large btn--full btn--primary uppercase">Checkout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+    
+{% schema %}
+  {
+    "name": "Charm-Builder",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection1",
+        "label": "collection"
+      }
+    ],
+     "blocks": [
+     {
+       "name": "Text-image",
+       "type": "txt_img",
+       "settings": [
+         {
+           "type": "text",
+           "id": "text",
+           "label": "Text"
+         },
+         {
+           "type": "image_picker",
+           "id": "nav_image",
+           "label": "Image"
+         }
+       ]
+     },
+       {
+       "name": "Charms",
+       "type": "charms",
+       "settings": [
+         {
+           "type": "collection",
+           "id": "collection",
+           "label": "collection"
+         }
+       ]
+     }
+   ]
+  }
+{% endschema %}
+
+<script>
+ $(function () {
+    $(".charm_w").draggable({
+       containment: ".charm_main_div .canvas_outer .left_div .inner", 
+      
+    });
+});
+    </script>
+    <script>
+
+  
+  function getRotationDegrees($el) {
+    let matrix =  $el.css("-webkit-transform") ||
+                  $el.css("-moz-transform")    ||
+                  $el.css("-ms-transform")     ||
+                  $el.css("-o-transform")      ||
+                  $el.css("transform");
+    let angle = 0;
+    if(matrix !== 'none') {
+        let values = matrix.split('(')[1].split(')')[0].split(',');
+        let a = values[0];
+        let b = values[1];
+        angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+    }
+    return (angle);
+  }
+
+  
+  function rotate($el, degrees) {
+    $el.css({
+    '-webkit-transform' : 'rotate('+degrees+'deg)',
+       '-moz-transform' : 'rotate('+degrees+'deg)',
+        '-ms-transform' : 'rotate('+degrees+'deg)',
+         '-o-transform' : 'rotate('+degrees+'deg)',
+            'transform' : 'rotate('+degrees+'deg)',
+                 'zoom' : 1
+
+      });
+  }
+
+  
+  $('.charm-rotate_l').click(function(){
+  $('.charm-container .dragme').css('visibility', 'hidden');
+    let rl = getRotationDegrees($(this).parents('.charm_w')) - 10;
+    rotate($(this).parents('.charm_w'), rl);
+  })
+
+  $('.charm-rotate_r').click(function(){
+  $('.charm-container .dragme').css('visibility', 'hidden');
+    let rr = getRotationDegrees($(this).parents('.charm_w')) + 10;
+    rotate($(this).parents('.charm_w'), rr);
+  })
+
+</script>

@@ -1,0 +1,41 @@
+{% comment %}
+  Required params:
+  frame_height_class - css class to control frame height
+  parallax_boolean - Boolean value to turn on parallax
+  img_object - Image object to use used
+
+  Example:
+  {% render 'hero', img_object: section.settings.image, frame_height_class: section.settings.image_height %}
+{% endcomment %}
+
+{% comment %} DEFAULTS - parallax just defaults to false {% endcomment %}
+{%- assign default_image = 'blank.svg' | asset_url -%}
+{%- assign height = frame_height_class | default: 'image_height' -%}
+{%- assign image = img_object | default: default_image -%}
+{%- assign aspect_ratio = image.aspect_ratio | default: 1 -%}
+
+<div class="image__hero__frame fade-in-child {{ height }}"
+  data-overflow-background
+  {% if height == 'use_image' %}
+    style="padding-top: {{ 1 | divided_by: aspect_ratio | times: 100}}%;
+           background-image: url('{{ image | img_url: '1x1' }}');"
+  {% endif %}
+  {% if settings.parallax_enable %}data-parallax-wrapper{% endif %}>
+
+  <div class="image__hero__pane">
+    <div class="image__hero__scale"
+    {% if settings.parallax_enable %}
+        style="height: {{  1 | divided_by: aspect_ratio | times: 100}}vw;"
+        data-parallax-img
+    {% endif %}>
+      <div class="background-size-cover lazyload"
+        data-bgset="{% render 'bgset', image: image %}"
+        role="img"
+        aria-label="{{ image.alt }}"></div>
+    </div>
+  </div>
+
+  <noscript>
+    <img src="{{ image | img_url: '720x' }}" alt="{{ image.alt }}" class="responsive-wide-image"/>
+  </noscript>
+</div>

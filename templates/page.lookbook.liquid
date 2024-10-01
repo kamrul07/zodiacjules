@@ -1,0 +1,37 @@
+<!-- /templates/page.lookbook.liquid -->
+
+{% section 'page-images' %}
+
+{% if page.content != '' %}
+  <div class="page__template page__template--gallery">
+    <div class="frame">
+      <div class="has-padding">
+        <div class="wrapper">
+          <div class="gallery">
+            <div class="gallery__item one-whole">
+              <h1 class="text-center h3 page__title" data-page-default-title>{{ page.title }}</h1>
+              <div class="rte lookbook__rte">
+                {{ page.content }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% section 'page-lookbook-1-image.liquid' %}
+{% section 'page-lookbook-1-text.liquid' %}
+
+{% section 'page-lookbook-2-image.liquid' %}
+{% section 'page-lookbook-2-text.liquid' %}
+
+{% section 'page-lookbook-3-image.liquid' %}
+{% section 'page-lookbook-3-text.liquid' %}
+
+{% section 'page-lookbook-4-image.liquid' %}
+{% section 'page-lookbook-4-text.liquid' %}
+
+{% section 'page-lookbook-5-image.liquid' %}
+{% section 'page-lookbook-5-text.liquid' %}

@@ -1,0 +1,333 @@
+<!-- /sections/collection.liquid -->
+
+{% capture default_show_filters %}{%- unless section.settings.hide_sidebar -%}filters--default-visible{%- endunless -%}{% endcapture %}
+
+<div data-section-id="{{ section.id }}"
+  data-section-type="collection"
+  data-sort="{{ section.settings.collection_sorting }}">
+
+  {% if collection.image and section.settings.show_image %}
+    <div class="section--image fade-in-child preventOverflow {{ section.settings.color }}" data-overlay-header>
+      <div class="flex-absolute {{ section.settings.text_align }}">
+        <div class="wrapper preventOverflowContent">
+          {%- if section.settings.show_title and section.settings.show_title_below == false  -%}
+            <h1 class="title--overlay h2">
+              {{ collection.title }}
+            </h1>
+          {%- endif -%}
+          {% if collection.description.size > 0 and section.settings.show_description and section.settings.show_description_below == false %}
+            <div class="rte">
+              {{ collection.description }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="image-overlay image-overlay-{{ section.settings.overlay_opacity }}"></div>
+      {% render 'hero', img_object: collection.image, frame_height_class: section.settings.image_height %}
+      <noscript>
+        <img src="{{ collection.image | img_url: '1440x' }}" alt="{{ collection.image.alt | default: collection.title }}" class="responsive-wide-image"/>
+      </noscript>
+    </div>
+  {% endif %}
+
+  <div class="collection" data-sidebar-toggle>
+    <div class="wrapper">
+      <div class="collection__heading--below {{ section.settings.text_align }}">
+        {%- if collection.image == nil or section.settings.show_title_below or section.settings.show_image == false -%}
+          {%- if section.settings.show_title -%}
+            <h1 class="collection__heading--below h3 title--overlay">{{ collection.title }}</h1>
+          {%- endif -%}
+        {%- endif -%}
+        {%- if collection.image == nil or section.settings.show_description_below or section.settings.show_image == false -%}
+          {%- if section.settings.show_description and collection.description.size > 0 -%}
+            <div class="collection__heading--below rte">
+              {{ collection.description }}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+
+      {%- assign collection_sidebar = false -%}
+      {%- if section.settings.collection_custom_nav_list != blank or section.settings.collection_standard_nav or section.settings.collection_tag_nav -%}
+        {%- assign collection_sidebar = true -%}
+      {%- endif -%}
+
+      {% if collection_sidebar or section.settings.collection_sorting or section.settings.enable_layout_toggle %}
+        <nav class="collection__nav">
+          <div class="collection__nav__buttons">
+            {% if collection_sidebar %}
+              {% capture current_tags_indicator %}
+                {% if current_tags %}
+                  <div class="badge">{{ current_tags | size }}</div>
+                {% endif %}
+              {% endcapture %}
+              <button class="collection__filters__toggle {{ default_show_filters }}" data-filters-toggle="filters">
+                <span class="hide-filters">{{ 'collections.sidebar.hide_filters' | t }}</span>
+                <span class="show-filters">{{ 'collections.sidebar.filter' | t }}</span>
+                {{ current_tags_indicator }}
+                {% render 'icon-filter' %}
+              </button>
+            {% endif %}
+            {% if section.settings.collection_sorting %}
+              <div class="collection__sort">
+                {% render 'collection-sorting', collection: collection %}
+              </div>
+            {% endif %}
+          </div>
+          {% if section.settings.enable_layout_toggle %}
+            <div class="collection__layout">
+              <span data-toggle-grid="1">{% render 'icon-grid-1' %}</span>
+              <span data-toggle-grid="2">{% render 'icon-grid-2' %}</span>
+              <span data-toggle-grid="3">{% render 'icon-grid-3' %}</span>
+              <span data-toggle-grid="4">{% render 'icon-grid-4' %}</span>
+            </div>
+          {% endif %}
+        </nav>
+      {% endif %}
+
+      <div class="collection__content">
+        {% if collection_sidebar %}
+        <aside class="collection__filters__wrapper {{ default_show_filters }}" data-filters="filters" data-default-hide="{{ section.settings.hide_sidebar }}">
+          <div class="collection__filters">
+            <button data-filters-toggle="filters" class="filters__close" aria-label="{{ 'general.accessibility.close' | t }}"></button>
+            <div class="collection__filters__inner">
+              {% render 'collection-filters-sidebar', section: section, collection: collection %}
+            </div>
+          </div>
+          <span class="collection__underlay" data-filters-underlay></span>
+        </aside>
+        {% endif %}
+
+        {%- paginate collection.products by section.settings.product_limit -%}
+          <div class="collection__products">
+            <div class="js-grid" data-grid-large="{{ section.settings.grid_setting_large }}" data-grid-small="{{ section.settings.grid_setting_small }}">
+              <!-- /snippets/product-grid-item.liquid -->
+
+              {% for product in collection.products %}
+              <div>
+                {% render 'product-grid-item', product: product %}
+                </div>
+              {% else %}
+                {% if collection.handle == 'all' and collection.current_tags == '' %}
+                  {% render 'onboarding-empty-collection' %}
+                {% else %}
+                <div class="js-grid__full-row">
+                  <p>{{ 'collections.general.no_matches' | t }}</p>
+                </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% if paginate.pages > 1 %}
+              <div class="text-center">
+                {% render 'pagination-custom', paginate: paginate %}
+              </div>
+            {% endif %}
+          </div>
+        {% endpaginate %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Products per row"
+    },
+    {
+      "type":    "range",
+      "id":      "grid_setting_large",
+      "min":     1,
+      "max":     4,
+      "step":    1,
+      "label":   "Desktop",
+      "default": 4
+    },
+    {
+      "type":    "range",
+      "id":      "grid_setting_small",
+      "min":     1,
+      "max":     3,
+      "step":    1,
+      "label":   "Mobile",
+      "default": 2
+    },
+    {
+      "type":    "range",
+      "id":      "product_limit",
+      "min":     1,
+      "max":     50,
+      "step":    1,
+      "label":   "Products per page",
+      "default": 48
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_layout_toggle",
+      "label": "Show layout options",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Collection sorting"
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_sorting",
+      "label": "Show collection sorting",
+      "default": true
+    },
+    {
+       "type": "header",
+       "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment",
+      "default": "align--middle-center",
+      "options": [
+        { "value": "align--top-left", "label": "Top left"},
+        { "value": "align--top-center", "label": "Top center"},
+        { "value": "align--top-right", "label": "Top right"},
+        { "value": "align--middle-left", "label": "Middle left"},
+        { "value": "align--middle-center", "label": "Absolute center"},
+        { "value": "align--middle-right", "label": "Middle right"},
+        { "value": "align--bottom-left", "label": "Bottom left"},
+        { "value": "align--bottom-center", "label": "Bottom center"},
+        { "value": "align--bottom-right", "label": "Bottom right"}
+      ]
+    },
+    {
+       "type": "checkbox",
+       "id": "show_title",
+       "label": "Show collection title",
+       "default": true
+    },
+    {
+       "type": "checkbox",
+       "id": "show_title_below",
+       "label": "Title below image",
+       "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "show_description",
+       "label": "Show collection description",
+       "default": true
+    },
+    {
+       "type": "checkbox",
+       "id": "show_description_below",
+       "label": "Description below image",
+       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Feature image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show feature image",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "label": "Image height",
+      "default": "use_screen_one_third",
+      "options": [
+        { "value": "use_screen_full", "label": "Full screen height"},
+        { "value": "use_screen_three_quarters", "label": "Three quarters of screen height"},
+        { "value": "use_screen_two_thirds", "label": "Two thirds of screen height"},
+        { "value": "use_screen_one_half", "label": "One half of screen height"},
+        { "value": "use_screen_one_third", "label": "One third of screen height"},
+        { "value": "use_pixels_800", "label": "800px" },
+        { "value": "use_pixels_650", "label": "650px" },
+        { "value": "use_pixels_500", "label": "500px" },
+        { "value": "use_image", "label": "Image height"}
+      ]
+    },
+    {
+      "type":    "range",
+      "id":      "overlay_opacity",
+      "min":     0,
+      "max":     100,
+      "step":    5,
+      "label":   "Image overlay opacity",
+      "info":    "Increase contrast for legible text.",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Text color",
+      "default": "palette--contrast--dark",
+      "options": [
+        { "value": "palette--contrast--dark", "label": "White"},
+        { "value": "palette--primary", "label": "Primary accent"},
+        { "value": "palette--secondary", "label": "Secondary accent"},
+        { "value": " ", "label": "Text color"},
+        { "value": "palette--contrast", "label": "Black"},
+        { "value": "palette--primary--dark", "label": "Primary dark accent"},
+        { "value": "palette--secondary--dark", "label": "Secondary dark accent"},
+        { "value": "palette--dark", "label": "Inverted text color"}
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Collection filters"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_sidebar",
+      "label": "Hide filters by default",
+      "info": "Customers will have the option to show them"
+    },
+    {
+      "type": "link_list",
+      "id": "collection_custom_nav_list",
+      "label": "Sidebar nav",
+      "info": "Custom list of collections"
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_standard_nav",
+      "label": "Show collections",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_tag_nav",
+      "label": "Show tag filters",
+      "default": false
+    }
+    ],
+    "blocks": [
+    {
+      "type": "tag_group",
+      "name": "Tag grouping",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Group name",
+          "default": "Filter by size"
+        },
+        {
+          "type": "text",
+          "id": "group_tags",
+          "label": "Tag list",
+          "default": "Small, Medium, Large",
+          "info": "Comma separated group of tags"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

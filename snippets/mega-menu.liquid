@@ -1,0 +1,40 @@
+
+ 
+ <ul class="mainmenuWrapper">
+    {% for link in linklists[menu-item].links %}
+    <li class='{% if link.links.size > 0   %} dropdown {% endif %} parentmenuItem'>
+      <a class="topmenuitem" href='{{ link.url }}'>{{ link.title }} {% if link.links.size > 0   %} {% render 'icon-downarrow' %} {% endif %}</a>
+      {% if link.links.size > 0   %}
+        <div class='mega-menu'>
+        <div class='wrapper'>
+            <div class="mega-menu-inner">
+                {% for link in link.links %}
+                    <div class="megamenu-item {{ link.handle }}">
+                        <a href="{{ link.url }}" class="menuItem-title">{{ link.title }}</a>
+                        {% if link.links.size > 0   %}
+                           {% if link.handle == "shop-by-sign"   %}
+                            <div class="menuItemWithImg">
+                                {% for link in link.links %}
+                                <a href='{{ link.url }}' class="menuItemWithImg-item">
+                                    <img src="{{ collections[link.handle].image | img_url: '130x130' }}" alt="{{ link.title }}" class="menuItemWithImg-img">
+                                    <span class="menuItemWithImg-title">{{ link.title }}</span>
+                                </a>
+                                {% endfor %}
+                            </div>
+                            {% else %}   
+                            <ul class="menuInnernav">
+                                {% for link in link.links %}
+                                <li><a href='{{ link.url }}'>{{ link.title  }}</a></li>
+                                {% endfor %}
+                            </ul>
+                           {% endif %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div><!-- /.container -->
+        </div><!-- /.mega-menu -->
+      </div><!-- /.mega-menu -->
+      {% endif %}
+    </li><!-- /.dropdown -->
+    {% endfor %}
+  </ul><!-- .container -->

@@ -1,0 +1,224 @@
+<!-- /snippets/cart-form.liquid -->
+{% comment %}
+  * The entire cart body, abstracted out ot cart template for AJAX cart calls
+  * cart {object} - the cart
+  {% render 'cart-form', cart: cart %}
+{% endcomment %}
+
+<div class="cart__body">
+  {% for item in cart.items %}
+    {%- assign discounted = false -%}
+    {%- if item.original_price > item.final_price -%}
+      {%- assign discounted = true -%}
+    {%- endif -%}
+    {%- assign sale = false -%}
+    {%- if item.variant.compare_at_price > item.price -%}
+      {%- assign sale = true -%}
+    {%- endif -%}
+
+    <div class="cart__row">
+      <div class="item--loadbar" style="display: none;"></div>
+      <div class="grid--full cart__row--table-large">
+
+        <div class="grid__item medium-up--one-half">
+          <div class="grid--full cart__row--table-large">
+
+            <div class="grid__item one-third mobile--one-quarter">
+              <a href="{{ item.url }}" class="cart__image">
+                <img src="{{ item | img_url: '200x' }}" alt="{{ item.title | escape }}">
+              </a>
+            </div>
+
+            <div class="grid__item two-thirds mobile--three-quarters cart__item__title">
+              <p>
+                <a href="{{ item.url }}" class="expanding-line">
+                {{ item.product.title }}
+                </a>
+              </p>
+              {% unless item.product.has_only_default_variant %}
+                <p class="small">{{ item.variant.title }}</p>
+              {% endunless %}
+
+              <p class="item__vendor">{{ item.vendor }}</p>
+
+              {% assign property_size = item.properties | size %}
+              {% if property_size > 0 %}
+                {% for p in item.properties %}
+                  {% unless p.last == blank %}
+                    {{ p.first }}:
+
+                    {% comment %}
+                      Check if there was an uploaded file associated
+                    {% endcomment %}
+                    {% if p.last contains '/uploads/' %}
+                      <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                    {% else %}
+                      {{ p.last }}
+                    {% endif %}
+
+                    <br>
+                  {% endunless %}
+                {% endfor %}
+              {% endif %}
+
+              {% if discounted and item.quantity >= 1 %}
+                {%- for discount in item.line_level_discount_allocations -%}
+                  <div>
+                    <span class="item__total__savings">
+                      <span class="cart__icon--tags">
+                        {% render 'icon-tags' %}
+                      </span>
+                      {{ 'cart.general.savings' | t }}
+                      {{ discount.amount | money_without_trailing_zeros }}
+                      {{ 'cart.general.with' | t }}
+                      {{ discount.discount_application.title }}
+                    </span>
+                  </div>
+                {%- endfor -%}
+              {% endif %}
+
+              <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0"
+                  class="cart__remove badge">
+                {{ 'cart.general.remove' | t }}
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="grid__item medium-up--one-half">
+          <div class="grid--full cart__row--table-large cart__line__nums">
+            <div class="grid__item one-third text-left">
+              <span class="cart__mini-labels">{{ 'cart.label.price' | t }}</span>
+              <div class="item__price">
+                {% if sale %}
+                  <p><span class="item__price--sale">{{ item.variant.compare_at_price | money }}</span>
+                  {% if discounted %}
+                    <span class="item__price--aftersale">
+                      {{ item.variant.price | money }}
+                    </span>
+                  {% endif %}
+                  </p>
+                {% endif %}
+                {% if discounted %}
+                  {% unless sale %}
+                    <p><span class="item__price--aftersale">
+                      {{ item.variant.price | money }}
+                    </span></p>
+                  {% endunless %}
+                  {%- for discount in item.line_level_discount_allocations -%}
+                    <p class="line__discounts">
+                      <span class="item__discount__text">{{ discount.discount_application.title }}:</span>
+                      <span class="item__discount">-{{ discount.amount | divided_by: item.quantity | money }}</span>
+                    </p>
+                  {%- endfor -%}
+                {% endif %}
+                <p class="item__price--final">{{ item.final_price | money }}</p>
+                {% if item.unit_price %}
+                  {% capture unit_price_separator %}
+                    <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+                  {% endcapture %}
+                  {% capture unit_price_base_unit %}
+                    {% if item.unit_price_measurement.reference_value != 1 %}
+                      {{ item.unit_price_measurement.reference_value }}
+                    {% endif %}
+                    {{ item.unit_price_measurement.reference_unit }}
+                  {% endcapture %}
+                  <p class="item__price--unit">
+                    <span class="visually-hidden visually-hidden--inline">{{ 'products.product.unit_price_label' | t }}</span>
+                    <span class="item__price--unit">{{ item.unit_price | money }}{{ unit_price_separator }}{{ unit_price_base_unit }}</span>
+                  </p>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="grid__item one-third text-center cart__line__qty">
+              <div class="cart__qty">
+                <span class="cart__mini-labels">{{ 'cart.label.quantity' | t }}</span>
+                <div class="js-qty quantity-selector">
+                  <span class="js-qty__adjust js-qty__adjust--minus quantity__minus"
+                        data-new-quantity="{{ item.quantity | minus: 1 }}"
+                        data-line-key="{{ item.key }}">&minus;</span>
+                  <input data-quantity-input
+                    class="text quantity js-qty__num"
+                    type="number"
+                    min="1"
+                    size="4"
+                    aria-label="quantity"
+                    pattern="[0-9]*"
+                    id="updates_{{ item.key }}"
+                    name="updates[]"
+                    value="{{ item.quantity }}"
+                    data-line-key="{{ item.key }}"/>
+                  <span class="js-qty__adjust js-qty__adjust--plus quantity__plus"
+                        data-new-quantity="{{ item.quantity | plus: 1 }}"
+                        data-line-key="{{ item.key }}">+</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid__item one-third text-right cart__line__totals">
+              <div class="cart__subtotal">
+                <span class="cart__mini-labels">{{ 'cart.label.total' | t }}</span>
+                <span>{{ item.final_line_price | money }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="cart__row cart__footer">
+  <div class="grid">
+
+	{% comment %}
+		Optional, add a textarea for special notes
+			- Your theme settings can turn this on or off. Default is on.
+			- Make sure you have name="note" for the message to be submitted properly
+	{% endcomment %}
+		<div class="grid__item medium-up--one-half">
+      <div class="cart__instructions">
+        <label class="cart__instructions__label" for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+        <textarea name="note" class="input-full" id="CartSpecialInstructions" data-cart-note>{{ cart.note }}</textarea>
+      </div>
+		</div>
+    <div class="grid__item medium-up--one-half text-right">
+      {%- if cart.cart_level_discount_applications.size > 0 -%}
+        <p class="cart__footer__text">
+          <span class="cart__subtotal-title uppercase">{{ 'layout.cart.items_count.other' | t | capitalize }}:</span>
+          <span class="h5--body strong cart__subtotal money">{{ cart.items_subtotal_price | money }}</span>
+        </p>
+        {%- for discount in cart.cart_level_discount_applications -%}
+          <p class="cart__footer__text">
+            <span class="cart__subtotal-title uppercase">{{ discount.title }}:</span>
+            <span class="h5--body strong cart__subtotal money">-{{ discount.total_allocated_amount | money }}</span>
+          </p>
+        {%- endfor -%}
+      {%- endif -%}
+
+
+      <p class="cart__footer__text">
+        <span class="cart__subtotal-title uppercase">{{ 'cart.general.subtotal' | t }}</span>
+        <span class="h5--body strong cart__subtotal money">{{ cart.total_price | money }}</span>
+      </p>
+      <p class="cart__footer__text"><em>{{ 'cart.general.shipping_at_checkout' | t }}</em></p>
+
+      <div class="cart__footer__buttons">
+        <span class="cart__update" data-update>
+          <span class="cart__update__icon">{% render 'icon-sync' %}</span>
+          <button type="submit" name="update" class="text-link">
+            {{ 'cart.general.update' | t }}
+          </button>
+        </span>
+        <span>
+          <button type="submit" name="checkout" class="btn btn--primary btn--large uppercase checkout__button">
+            {{ 'cart.general.checkout' | t }}
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

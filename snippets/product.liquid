@@ -1,0 +1,255 @@
+
+{%- case section.settings.image_width -%}
+  {%- when 'full' -%}
+    {%- assign product_image_width = 'one-whole' -%}
+    {%- assign product_description_width = 'one-whole' -%}
+  {%- when 'narrow' -%}
+    {%- assign product_image_width = 'medium-up--three-eighths' -%}
+    {%- assign product_description_width = 'medium-up--five-eighths' -%}
+  {%- when 'half' -%}
+    {%- assign product_image_width = 'medium-up--one-half' -%}
+    {%- assign product_description_width = 'medium-up--one-half' -%}
+  {%- else -%}
+    {%- assign product_image_width = 'medium-up--five-eighths' -%}
+    {%- assign product_description_width = 'medium-up--three-eighths' -%}
+{%- endcase -%}
+
+<div class="product-page">
+  <div class="wrapper {{ section.settings.align }}">
+
+    {% if section.settings.product_breadcrumbs %}
+      <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+        <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+        {% if collection.handle %}
+          <span aria-hidden="true">&rsaquo;</span>
+          {% capture url %}{{ routes.collections_url }}/{{ collection.handle }}{% endcapture %}
+          {{ collection.title | link_to: url }}
+        {% endif %}
+        <span aria-hidden="true">&rsaquo;</span>
+        <span>{{ product.title }}</span>
+      </nav>
+    {% endif %}
+
+    {% assign current_variant = product.selected_or_first_available_variant %}
+
+    <div class="grid product-single">
+      <div class="grid__item product__media__wrapper {{ product_image_width }}">
+        <div class="product__slides" data-product-slideshow>
+          {% for media in product.media %}
+            {% render 'media', media: media, section: section %}
+          {% endfor %}
+        </div>
+
+        {% assign first_3d_model = product.media | where: "media_type", "model" | first %}
+        {% if first_3d_model %}
+          <button
+            class="btn--outline btn--ar uppercase"
+            data-shopify-xr
+            data-shopify-model3d-id="{{ first_3d_model.id }}"
+            data-shopify-title="{{ product.title }}"
+            data-shopify-xr-hidden>
+            {% render 'icon-media-model' %}
+            <span>{{ 'products.product.view_in_space' | t }}</span>
+          </button>
+        {% endif %}
+
+        <noscript>
+          {% for image in product.media %}
+            <img src="{{ image.preview_image | img_url: '900x' }}" alt="{{ image.alt | default: product.title  }}">
+          {% endfor %}
+        </noscript>
+        {% if product.media.size > 1 %}
+          <div data-product-thumbs class="product__thumbs"></div>
+        {%- endif -%}
+      </div>
+
+      <div class="grid__item {{ product_description_width }}">
+        <div class="product__details">
+          <div class="product__headline">
+            <div class="product__price uppercase h6{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
+              <span data-product-price>{{ current_variant.price | money }}</span>
+
+              <p class="small compare-at em" {% unless current_variant.compare_at_price > current_variant.price %}style="display: none"{% endunless %}>
+                <span data-compare-price>{{ current_variant.compare_at_price | money }}</span>
+              </p>
+
+              {% liquid
+                assign units = product.variants | map: 'unit_price'
+                if units[0]
+                  assign has_units = true
+                else
+                  assign has_units = false
+                endif 
+              %}
+              {% if has_units %}
+                {% capture show_units %}
+                  {%- unless current_variant.unit_price -%}style="display: none;"{%- endunless -%}
+                {% endcapture %}
+                {% capture unit_price_separator %}
+                  <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+                {% endcapture %}
+                {% capture unit_price_base_unit %}
+                  <span>
+                    {% if current_variant.unit_price_measurement %}
+                      {% if current_variant.unit_price_measurement.reference_value != 1 %}
+                        {{ current_variant.unit_price_measurement.reference_value }}
+                      {%- endif -%}
+                      {{ current_variant.unit_price_measurement.reference_unit }}
+                    {% endif %}
+                  </span>
+                {% endcapture %}
+                <p data-product-unit {{ show_units }} class="product__price--unit">
+                  <span class="visually-hidden visually-hidden--inline">{{ 'products.product.unit_price_label' | t }}</span>
+                  <span data-product-unit-price id="unit-price-{{ section.id }}">{{ current_variant.unit_price | money }}</span>
+                  {{unit_price_separator}}
+                  <span data-product-base id="unit-price-base-{{ section.id }}">{{unit_price_base_unit}}</span>
+                </p>
+              {% endif %}
+
+            </div>
+            <h1 class="product__title">{{ product.title }}</h1>
+          </div>
+
+          {% if section.settings.product_show_vendor and product.vendor %}
+            <p><a href="{{ product.vendor | url_for_vendor }}" class="border-bottom-link uppercase">{{ product.vendor }}</a></p>
+          {% endif %}
+
+          
+{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}
+{%- if section.settings.form_position == 'above' -%}
+            {% render 'product-form', product: product, section: section %}
+          {%- endif -%}
+
+          {% comment %}
+            If the product description is over 1000 characters or contains an embed code,
+            place the description in a full width container below the image and cart button.
+          {% endcomment %}
+          {% assign description_position = '' %}
+          {%- assign product_description_content = product.description -%}
+          {%- assign has_tabs = false -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == "tab_description" -%}
+              {%- assign has_tabs = true -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%-if has_tabs -%}
+            {%- assign product_description_content = product_description_content | split: '<h6>' | first -%}
+          {%- endif -%}
+          {% if product_description_content contains '[split]' %}
+            {% assign description_position = 'both' %}
+          {% endif  %}
+
+          <div class="product-description rte rte--column">
+            {{ product_description_content | replace: '<p>[split]</p>', '[split]' | split: '[split]' | first }}
+          </div>
+
+        </div>
+
+        {%- if section.blocks.size > 0 and section.settings.tabs_position == 'sidebar'-%}
+          <div class="tabs-wrapper tabs-wrapper--above  productTabsWrapper">
+            {% render 'product-tabs', product: product, section: section %}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.form_position == 'below' -%}
+          {% render 'product-form', product: product, section: section %}
+        {%- endif -%}
+
+        {% if section.settings.social_enable %}
+          {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product.featured_media.preview_image %}
+        {% endif %}
+      </div>
+    </div>
+ 
+</div>
+</div>
+
+{% if description_position == 'both' %}
+  <div class="wrapper">
+    <div class="product-description rte rte--column">
+      {{ product_description_content | replace: '<p>[split]</p>', '[split]' | split: '[split]' | last }}
+    </div>
+  </div>
+{% endif %}
+
+{%- if section.blocks.size > 0 and section.settings.tabs_position == 'below' -%}
+  <div class="wrapper tabs-wrapper productTabsWrapper">
+    {% render 'product-tabs', product: product, section: section %}
+  </div>
+{%- endif -%}
+
+{%- if section.settings.product_reviews_enable -%}
+  <div class="wrapper">
+    <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+  </div>
+{%- endif -%}
+
+<script data-product-add-popdown-template type="text/x-template">
+  <div class="product__popdown__outer">
+
+    <div class="product__popdown__textbar">
+        <span class="product__popdown__title">
+          {% raw %}{{ it.product_title }} &nbsp;{% endraw %}
+        </span>
+        <span class="product__popdown__added">
+          {{ 'products.cart_drawer.item_added' | t }}
+        </span>
+    </div>
+
+    <div class="wrapper">
+      <div class="product__popdown__inner">
+        <div class="product__popdown__close">
+          <div class="popdown__close__inner" data-close-popdown>
+            {% render 'icon-close-small' %}
+          </div>
+        </div>
+        {% capture product_image %}{% raw %}{{ it.product_image }}{% endraw %}{% endcapture %}
+        <div class="product__popdown__image">
+          <img alt="{{ product_title }}" src="{{ product_image }}">
+        </div>
+        <div class="product__popdown__cart__wrapper">
+          <a href="{{ routes.cart_url }}" class="product__popdown__cart text-link uppercase">{{ "products.cart_drawer.view_cart" | t }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+{% if section.settings.zoom_enable %}
+  {% render 'zoom-pswp' %}
+{% endif %}
+ 
+{% comment %}Start automatically added Judge.me widget{% endcomment %}
+  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+{% comment %}End automatically added Judge.me widget{% endcomment %}
+  <style>
+    .jdgm-rev-widg.jdgm-rev-widg {
+    width: 80% !important;  
+    margin: auto !important;
+}
+
+  </style>
+<script data-product-json type="application/json">
+  {{ product | json }}
+</script>
+
+<script data-product-options-json type="application/json">
+  { "options":[
+    {%- for option in product.options_with_values -%}
+    {
+      "name": "{{ option.name | escape }}",
+      "position": "{{ forloop.index }}",
+      "values": [
+        {%- for value in option.values -%}
+        "{{ value | escape }}"{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]}
+</script>
+
+<script type="application/json" id="ModelJson-{{ section.id }}">
+  {{ product.media | where: 'media_type', 'model' | json }}
+</script>

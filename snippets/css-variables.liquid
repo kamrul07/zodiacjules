@@ -1,0 +1,200 @@
+{% comment %}
+  This is where CSS Variables are set with values from your theme settings.  
+  These values are created in settings_schema.json and stored in settings_data.json.  
+  CSS variables are used to remove liquid code from your CSS file, allowing CSS to load faster.  
+{% endcomment %}
+
+{%- assign header_font = settings.type_header_font -%}
+{%- assign base_font = settings.type_base_font -%}
+{%- assign accent_font = settings.type_accent_font -%}
+
+{%- assign header_font_bold = header_font | font_modify: 'weight', 'bolder' -%}
+{%- assign accent_font_bold = accent_font | font_modify: 'weight', 'bolder' -%}
+{%- assign base_font_bold = base_font | font_modify: 'weight', 'bolder' -%}
+{%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
+{%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
+
+{% style %}
+
+:root {
+/* ================ Product video ================ */
+{% comment %}
+  Create an appropriate poster background color
+  based on background color and brightness
+{% endcomment %}
+{%- assign color_body_bg = settings.color_body_bg -%}
+{%- assign color_body_bg_brightness = color_body_bg | color_brightness -%}
+{%- if color_body_bg_brightness <= 26 -%}
+  {%- assign background_color_poster = color_body_bg | color_lighten: 10 -%}
+{%- elsif color_body_bg_brightness <= 65 -%}
+  {%- assign background_color_poster = color_body_bg | color_lighten: 5 -%}
+{%- else -%}
+  {%- assign background_color_poster = color_body_bg | color_darken: 5 -%}
+{%- endif -%}
+
+---color_video_bg: {{ background_color_poster }};
+
+
+/* ================ Color Variables ================ */
+
+/* === Backgrounds ===*/
+---color-bg: {{ settings.color_body_bg }};
+---color-bg-accent: {{ settings.color_bg_light }};
+
+/* === Text colors ===*/
+---color-text-dark: {{ settings.color_body_text }};
+---color-text: {{ settings.color_body_text | color_mix: settings.color_body_bg, 90 }};
+---color-text-light: {{ settings.color_body_text | color_mix: settings.color_body_bg, 80 }};
+
+/* === Bright color ===*/
+---color-primary: {{ settings.color_primary }};
+---color-primary-hover: {{ settings.color_primary | color_saturate: 15 | color_darken: 15 }};
+---color-primary-fade: {{ settings.color_primary  | color_modify: 'alpha', 0.05 }};
+---color-primary-fade-hover: {{ settings.color_primary  | color_modify: 'alpha', 0.1 }};
+{%- assign opposite = settings.color_primary | color_lighten: 100 -%}
+{%- assign contrast = settings.color_primary | color_contrast: opposite -%}
+{%- if contrast < 2 -%}
+  {%- assign opposite = settings.color_primary | color_darken: 95 -%}
+{%- endif -%}
+---color-primary-opposite: {{ opposite }};
+
+/* === Secondary/link Color ===*/
+---color-secondary: {{ settings.color_secondary }};
+---color-secondary-hover: {{ settings.color_secondary | color_saturate: 15 | color_darken: 15 }};
+---color-secondary-fade: {{ settings.color_secondary  | color_modify: 'alpha', 0.05 }};
+---color-secondary-fade-hover: {{ settings.color_secondary | color_modify: 'alpha', 0.1 }};
+{%- assign opposite = settings.color_secondary | color_lighten: 100 -%}
+{%- assign contrast = settings.color_secondary | color_contrast: opposite -%}
+{%- if contrast < 3.5 -%}
+  {%- assign opposite = settings.color_secondary | color_darken: 95 -%}
+{%- endif -%}
+---color-secondary-opposite: {{ opposite }};
+
+/* === Shades of grey ===*/
+---color-a5:  {{ settings.color_body_text | color_modify: 'alpha', 0.05 }};
+---color-a10: {{ settings.color_body_text | color_modify: 'alpha', 0.10 }};
+---color-a20: {{ settings.color_body_text | color_modify: 'alpha', 0.20 }};
+---color-a35: {{ settings.color_body_text | color_modify: 'alpha', 0.35 }};
+---color-a50: {{ settings.color_body_text | color_modify: 'alpha', 0.50 }};
+---color-a80: {{ settings.color_body_text | color_modify: 'alpha', 0.80 }};
+---color-a90: {{ settings.color_body_text | color_modify: 'alpha', 0.90 }};
+---color-a95: {{ settings.color_body_text | color_modify: 'alpha', 0.95 }};
+
+
+/* ================ Inverted Color Variables ================ */
+
+---inverse-bg: {{ settings.color_bg_inverse }};
+---inverse-bg-accent: {{ settings.color_bg_accent_inverse }};
+
+/* === Text colors ===*/
+---inverse-text-dark: {{ settings.color_text_inverse | color_mix: settings.color_bg_inverse, 92 }};
+---inverse-text: {{ settings.color_text_inverse | color_mix: settings.color_bg_inverse, 86 }};
+---inverse-text-light: {{ settings.color_text_inverse }};
+
+/* === Bright color ===*/
+---inverse-primary: {{ settings.color_primary_inverse }};
+---inverse-primary-hover: {{ settings.color_primary_inverse | color_saturate: 15 | color_darken: 15 }};
+---inverse-primary-fade: {{ settings.color_primary_inverse  | color_modify: 'alpha', 0.05 }};
+---inverse-primary-fade-hover: {{ settings.color_primary_inverse  | color_modify: 'alpha', 0.1 }};
+{%- assign opposite = settings.color_primary_inverse | color_lighten: 100 -%}
+{%- assign contrast = settings.color_primary_inverse | color_contrast: opposite -%}
+{%- if contrast < 3.5 -%}
+  {%- assign opposite = settings.color_primary_inverse | color_darken: 95 -%}
+{%- endif -%}
+---inverse-primary-opposite: {{ opposite }};
+
+
+/* === Second Color ===*/
+---inverse-secondary: {{ settings.color_secondary_inverse }};
+---inverse-secondary-hover: {{ settings.color_secondary_inverse | color_saturate: 15 | color_darken: 15 }};
+---inverse-secondary-fade: {{ settings.color_secondary_inverse  | color_modify: 'alpha', 0.05 }};
+---inverse-secondary-fade-hover: {{ settings.color_secondary_inverse  | color_modify: 'alpha', 0.1 }};
+{%- assign opposite = settings.color_secondary_inverse | color_lighten: 100 -%}
+{%- assign contrast = settings.color_secondary_inverse | color_contrast: opposite -%}
+{%- if contrast < 3.5 -%}
+  {%- assign opposite = settings.color_secondary_inverse | color_darken: 95 -%}
+{%- endif -%}
+---inverse-secondary-opposite: {{ opposite }};
+
+
+/* === Shades of grey ===*/
+---inverse-a5:  {{ settings.color_text_inverse | color_modify: 'alpha', 0.05 }};
+---inverse-a10: {{ settings.color_text_inverse | color_modify: 'alpha', 0.10 }};
+---inverse-a20: {{ settings.color_text_inverse | color_modify: 'alpha', 0.20 }};
+---inverse-a35: {{ settings.color_text_inverse | color_modify: 'alpha', 0.30 }};
+---inverse-a80: {{ settings.color_text_inverse | color_modify: 'alpha', 0.80 }};
+---inverse-a90: {{ settings.color_text_inverse | color_modify: 'alpha', 0.90 }};
+---inverse-a95: {{ settings.color_text_inverse | color_modify: 'alpha', 0.95 }};
+
+
+/* === Account Bar ===*/
+---color-announcement-bg: {{ settings.color_announcement_bg }};
+---color-announcement-text: {{ settings.color_announcement_text }};
+
+/* === Nav and dropdown link background ===*/
+---color-nav: {{ settings.color_header_bg }};
+---color-nav-text: {{ settings.color_header_text }};
+---color-nav-border: {{ settings.color_nav_border }};
+---color-nav-a10: {{ settings.color_header_text | color_modify: 'alpha', 0.10 }};
+---color-nav-a50: {{ settings.color_header_text | color_modify: 'alpha', 0.50 }};
+
+/* === Site Footer ===*/
+---color-footer-bg: {{ settings.color_footer_bg }};
+---color-footer-text: {{ settings.color_footer_text }};
+---color-footer-a5: {{ settings.color_footer_text | color_modify: 'alpha', 0.05 }};
+---color-footer-a15: {{ settings.color_footer_text | color_modify: 'alpha', 0.15 }};
+---color-footer-a90: {{ settings.color_footer_text | color_modify: 'alpha', 0.90 }};
+
+/* === Products ===*/
+---color-bg-product: {{ settings.product_background_color }};
+
+
+/* === disabled form colors ===*/
+---color-disabled-bg: {{ settings.color_body_text | color_mix: settings.color_body_bg, 10 }};
+---color-disabled-text: {{ settings.color_body_text | color_mix: settings.color_body_bg, 35 }};
+
+---inverse-disabled-bg: {{ settings.color_text_inverse | color_mix: settings.color_bg_inverse, 10 }};
+---inverse-disabled-text: {{ settings.color_text_inverse | color_mix: settings.color_bg_inverse, 35 }};
+
+/* === Gallery padding === */
+---gallery-padding: 32px;
+
+/* === Button Radius === */
+---button-radius: {{ settings.button_radius | append: 'px' }};
+
+
+/* ================ Typography ================ */
+
+---font-stack-body: {{ base_font.family }}, {{ base_font.fallback_families }};
+---font-style-body: {{ base_font.style }};
+---font-weight-body: {{ base_font.weight | default: 400 }};
+---font-weight-body-bold: {{ base_font_bold.weight | default: 700 }};
+---font-adjust-body: {{ settings.type_body_size | divided_by: 100.0 }};
+
+---font-stack-heading: {{ header_font.family }}, {{ header_font.fallback_families }};
+---font-style-heading: {{ header_font.style }};
+---font-weight-heading: {{ header_font.weight | default: 400 }};
+---font-weight-heading-bold: {{ header_font_bold.weight | default: 700 }};
+---font-adjust-heading: {{ settings.type_heading_size | divided_by: 100.0 }};
+{% if settings.font_title_capitalize %}
+  ---font-heading-space: 1px;
+  ---font-heading-caps: uppercase;
+{%- else %}
+  ---font-heading-space: initial;
+  ---font-heading-caps: initial;
+{% endif %}
+
+---font-stack-accent: {{ accent_font.family }}, {{ header_font.fallback_families }};
+---font-style-accent: {{ accent_font.style }};
+---font-weight-accent: {{ accent_font.weight | default: 400 }};
+---font-weight-accent-bold: {{ accent_font_bold.weight | default: 700 }};
+---font-adjust-accent: {{ settings.type_accent_size | divided_by: 100.0 }};
+
+---ico-select: url('{{ "ico-select.svg" | asset_url }}');
+
+---url-zoom: url('{{ "cursor-zoom.svg" | asset_url }}');
+---url-zoom-2x: url('{{ "cursor-zoom-2x.svg" | asset_url }}');
+
+}
+
+{% endstyle %}

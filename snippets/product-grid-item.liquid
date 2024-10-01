@@ -1,0 +1,163 @@
+
+{% comment %}
+  A grid item for products used in collection grid view
+
+  * product {object} - The current prodcut
+
+  {% render 'product-grid-item', product: product %}
+{% endcomment %}
+
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}
+  {%- assign on_sale = true -%}
+{%- endif -%}
+
+{%- assign sold_out = true -%}
+{%- if product.available -%}
+  {%- assign sold_out = false -%}
+{%- endif -%}
+
+{%- assign new_product = false -%}
+{%- assign published_date = product.published_at | date: "%s"  -%}
+{%- assign now_date = 'now' | date: "%s" -%}
+{%- assign age_in_days = now_date | minus: published_date | divided_by: 60 | divided_by: 60 | divided_by: 12 -%}
+{%- if age_in_days < settings.tag_new_limit -%}
+  {%- assign new_product = true -%}
+{%- endif -%}
+
+{%- assign sellout_tag = false -%}
+{%- if sold_out and settings.tag_sellout -%}
+  {%- assign sellout_tag = true -%}
+{%- endif -%}
+
+{%- assign new_tag = false -%}
+{%- if new_product and settings.tag_new -%}
+  {%- assign new_tag = true -%}
+{%- endif -%}
+
+{%- assign sale_tag = false -%}
+{%- if on_sale and settings.tag_sale -%}
+  {%- assign sale_tag = true -%}
+{%- endif -%}
+
+{%- assign tagged = false -%}
+{%- if sellout_tag or new_tag or sale_tag -%}
+  {%- assign tagged = true -%}
+{%- endif -%}
+
+{%- capture swatch_translation -%}{{ 'general.swatches.color' | t }}{%- endcapture -%}
+
+{%- capture swatches -%}
+  {%- if settings.swatches_enable and settings.swatches_collection_enable -%}
+    {%- assign swatch_labels = swatch_translation | append: ',' | split: ',' -%}
+    {%- for label in swatch_labels -%}
+      {%- assign sanitized_label = label | lstrip | rstrip -%}
+      {%- if product.options_by_name[sanitized_label].values.size > 0 -%}
+        <div class="grid__swatch__container" data-grid-swatches data-swatch-handle="{{ product.handle }}" data-swatch-label="{{ label }}"></div>
+        {% break %}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture sticker -%}
+  {%- if tagged %}
+    {%- if sellout_tag -%}
+      <div class="sticker sticker--sold">{{ 'products.product.sold_out' | t }}</div>
+    {%- elsif sale_tag -%}
+      <div class="sticker sticker--sale">{{ 'products.product.sale' | t }}</div>
+    {%- elsif new_tag -%}
+      <div class="sticker sticker--new">{{ 'products.product.new' | t }}</div>
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- assign current_variant = product.first_available_variant -%}
+{%- assign product_img = product.featured_media.preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+{%- assign double_img = false -%}
+{% if product.media[1].preview_image and settings.image_hover_enable %}
+  {%- assign double_img = true -%}
+{% endif %}
+
+{%- if settings.image_autoheight_enable -%}
+  {%- assign multiplier = settings.product_grid_aspect_ratio -%}
+  {%- assign ratio = product.featured_media.preview_image.aspect_ratio -%}
+  {%- assign inverse_ratio = 1 | divided_by: ratio -%}
+
+  {%- assign top_offset =  1 | divided_by: ratio | times: 100 | divided_by: 2 -%}
+  {%- assign top_offset_subtractor =  multiplier | times: 100 | divided_by: 2 -%}
+
+  {%- capture auto_height -%}
+    {%- if inverse_ratio > multiplier -%}
+      style="width:{{ ratio | times: multiplier | times: 100 }}%; margin: 0 auto;"
+    {%- else -%}
+      style="padding:{{ top_offset_subtractor | minus: top_offset }}% 0;"
+    {%- endif -%}
+  {%- endcapture -%}
+{%- endif -%}
+
+
+<div class="product-grid-item {% if on_sale %} on-sale{% endif %}{% if tagged %} tagged{% endif %}" data-grid-item>
+  <div {{ auto_height }}>
+    <a href="{{ product.url | within: collection }}" data-grid-link class="lazy-image{% if double_img %} double__image{% endif %}" style="padding-top:{{ 1 | divided_by: product.featured_media.preview_image.aspect_ratio | times: 100}}%; background-image:  url('{{ product.featured_media.preview_image | img_url: '1x1' }}');">
+      <img class="lazyload fade-in collection__image__top"
+        alt="{{ product.featured_media.alt | default: product.title  }}"
+        data-src="{{ product_img }}"
+        data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100, 4480]"
+        data-aspectratio="{{  product.featured_media.preview_image.aspect_ratio }}"
+        data-sizes="auto"/>
+      {% if double_img %}
+        <div class="collection__image__bottom lazyload lazypreload" data-bgset="{% render 'bgset', image: product.media[1].preview_image %}" role="img" aria-label="{{ product.media[1].alt }}"></div>
+      {% endif %}
+        <div class="product-grid-item__slide" data-grid-slide></div>
+      {{ sticker }}
+    </a>
+  </div>
+  <noscript>
+    <a href="{{ product.url | within: collection }}">
+      <img src="{{ product.featured_media.preview_image | img_url: '360x' }}" alt="{{ product.featured_media.alt | default: product.title  }}">
+    </a>
+  </noscript>
+  <div class="product__grid__info product__grid__info--{{ settings.product_grid_style }} {{ settings.collection_text_alignment | default: 'text-center' }}">
+    <a href="{{ product.url | within: collection | capitalize }}">
+      <p class="grid__title">
+        {{ product.title }}
+      </p>
+      <div class="price_wrapper">
+        <span class="price{% if on_sale %} on-sale{% endif %}">
+          {% if product.price_varies %}{{ 'products.general.from' | t }} {% endif %}
+          {{ product.price | money }}
+        </span>
+        {% if sold_out %}
+        <br /><em>{{ 'products.product.sold_out' | t }}</em>
+        {% endif %}
+        {% if on_sale %}
+        <span class="compare-at">
+          {{ product.compare_at_price | money }}
+        </span>
+        {% endif %}
+        {% if current_variant.unit_price %}
+          {% capture unit_price_separator %}
+            <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
+          {% endcapture %}
+          {% capture unit_price_base_unit %}
+            {% if current_variant.unit_price_measurement.reference_value != 1 %}
+              {{ current_variant.unit_price_measurement.reference_value }}
+            {% endif %}
+            {{ current_variant.unit_price_measurement.reference_unit }}
+          {% endcapture %}
+          <br>
+            <span class="visually-hidden visually-hidden--inline">{{ 'products.product.unit_price_label' | t }}</span>
+            <span class="price-per-unit">{{ current_variant.unit_price | money }}{{ unit_price_separator }}{{ unit_price_base_unit }}</span>
+        {% endif %}
+        {% if product.metafields.spr.reviews %}
+          <br />
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        {% endif %}
+
+        {{ swatches }}
+      </div>
+    </a>
+  </div>
+</div>

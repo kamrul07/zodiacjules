@@ -1,0 +1,100 @@
+<!-- /templates/search.liquid -->
+
+<div class="wrapper pt2 pb4">
+  <div class="grid">
+    <div class="grid__item medium-up--two-thirds medium-up--push-one-sixth">
+
+      {% if search.performed %}
+
+        {% paginate search.results by 10 %}        
+
+          {% render 'search-bar' %}
+
+          {%- if search.terms.size > 0 -%}
+            <div class="note">
+              <p>
+                {%- if search.results_count > 0 -%}
+                  {{ 'general.search.results_for_html' | t: terms: search.terms }}
+                {%- else -%}
+                  {{ 'general.search.no_results_html' | t: terms: search.terms }}
+                {%- endif -%}
+              </p>
+            </div>
+          {%- endif -%}
+
+
+          {% for item in search.results %}
+            <div class="grid">
+
+              {% if item.featured_media.preview_image %}
+                {% comment %}
+                  We have a featured_media, so it's likely a product
+                {% endcomment %}
+                <div class="grid__item one-sixth">
+                  <a href="{{ item.url }}" title="{{ item.title | escape }}">
+                    {{ item.featured_media.preview_image | img_url: 'medium' | img_tag: item.featured_media.alt }}
+                  </a>
+                </div>
+                <div class="grid__item five-sixths">
+              {% elsif item.object_type == 'article' and item.image %}
+                <div class="grid__item one-sixth">
+                <a href="{{ item.url }}" title="{{ item.title | escape }}">
+                  {{ item | image_url: 'medium' | img_tag: item.title }}
+                </a>
+                </div>
+                <div class="grid__item five-sixths">
+              {% else %}
+                <div class="grid__item small-up--five-sixths small-up--push-one-sixth">
+              {% endif %}
+
+                <p class="h6--body result__title">{{ item.title | link_to: item.url }}</p>
+
+                {%- assign on_sale = false -%}
+                {%- if item.compare_at_price > item.price -%}
+                  {%- assign on_sale = true -%}
+                {%- endif -%}
+                <p class="price_wrapper">
+                  <span class="price{% if on_sale %} on-sale{% endif %}">
+                    {% if item.price_varies %}{{ 'products.general.from' | t }} {% endif %}
+                    {{ item.price | money }}
+                  </span>
+                  {% if sold_out %}
+                  <br /><em>{{ 'products.product.sold_out' | t }}</em>
+                  {% endif %}
+                  {% if on_sale %}
+                  <span class="compare-at">
+                    {{ item.compare_at_price | money }}
+                  </span>
+                  {% endif %}
+                  {% if item.metafields.spr.reviews %}
+                    <br />
+                    <span class="shopify-product-reviews-badge" data-id="{{ item.id }}"></span>
+                  {% endif %}
+                </p>
+
+                {% comment %}
+                  Get a brief excerpt of raw text from the page/product
+                {% endcomment %}
+                <p class="result__description">{{ item.content | strip_html | truncatewords: 50 | replace: '<p>[split]</p>', '[split]' | replace: '[split]', '' }}</p>
+              </div>
+            </div>
+            {% unless forloop.last %}<hr>{% endunless %}
+          {% endfor %}
+
+
+          {% if paginate.pages > 1 %}
+            <div class="text-center">
+              {% render 'pagination-custom', paginate: paginate %}
+            </div>
+          {% endif %}
+
+        {% endpaginate %}
+
+      {% else %}
+        {% comment %}search.performed is false {% endcomment %}
+        {% render 'search-bar' %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>

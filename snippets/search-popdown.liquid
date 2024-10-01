@@ -1,0 +1,32 @@
+{% comment %} <script data-search-popdown-template type="text/x-template"> {% endcomment %}
+
+<div id="search-popdown" class="search-popdown">
+  <div class="search__popdown__outer">
+    <div class="search__popdown__upper">
+    </div>
+    <div class="wrapper">
+      <div class="search__popdown__main">
+        <div class="search__popdown__close">
+          <div class="search__popdown__close__inner" data-close-popdown>
+            {% render 'icon-close-small' %}
+          </div>
+        </div>
+        <form class="search__popdown__form"
+            action="{{ routes.search_url }}"
+            method="get"
+            role="search">
+          <input type="search"
+          data-focus-input
+          name="q" 
+          value="{{ search.terms | escape }}" 
+          placeholder="{{ 'general.search.placeholder_short' | t }}" 
+          aria-label="{{ 'general.search.placeholder' | t }}">
+          <button class="search__popdown__form__button" type="submit">
+            <span class="visually-hidden">{{ 'general.search.submit' | t }}</span>
+            {% render 'icon-search' %}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
