@@ -816,9 +816,10 @@
           "signbox_nY4TwE": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Leo",
+              "date": "July 23 – August 22",
+              "image": "shopify://shop_images/Mask_group_10.png",
+              "button_link": "shopify://collections/leo"
             }
           },
           "signbox_MqkRxp": {
