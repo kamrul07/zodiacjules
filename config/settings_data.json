@@ -843,9 +843,10 @@
           "signbox_chWAt9": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Scorpio",
+              "date": "Oct 24 – Nov 21",
+              "image": "shopify://shop_images/Mask_group_13.png",
+              "button_link": "shopify://collections/scorpio"
             }
           },
           "signbox_gQfKgj": {
