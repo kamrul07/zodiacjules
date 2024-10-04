@@ -780,17 +780,19 @@
           "signbox_LA3riD": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Aries",
+              "date": "March 21 – April 19",
+              "image": "shopify://shop_images/image_39.png",
+              "button_link": "shopify://collections/aries"
             }
           },
           "signbox_RJ9a3z": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Taurus",
+              "date": "April 20 – May 20",
+              "image": "shopify://shop_images/Mask_group_7.png",
+              "button_link": "shopify://collections/taurus"
             }
           },
           "signbox_c8xnDA": {
