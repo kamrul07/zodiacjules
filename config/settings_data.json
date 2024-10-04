@@ -852,9 +852,10 @@
           "signbox_gQfKgj": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Sagittarius",
+              "date": "Oct 24 – Nov 21",
+              "image": "shopify://shop_images/Mask_group_14.png",
+              "button_link": "shopify://collections/sagittarius"
             }
           },
           "signbox_Fj4rQx": {
