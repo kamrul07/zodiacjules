@@ -752,6 +752,14 @@
               "image": "shopify://shop_images/Group_1755.png",
               "button_link": "shopify://collections/earrings"
             }
+          },
+          "imagebox_AgnwrC": {
+            "type": "imagebox",
+            "settings": {
+              "title": "Bracelets",
+              "image": "shopify://shop_images/Group_1756.png",
+              "button_link": "shopify://collections/bracelets"
+            }
           }
         },
         "block_order": [
@@ -759,7 +767,8 @@
           "imagebox_abFtCU",
           "imagebox_QHyUzz",
           "imagebox_ijzGn7",
-          "imagebox_GinMye"
+          "imagebox_GinMye",
+          "imagebox_AgnwrC"
         ],
         "settings": {
           "title": ""
