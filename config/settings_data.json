@@ -861,9 +861,10 @@
           "signbox_Fj4rQx": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Capricorn",
+              "date": "Dec 22 – Jan 19",
+              "image": "shopify://shop_images/Mask_group_15.png",
+              "button_link": "shopify://collections/capricorn"
             }
           },
           "signbox_in6mhM": {
