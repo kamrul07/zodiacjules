@@ -666,15 +666,6 @@
           "html_area": ""
         }
       },
-      "1662999409de73a4df": {
-        "type": "index-richtext",
-        "settings": {
-          "title": "Let's get social!",
-          "home_page_richtext": "<p>Tag us with <strong>#zodiacjules</strong> for a chance to be featured in our feed!</p>",
-          "text_align": "align--middle-center",
-          "bg": "section"
-        }
-      },
       "16214309328180c397": {
         "type": "index-hero",
         "settings": {
@@ -903,6 +894,16 @@
         "settings": {
           "title": "Shop By Sign"
         }
+      },
+      "section_imagewith_text_qHUeMb": {
+        "type": "section-imagewithText",
+        "settings": {
+          "image": "shopify://shop_images/Group_1757.png",
+          "title": "Looking For A Custom Design?",
+          "description": "Create your own cosmic statement with our custom zodiac jewellery. Choose your charms, pick your chain, and design a piece that's uniquely yours.",
+          "button_title": "Create Your Own Now",
+          "button_link": "shopify://pages/charm-builder"
+        }
       }
     },
     "content_for_index": [
@@ -911,9 +912,9 @@
       "section_founder_VndbNm",
       "16215383423eadcc03",
       "section_imageblock_acxNhf",
-      "1662999409de73a4df",
+      "section_imagebox_URhGtV",
       "1662999178c3941b07",
-      "section_imagebox_URhGtV"
+      "section_imagewith_text_qHUeMb"
     ]
   },
   "presets": {
