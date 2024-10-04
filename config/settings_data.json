@@ -709,15 +709,43 @@
           "founder-name": "Julie",
           "founder-designation": "Founder & Designer"
         }
+      },
+      "section_imageblock_acxNhf": {
+        "type": "section-imageblock",
+        "blocks": {
+          "imagebox_E7rhg9": {
+            "type": "imagebox",
+            "settings": {
+              "title": "ZOdiac Charms",
+              "image": "shopify://shop_images/Mask_group_4.png",
+              "button_link": "shopify://collections/charms"
+            }
+          },
+          "imagebox_QHyUzz": {
+            "type": "imagebox",
+            "settings": {
+              "title": "",
+              "button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "imagebox_E7rhg9",
+          "imagebox_QHyUzz"
+        ],
+        "settings": {
+          "title": ""
+        }
       }
     },
     "content_for_index": [
       "16214309328180c397",
       "product_slider_Fdy66X",
+      "section_founder_VndbNm",
       "16215383423eadcc03",
       "1662999409de73a4df",
       "1662999178c3941b07",
-      "section_founder_VndbNm"
+      "section_imageblock_acxNhf"
     ]
   },
   "presets": {
