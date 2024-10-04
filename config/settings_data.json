@@ -135,6 +135,8 @@
           "footer_secondary_linklist": "footer",
           "footer_payment_enable": true,
           "footer_social_enable": true,
+          "newsletter_title": "Stay up to date with launches, promotions and updates.",
+          "copyright_text": "<p>© 2024 ZodiacJules all rights reserved.</p>",
           "show_locale_selector": false,
           "show_currency_selector": false
         }
@@ -722,7 +724,7 @@
           "height": "use_screen_two_thirds",
           "overlay_opacity": 35,
           "title": "Vintage Zodiac Jewelry",
-          "description": "Choose your charm, choose your chain!",
+          "description": "Align with the Stars: Unique Jewelry Tailored to Your Zodiac",
           "text_align": "align--middle-center",
           "color": "palette--contrast--dark",
           "link_text": "Shop All",
