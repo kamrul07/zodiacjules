@@ -642,22 +642,6 @@
           "product_recommendations_heading": "Related products"
         }
       },
-      "162145515981879045": {
-        "type": "index-page",
-        "settings": {
-          "home_page_content": "about-me",
-          "home_page_show_title": false,
-          "bg": "section"
-        }
-      },
-      "1621455257be99694d": {
-        "type": "index-newsletter",
-        "settings": {
-          "title": "Let's stay in touch!",
-          "richtext": "<p>Be the first to know about our new arrivals, special sales, &amp; more!</p>",
-          "bg": "section bg--accent"
-        }
-      },
       "cart": {
         "type": "cart",
         "settings": {
@@ -666,32 +650,6 @@
           "cart_notes_enable": true,
           "cart_show_quantity": true,
           "cart_show_additional_buttons": true
-        }
-      },
-      "16214595871ef77f92": {
-        "type": "maestrooo-instagram",
-        "disabled": true,
-        "settings": {
-          "title": "Let's get Social!",
-          "subheading": "<p>Tag us with <strong>#zodiacjules</strong> for a chance to be featured in our feed!</p>",
-          "button_text": "",
-          "button_link": "",
-          "layout": "grid",
-          "image_size": "medium",
-          "full_width": true,
-          "add_spacing": true,
-          "rows_count": 1,
-          "show_author": false,
-          "show_caption": true,
-          "show_date": true,
-          "click_action": "open_instagram",
-          "heading_color": "#454851",
-          "subheading_color": "#000000",
-          "button_background": "#454851",
-          "button_color": "#ffffff",
-          "overlay_color": "#000000",
-          "overlay_text_color": "#ffffff",
-          "overlay_opacity": 65
         }
       },
       "16215383423eadcc03": {
@@ -734,18 +692,21 @@
           "link2": "shopify://pages/charm-builder",
           "button_style2": "secondary-button"
         }
+      },
+      "product_slider_Fdy66X": {
+        "type": "product-slider",
+        "settings": {
+          "title": "Our Best sellers",
+          "collection": "bracelets"
+        }
       }
     },
     "content_for_index": [
       "16214309328180c397",
-      "index-collection-grid",
       "16215383423eadcc03",
-      "index-columns",
-      "162145515981879045",
-      "16214595871ef77f92",
       "1662999409de73a4df",
       "1662999178c3941b07",
-      "1621455257be99694d"
+      "product_slider_Fdy66X"
     ]
   },
   "presets": {
