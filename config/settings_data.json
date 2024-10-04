@@ -736,12 +736,21 @@
               "image": "shopify://shop_images/Group_1752.png",
               "button_link": "shopify://collections/chains"
             }
+          },
+          "imagebox_ijzGn7": {
+            "type": "imagebox",
+            "settings": {
+              "title": "Necklaces",
+              "image": "shopify://shop_images/Group_1754.png",
+              "button_link": "shopify://collections/necklaces"
+            }
           }
         },
         "block_order": [
           "imagebox_E7rhg9",
           "imagebox_abFtCU",
-          "imagebox_QHyUzz"
+          "imagebox_QHyUzz",
+          "imagebox_ijzGn7"
         ],
         "settings": {
           "title": ""
