@@ -732,8 +732,9 @@
           "imagebox_QHyUzz": {
             "type": "imagebox",
             "settings": {
-              "title": "",
-              "button_link": ""
+              "title": "Chains",
+              "image": "shopify://shop_images/Group_1752.png",
+              "button_link": "shopify://collections/chains"
             }
           }
         },
