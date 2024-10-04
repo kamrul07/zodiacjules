@@ -825,9 +825,10 @@
           "signbox_MqkRxp": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Virgo",
+              "date": "Aug 23 – Sept 22",
+              "image": "shopify://shop_images/Mask_group_11.png",
+              "button_link": "shopify://collections/virgo"
             }
           },
           "signbox_RhLc4y": {
