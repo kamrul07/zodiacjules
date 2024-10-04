@@ -807,9 +807,10 @@
           "signbox_wtDTHJ": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Cancer",
+              "date": "June 22 – July 22",
+              "image": "shopify://shop_images/Mask_group_15.png",
+              "button_link": "shopify://collections/cancer"
             }
           },
           "signbox_nY4TwE": {
