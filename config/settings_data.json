@@ -744,13 +744,22 @@
               "image": "shopify://shop_images/Group_1754.png",
               "button_link": "shopify://collections/necklaces"
             }
+          },
+          "imagebox_GinMye": {
+            "type": "imagebox",
+            "settings": {
+              "title": "Earrings",
+              "image": "shopify://shop_images/Group_1755.png",
+              "button_link": "shopify://collections/earrings"
+            }
           }
         },
         "block_order": [
           "imagebox_E7rhg9",
           "imagebox_abFtCU",
           "imagebox_QHyUzz",
-          "imagebox_ijzGn7"
+          "imagebox_ijzGn7",
+          "imagebox_GinMye"
         ],
         "settings": {
           "title": ""
