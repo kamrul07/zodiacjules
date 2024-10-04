@@ -933,6 +933,7 @@
             "settings": {
               "title": "Private Event Booking",
               "description": "Create your own cosmic statement with our custom zodiac jewelry.",
+              "image": "shopify://shop_images/Mask_group_20.png",
               "button_link": "",
               "button-text": "Find Out More"
             }
@@ -942,6 +943,7 @@
             "settings": {
               "title": "In the Media",
               "description": "Create your own cosmic statement with our custom zodiac jewelry.",
+              "image": "shopify://shop_images/Mask_group_21.png",
               "button_link": "",
               "button-text": "Find Out More"
             }
