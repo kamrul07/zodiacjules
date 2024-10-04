@@ -875,6 +875,15 @@
               "image": "shopify://shop_images/Mask_group_16.png",
               "button_link": "shopify://collections/aquarius"
             }
+          },
+          "signbox_yyQzKi": {
+            "type": "signbox",
+            "settings": {
+              "title": "Pisces",
+              "date": "Feb 19 – MarCh 20",
+              "image": "shopify://shop_images/Mask_group_17.png",
+              "button_link": "shopify://collections/pisces"
+            }
           }
         },
         "block_order": [
@@ -888,7 +897,8 @@
           "signbox_chWAt9",
           "signbox_gQfKgj",
           "signbox_Fj4rQx",
-          "signbox_in6mhM"
+          "signbox_in6mhM",
+          "signbox_yyQzKi"
         ],
         "settings": {
           "title": "Shop By Sign"
