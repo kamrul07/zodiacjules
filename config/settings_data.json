@@ -870,9 +870,10 @@
           "signbox_in6mhM": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Aquarius",
+              "date": "Jan 20 – Feb 18",
+              "image": "shopify://shop_images/Mask_group_16.png",
+              "button_link": "shopify://collections/aquarius"
             }
           }
         },
