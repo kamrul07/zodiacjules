@@ -834,9 +834,10 @@
           "signbox_RhLc4y": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Libra",
+              "date": "Sept 23 – Oct 23",
+              "image": "shopify://shop_images/Mask_group_12.png",
+              "button_link": "shopify://collections/libra"
             }
           },
           "signbox_chWAt9": {
