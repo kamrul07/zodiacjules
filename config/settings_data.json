@@ -721,6 +721,14 @@
               "button_link": "shopify://collections/charms"
             }
           },
+          "imagebox_abFtCU": {
+            "type": "imagebox",
+            "settings": {
+              "title": "Misc Charms",
+              "image": "shopify://shop_images/Mask_group_5.png",
+              "button_link": "shopify://collections/misc"
+            }
+          },
           "imagebox_QHyUzz": {
             "type": "imagebox",
             "settings": {
@@ -731,6 +739,7 @@
         },
         "block_order": [
           "imagebox_E7rhg9",
+          "imagebox_abFtCU",
           "imagebox_QHyUzz"
         ],
         "settings": {
