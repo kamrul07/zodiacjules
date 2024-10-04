@@ -798,9 +798,10 @@
           "signbox_c8xnDA": {
             "type": "signbox",
             "settings": {
-              "title": "",
-              "date": "",
-              "button_link": ""
+              "title": "Gemini",
+              "date": "May 21 – June 21",
+              "image": "shopify://shop_images/Mask_group_8.png",
+              "button_link": "shopify://collections/gemini"
             }
           },
           "signbox_wtDTHJ": {
