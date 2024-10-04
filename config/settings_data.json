@@ -662,7 +662,7 @@
         "type": "instafeed",
         "settings": {
           "heading_size": 23,
-          "feed_width": 75,
+          "feed_width": 100,
           "html_area": ""
         }
       },
