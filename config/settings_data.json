@@ -904,6 +904,78 @@
           "button_title": "Create Your Own Now",
           "button_link": "shopify://pages/charm-builder"
         }
+      },
+      "section_informationbox_FPpy96": {
+        "type": "section-informationbox",
+        "blocks": {
+          "infobox_QM3bxE": {
+            "type": "infobox",
+            "settings": {
+              "title": "Shop With Julie",
+              "description": "Create your own cosmic statement with our custom zodiac jewelry.",
+              "image": "shopify://shop_images/Mask_group_18.png",
+              "button_link": "",
+              "button-text": "Find Out More"
+            }
+          },
+          "infobox_B6yKpM": {
+            "type": "infobox",
+            "settings": {
+              "title": "Monthly Event Schedule",
+              "description": "Create your own cosmic statement with our custom zodiac jewelry.",
+              "image": "shopify://shop_images/Mask_group_19.png",
+              "button_link": "",
+              "button-text": "Find Out More"
+            }
+          },
+          "infobox_KVhBDf": {
+            "type": "infobox",
+            "settings": {
+              "title": "Monthly Event schedule",
+              "description": "Create your own cosmic statement with our custom zodiac jewelry.",
+              "button_link": "",
+              "button-text": "Find Out More"
+            }
+          },
+          "infobox_b3UTXc": {
+            "type": "infobox",
+            "settings": {
+              "title": "Private Event Booking",
+              "description": "Create your own cosmic statement with our custom zodiac jewelry.",
+              "button_link": "",
+              "button-text": "Find Out More"
+            }
+          },
+          "infobox_YyQnQa": {
+            "type": "infobox",
+            "settings": {
+              "title": "In the Media",
+              "description": "Create your own cosmic statement with our custom zodiac jewelry.",
+              "button_link": "",
+              "button-text": "Find Out More"
+            }
+          },
+          "infobox_men73g": {
+            "type": "infobox",
+            "settings": {
+              "title": "About Us",
+              "description": "Create your own cosmic statement with our custom zodiac jewelry.",
+              "button_link": "",
+              "button-text": "Find Out More"
+            }
+          }
+        },
+        "block_order": [
+          "infobox_QM3bxE",
+          "infobox_B6yKpM",
+          "infobox_KVhBDf",
+          "infobox_b3UTXc",
+          "infobox_YyQnQa",
+          "infobox_men73g"
+        ],
+        "settings": {
+          "title": "Services, Events & Information"
+        }
       }
     },
     "content_for_index": [
@@ -914,7 +986,8 @@
       "section_imageblock_acxNhf",
       "section_imagebox_URhGtV",
       "1662999178c3941b07",
-      "section_imagewith_text_qHUeMb"
+      "section_imagewith_text_qHUeMb",
+      "section_informationbox_FPpy96"
     ]
   },
   "presets": {
