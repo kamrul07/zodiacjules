@@ -918,21 +918,12 @@
               "button-text": "Find Out More"
             }
           },
-          "infobox_B6yKpM": {
-            "type": "infobox",
-            "settings": {
-              "title": "Monthly Event Schedule",
-              "description": "Create your own cosmic statement with our custom zodiac jewelry.",
-              "image": "shopify://shop_images/Mask_group_19.png",
-              "button_link": "",
-              "button-text": "Find Out More"
-            }
-          },
           "infobox_KVhBDf": {
             "type": "infobox",
             "settings": {
               "title": "Monthly Event schedule",
               "description": "Create your own cosmic statement with our custom zodiac jewelry.",
+              "image": "shopify://shop_images/Mask_group_19.png",
               "button_link": "",
               "button-text": "Find Out More"
             }
@@ -967,7 +958,6 @@
         },
         "block_order": [
           "infobox_QM3bxE",
-          "infobox_B6yKpM",
           "infobox_KVhBDf",
           "infobox_b3UTXc",
           "infobox_YyQnQa",
