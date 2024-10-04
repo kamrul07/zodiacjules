@@ -36,6 +36,7 @@ html {
   --semi-medium-font-size: 36px;
   --regular-body-font-size: 16px;
   --big-body-font-size: 18px;
+  --normal-header-font-size: 20px;
 }
 h1 {
   font-family: var(--header-font-family);
@@ -122,6 +123,7 @@ body {
 }
 .sectionpadding {
   padding-top: 60px;
+  padding-bottom: 60px;
 }
 /*announcements start*/
 .announcement__wrapper {
@@ -349,7 +351,7 @@ a.menuItemWithImg-item img {
 /* Hero banner section */
 .heroTitle {
   color: var(--color-white);
-  font-size: 64px;
+  font-size: var(--big-font-size);
   line-height: normal;
   text-transform: capitalize;
   text-shadow: 0px 4px 26.7px rgba(0, 0, 0, 0.5);
@@ -428,4 +430,975 @@ a.menuItemWithImg-item img {
 }
 .sectionTitle {
   text-transform: capitalize;
+  line-height: normal;
 }
+/* product slider section ends */
+/* Founder section start */
+.founderareaWrapper {
+  min-height: 376px;
+  background: var(--color-beige);
+}
+
+.founderInfo {
+  width: 317px;
+  height: 317px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.founderInfo svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+p.founderQuoteText {
+  font-size: 20px;
+  line-height: 38px;
+  letter-spacing: 0.6px;
+  font-family: var(--header-font-family);
+}
+.founderQuote {
+  max-width: 514px;
+}
+
+.founderContentInner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+}
+.FounderImg {
+  position: relative;
+}
+.founderDetails p {
+  margin: 0;
+  font-family: var(--header-font-family) !important;
+  padding-left: 16px;
+  line-height: normal;
+}
+p.founderNameText {
+  font-size: 14px;
+}
+p.founderDesignationText {
+  font-size: 20px;
+}
+.founderareaWrapper {
+  min-height: 376px;
+  background: var(--color-beige);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.founderAreaInner {
+  width: 100%;
+  position: relative;
+  z-index: 99;
+}
+p.founderQuoteText {
+  font-size: 20px;
+  line-height: 38px;
+  letter-spacing: 0.6px;
+  font-family: var(--header-font-family);
+  margin: 0;
+}
+a.singleIMageBlock {
+  display: flex;
+  width: 32%;
+  min-height: 578px;
+  background-size: cover !important;
+  background-position: center !important;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.imgaeblockArea {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+}
+.singleboxInner {
+  padding: 30px 24px;
+}
+h2.singleboxtitle {
+  color: white;
+  margin: 0;
+}
+/* Founder section end */
+
+/* Sign box section */
+a.singleSignBox {
+  display: block;
+  width: 19%;
+  max-width: 215px;
+  box-shadow: 0px 4px 35.1px 0px rgba(182, 160, 171, 0.3);
+}
+.singleSignInner img {
+  width: 100%;
+}
+.singleSignInner {
+  display: block;
+  text-align: center;
+  background: white;
+  padding: 40px 25px;
+  min-height: 361px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.signShopArea {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.signShopWrap {
+  width: 100%;
+  background: var(--color-light-pink);
+}
+.signShopTitle {
+  margin-bottom: 50px;
+}
+h2.singleSignTitle {
+  font-size: 24px;
+  line-height: normal;
+}
+
+p.signDate {
+  font-size: 12px;
+  text-align: center;
+  background: #f3f3f3;
+  padding: 4px;
+  margin: 0;
+  width: 100%;
+}
+.imageWithTextLeft img {
+  width: 100%;
+}
+
+.imageWithTextLeft {
+  width: 50%;
+}
+.imageWithTextRight {
+  width: 50%;
+  padding-left: 50px;
+}
+.imageWithTextInner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.imageWithTextRight p {
+  max-width: 525px;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Avenir;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 20px;
+  margin-bottom: 22px;
+}
+/* Sign box section end */
+
+/* information box section */
+
+.infoBoxArea {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  column-gap: 15px;
+  row-gap: 50px;
+}
+.singleInfoBoxInner img {
+  width: 100%;
+}
+
+.singleInfoBoxInner {
+  width: 100%;
+}
+h2.singleInfoTitle {
+  font-size: var(--normal-header-font-size);
+  margin-bottom: 10px;
+  line-height: normal;
+  margin-top: 30px;
+}
+p.infoBoxDescription {
+  font-size: var(--normal-body-font-size);
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.singleInfoBox:nth-child(1),
+.singleInfoBox:nth-child(2),
+.singleInfoBox:nth-child(3) {
+  max-width: 435px;
+  width: 32%;
+}
+.singleInfoBox {
+  width: 49%;
+  max-width: 676px;
+}
+/* information box section end */
+
+/*faq section */
+.faqareWrap {
+  background: var(--color-light-pink);
+}
+.singleFaqTitle h2 {
+  font-size: var(--normal-header-font-size);
+  line-height: normal;
+  margin: 0;
+}
+.singleFaqTitle {
+  width: 100%;
+  cursor: pointer;
+  padding: 20px 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.singleFaqcontent {
+  height: 0;
+  overflow: hidden;
+  /* background: red; */
+  transition: all 0.3s ease;
+  min-height: 0px;
+}
+.singleFaq.active .singleFaqcontent {
+  min-height: 150px;
+}
+
+.singleFaqcontentInner {
+  padding: 25px 40px;
+}
+.inconRea {
+  position: absolute;
+  right: 40px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.singleFaq.active svg.icon-minus {
+  opacity: 1;
+  visibility: visible;
+}
+.singleFaq.active svg.icon-pluss {
+  opacity: 0;
+  visibility: hidden;
+}
+.singleFaq svg.icon-minus {
+  opacity: 0;
+  visibility: hidden;
+}
+.singleFaq svg.icon-pluss {
+  opacity: 1;
+  visibility: visible;
+}
+.inconRea svg {
+  position: absolute;
+}
+/*faq section end*/
+
+/* footer section */
+footer.site-footer-wrapper {
+  background: white;
+  padding-top: 60px;
+}
+.footer-logo img {
+  display: block;
+  z-index: 100;
+  position: relative;
+  max-width: 216px;
+  max-height: 80px;
+}
+.singleFooterLeft {
+  width: 50%;
+  padding-right: 30px;
+}
+.singlefooterRight {
+  width: 50%;
+}
+.upperfooterInner {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+ul.footerSocialInner li svg path {
+  fill: var(--color-dark);
+}
+ul.footerSocialInner {
+  display: flex !important;
+  margin: 0;
+  padding: 0;
+  gap: 35px;
+  padding-left: 15px;
+}
+ul.footerSocialInner li svg {
+  width: 25px;
+  height: 25px;
+}
+.footerSocial {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+  display: block;
+}
+.mobile-menu-icon.header__desktop__button {
+  display: none;
+}
+.footerNewsletter form#contact_form {
+  max-width: 471px;
+  background: white;
+  margin: 0;
+}
+.footerNewsletter .input-group--inner-button {
+  padding: 0;
+  background: white;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+.footerNewsletter input#mail {
+  color: var(--color-dark);
+  font-size: 15px;
+  font-family: var(--body-text-font-family);
+}
+button#subscribe {
+  font-size: 13px;
+  background: var(--color-dark);
+  font-size: 13px !important;
+  padding: 23px 28px;
+}
+input#mail {
+  color: var(--color-dark);
+  font-size: 15px;
+  font-family: var(--body-text-font-family);
+  padding: 23px;
+}
+input#mail::placeholder {
+  color: var(--color-dark);
+}
+p.newsletterTitle {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: normal;
+}
+.rightFooterInner {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.footerMenu ul.footer-quicklinks li a {
+  color: var(--color-dark);
+  font-size: 12px;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-family: var(--body-text-font-family);
+  letter-spacing: 0;
+}
+.footerMenu {
+  width: 33%;
+  padding-right: 15px;
+}
+.lowerFooterWrapper {
+  border-top: 1px solid #d2d2d2;
+  padding-top: 30px;
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+.copyRightArea {
+  width: 100%;
+  text-align: right;
+}
+.paymentArea {
+  width: 100%;
+}
+.lowerFooterInner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.copyRightArea p {
+  margin: 0;
+  font-size: 15px;
+}
+.footer-payment li {
+  margin: 5px;
+}
+p.footer__Menutitle {
+  font-family: var(--header-font-family);
+  font-size: var(--normal-header-font-size);
+}
+div#insta-feed h2 {
+  display: none;
+}
+/* footer section ends */
+/* Review section */
+.jdgm-carousel-wrapper {
+  width: 100%;
+  margin: auto;
+  padding: 0px 50px;
+  max-width: 1440px;
+}
+.jdgm-carousel-item__review-title.jdgm-line-clamp {
+  text-align: left;
+  font-weight: 400;
+  margin-bottom: 8px;
+  font-family: var(--header-font-family);
+  color: black;
+  opacity: 1 !important;
+  font-size: 20px;
+  display: block !important;
+}
+.jdgm-carousel-item__review-body.jdgm-line-clamp p {
+  text-align: left;
+  font-family: var(--header-font-family);
+  font-size: 14px;
+  line-height: 25px;
+}
+.jdgm-carousel__item-wrapper {
+  width: 100%;
+  height: auto;
+  white-space: nowrap;
+}
+.jdgm-carousel__item-wrapper {
+  width: 100%;
+  height: auto !important;
+  white-space: nowrap;
+}
+.jdgm-carousel-item__review-rating {
+  display: flex;
+  margin-bottom: 10px;
+}
+.jdgm-carousel-item__reviewer-name.jdgm-ellipsis {
+  font-size: 19px;
+  color: black !important;
+  text-align: left;
+  font-family: var(--header-font-family);
+  margin-top: 10px !important;
+}
+.jdgm-carousel-item {
+  vertical-align: top !important;
+  padding: 0 !important;
+  padding-right: 24px !important;
+}
+.jdgm-star {
+  color: #ffd056 !important;
+}
+.jdgm-carousel-wrapper .jdgm-widget.jdgm-carousel {
+  width: 100% !important;
+  margin: 0 auto;
+  position: relative;
+}
+
+.jdgm-carousel-wrapper {
+  width: 100% !important;
+  margin: auto;
+  padding: 0px 50px !important;
+  /* max-width: 1440px !important; */
+}
+div#shopify-section-16215383423eadcc03 {
+  background: var(--color-light-pink);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+span.jdgm-all-reviews-rating-wrapper {
+  display: none !important;
+}
+h2.jdgm-carousel-title {
+  margin-bottom: 60px;
+  text-align: left;
+}
+.jdgm-carousel-title-and-link {
+  margin-bottom: 24px;
+  width: 100% !important;
+  margin: 0 !important;
+}
+.jdgm-carousel-wrapper .jdgm-carousel__left-arrow {
+  float: left;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+}
+.jdgm-carousel-wrapper .jdgm-carousel__right-arrow {
+  float: right;
+  margin-right: 0 !important;
+  margin-top: 0 !important;
+}
+.jdgm-carousel__right-arrow,
+.jdgm-carousel__left-arrow {
+  width: 10px !important;
+  height: 10px !important;
+  border-width: 1px !important;
+}
+.jdgm-carousel__arrows {
+  display: flex !important;
+  justify-content: flex-end !important;
+  position: absolute;
+  top: -87px;
+  right: 0;
+}
+/* Review section end*/
+
+/* tablet CSS */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  html {
+    --big-font-size: 44px;
+    --medium-font-size: 22px;
+    --semi-medium-font-size: 24px;
+    --regular-body-font-size: 14px;
+    --big-body-font-size: 18px;
+    --normal-header-font-size: 20px;
+  }
+
+  .wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+  }
+  .use_pixels_750 {
+    height: 550px;
+  }
+  .sectionpadding {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .sectionTitle {
+    margin-bottom: 20px;
+  }
+  a.singleIMageBlock {
+    display: flex;
+    width: 32%;
+    min-height: 310px;
+    background-size: cover !important;
+    background-position: center !important;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  .singleInfoBox:nth-child(1),
+  .singleInfoBox:nth-child(2),
+  .singleInfoBox:nth-child(3) {
+    max-width: 676px;
+    width: 48%;
+  }
+  h2.singleInfoTitle {
+    margin-top: 15px;
+  }
+  .singleFaqTitle h2 {
+    --normal-header-font-size: 16px;
+  }
+  .singleFaqTitle {
+    padding: 13px 16px;
+  }
+  .singleFaqcontentInner {
+    padding: 15px 33px;
+  }
+  a.singleSignBox {
+    display: block;
+    width: 23%;
+    max-width: 226px;
+    box-shadow: 0 4px 35.1px #b6a0ab4d;
+  }
+  .singleSignInner {
+    display: block;
+    text-align: center;
+    background: #fff;
+    padding: 15px 10px;
+    min-height: 281px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .signShopTitle {
+    margin-bottom: 20px;
+  }
+  h2.jdgm-carousel-title {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .jdgm-carousel__arrows {
+    display: flex !important;
+    justify-content: flex-end !important;
+    position: absolute;
+    top: -43px;
+    right: 0;
+  }
+  .jdgm-carousel-wrapper {
+    width: 100% !important;
+    margin: auto;
+    padding: 0 20px !important;
+  }
+  .singleFooterLeft,
+  .singlefooterRight {
+    padding-right: 30px;
+  }
+  .productslidernav {
+    top: -60px;
+  }
+  .founderQuote {
+    max-width: 446px;
+  }
+  .header__menu__inner ul.mainmenuWrapper {
+    padding-left: 26px;
+  }
+}
+
+/* Mobile CSS */
+@media only screen and (max-width: 767px) {
+  html {
+    --big-font-size: 30px;
+    --medium-font-size: 22px;
+    --semi-medium-font-size: 24px;
+    --regular-body-font-size: 14px;
+    --big-body-font-size: 18px;
+    --normal-header-font-size: 18px;
+  }
+  .use_pixels_750 {
+    height: 317px;
+  }
+
+  .section--image {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .wrapper {
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+  }
+  .section--image .flex-absolute {
+    position: relative;
+    background: #f3f3f3;
+  }
+  .heroSubtitle {
+    font-size: 14px;
+    line-height: normal;
+    color: var(--color-dark);
+    text-shadow: none;
+  }
+  .heroButtonarea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  .heroTitle {
+    text-shadow: none;
+    margin-bottom: 15px;
+    color: var(--color-dark);
+  }
+  .primary-button {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+  .heroButtonarea {
+    gap: 15px;
+    margin-top: 20px;
+  }
+  .secondary-button {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+  .heroButtonarea .heroButton {
+    min-width: 140px;
+    text-align: center;
+    display: block;
+  }
+  .sectionpadding {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .productslidernav {
+    top: -65px;
+  }
+  .sectionTitle {
+    margin-bottom: 25px;
+  }
+  .founderareaWrapper:after {
+    display: none;
+  }
+  .founderContentInner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .founderAreaInner {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  a.singleIMageBlock {
+    width: 48%;
+    min-height: 300px;
+  }
+  .imgaeblockArea {
+    gap: 5px;
+  }
+  .singleboxInner {
+    padding: 9px 12px;
+  }
+
+  .signShopArea {
+    gap: 5px;
+  }
+  a.singleSignBox {
+    display: block;
+    width: 32%;
+    max-width: 130px;
+    box-shadow: 0 4px 35.1px #b6a0ab4d;
+  }
+  .singleSignInner {
+    display: block;
+    text-align: center;
+    background: #fff;
+    padding: 20px 5px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  h2.singleSignTitle {
+    font-size: 18px;
+    line-height: normal;
+  }
+  .signShopTitle {
+    margin-bottom: 25px;
+  }
+  p.signDate {
+    font-size: 10px;
+    text-align: center;
+    background: #f3f3f3;
+    padding: 2px;
+    margin: 0;
+    width: 100%;
+  }
+  .imageWithTextInner {
+    flex-direction: column;
+  }
+  .imageWithTextLeft {
+    width: 100%;
+  }
+  .imageWithTextRight {
+    width: 100%;
+    padding-left: 0;
+  }
+  .imageWithTextRight {
+    width: 100%;
+    padding-left: 0;
+    padding-top: 30px;
+  }
+  .imageWithTextRight p {
+    font-size: 16px;
+  }
+  .jdgm-carousel-wrapper {
+    padding: 0 15px !important;
+  }
+  h2.jdgm-carousel-title {
+    margin-bottom: 25px;
+    text-align: left;
+  }
+  .jdgm-carousel__arrows {
+    display: flex !important;
+    justify-content: flex-end !important;
+    position: absolute;
+    top: -51px;
+    right: 0;
+  }
+  div#shopify-section-16215383423eadcc03 {
+    background: var(--color-light-pink);
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .singleInfoBox:nth-child(1),
+  .singleInfoBox:nth-child(2),
+  .singleInfoBox:nth-child(3) {
+    max-width: 100%;
+    width: 100%;
+  }
+  .singleInfoBox {
+    width: 100%;
+    max-width: 100%;
+  }
+  .infoBoxArea {
+    column-gap: 0;
+    row-gap: 30px;
+  }
+  .singleFaqTitle h2 {
+    font-size: 14px;
+    line-height: normal;
+    margin: 0;
+  }
+  .singleFaqTitle {
+    width: 100%;
+    cursor: pointer;
+    padding: 13px 5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-right: 25px;
+  }
+  .inconRea {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .singleFaq.active .singleFaqcontent {
+    min-height: 150px;
+    height: auto;
+  }
+  .singleFaqcontentInner {
+    padding: 10px 20px;
+  }
+  .singleFooterLeft {
+    width: 100%;
+    padding-right: 0px;
+  }
+  .singlefooterRight {
+    width: 100%;
+  }
+  .upperfooterInner {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .footerMenu {
+    width: 50%;
+    padding-right: 15px;
+    margin: 0 !important;
+  }
+  .rightFooterInner {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .lowerFooterInner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .paymentArea ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .copyRightArea {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 10px;
+  }
+  .copyRightArea p {
+    margin: 0;
+    font-size: 11px;
+  }
+  .lowerFooterWrapper {
+    border-top: 1px solid #d2d2d2;
+    padding-top: 0px;
+    margin-top: 0px;
+    padding-bottom: 19px;
+  }
+  .announcement__left,
+  .announcement__right {
+    display: block;
+    display: flex;
+    align-items: center;
+    min-width: 0px;
+    height: 0;
+  }
+  .product-grid-item p.grid__title {
+    font-size: 12px;
+  }
+}
+
+/* Mobile CSS ends */
+
+/*Header CSS */
+@media only screen and (max-width: 800px) {
+  .header__mobile {
+    display: none !important;
+  }
+
+  .header__desktop__bar__c {
+    display: none;
+  }
+  .header__desktop {
+    display: flex !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .header__desktop {
+    display: flex !important;
+  }
+  a.header__logo__link {
+    max-width: 155px !important;
+    width: 95% !important;
+  }
+  .header__desktop__buttons {
+    display: flex;
+    width: 100%;
+    margin: 0px !important;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .header__desktop__bar__r {
+    flex: 1;
+    justify-content: center;
+    width: 50%;
+  }
+  .header__desktop__bar__l {
+    justify-content: flex-start;
+    max-width: 50%;
+    width: 50%;
+  }
+  .mobile-menu-icon.header__desktop__button {
+    padding: 5px 10px;
+  }
+  .navlink {
+    padding: 5px 10px;
+  }
+  .header__logo {
+    padding: 0;
+    width: 100%;
+  }
+  .header__logo {
+    padding: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .mobile-menu-icon.header__desktop__button {
+    display: block;
+  }
+}
+
+/*Header CSS */

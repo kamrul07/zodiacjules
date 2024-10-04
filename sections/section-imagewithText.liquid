@@ -1,0 +1,62 @@
+<div class="ImageWithTextSlider">
+    <div class="imageSLiderInner sectionpadding">
+        <div class="wrapper">
+            <div class="imageWithText">
+                <div class="imageWithTextInner">
+                    <div class="imageWithTextLeft">
+                        <img src="{{ section.settings.image | img_url: 'master' }}" alt="Image">
+                    </div>
+                    <div class="imageWithTextRight">
+                        <h2>{{ section.settings.title }}</h2>
+                        <p>{{ section.settings.description }}</p>
+                        <a href="{{ section.settings.button_link }}" class="btn primary-button">{{ section.settings.button_title }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Custom Image with text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "section Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Looking For A Custom Design?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Create your own cosmic statement with our custom zodiac jewellery. Choose your charms, pick your chain, and design a piece that's uniquely yours."
+    },
+    {
+      "type": "text",
+      "id": "button_title",
+      "label": "Button Title",
+      "default": "Create Your Own Now"
+    },
+    {
+    "type": "url",
+    "id": "button_link",
+    "label": "Link"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Custom Image with text",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

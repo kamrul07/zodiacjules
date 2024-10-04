@@ -1,0 +1,86 @@
+<div class="founderareaWrapper">
+    <div class="founderAreaInner">
+        <div class="wrapper">
+            <div class="founderContentWrap">
+                <div class="founderContentInner">
+                    <div class="founderQuote">
+                        {% render "icon-quote" %}
+                        <p class="founderQuoteText">{{ section.settings.quote }}</p>
+                    </div>
+                    <div class="founderInfo">
+                        {% render "icon-moon"  %}
+                        <div class="FounderImg">
+                            <img src="{{ section.settings.founder-img | img_url: 'master' }}" alt="{{ section.settings.founder_name }}">
+                        </div>
+                        <div class="founderDetails">
+                        <p class="founderDesignationText">{{ section.settings.founder-name }}</p>
+                        <p class="founderNameText">{{ section.settings.founder-designation }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .founderareaWrapper:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url({{ section.settings.bg-image | img_url: 'master' }});
+}
+.founderareaWrapper:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url({{ section.settings.bg-image | img_url: 'master' }});
+    max-width: 437px;
+    background-repeat: no-repeat;
+    top: 1px;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Founder section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Founder Quote",
+      "default": "At ZodiacJules, we believe jewelry should be as unique as you are. Our custom charm pieces are crafted with care and intention, turning each piece into a cherished keepsake that tells your story."
+    },
+    {
+      "type": "image_picker",
+      "id": "bg-image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "founder-img",
+      "label": "Founder Image"
+    },
+    {
+      "type": "text",
+      "id": "founder-name",
+      "label": "Founder Name",
+      "default": "Julie"
+    },
+    {
+      "type": "text",
+      "id": "founder-designation",
+      "label": "Founder Designation",
+      "default": "Founder & Designer"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Founder section",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

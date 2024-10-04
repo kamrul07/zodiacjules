@@ -1,0 +1,105 @@
+<div class="signShopWrap">
+    <div class="signShopInner sectionpadding">
+        <div class="wrapper">
+            <h2 class="signShopTitle">{{ section.settings.title }}</h2>
+            <div class="signShopArea">
+                {% for block in section.blocks %}
+                <a href="{{ block.settings.button_link }}" class="singleSignBox">
+                    <div class="singleSignInner">
+                        <h2 class="singleSignTitle">{{ block.settings.title }} </h2>
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title }}">
+                        <p class="signDate">{{ block.settings.date }}</p>
+                    </div>
+                </a>
+                {% endfor %}    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Sign box",
+    "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+        "default": "Shop By Sign"
+    }
+    ],
+    "blocks": [
+      {
+        "type": "signbox",
+        "name": "Sign box",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "date",
+            "label": "Sign Date"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Sign box",
+        "category": "image",
+        "settings": {
+          "title": ""
+        },
+        "blocks": [
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          },
+          {
+            "type": "signbox"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

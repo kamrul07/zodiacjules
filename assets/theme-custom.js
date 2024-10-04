@@ -22,3 +22,10 @@ const swiper = new Swiper(".swiper.slideproducts", {
     prevEl: ".ps-button-prev",
   },
 });
+
+//faq
+
+$(".singleFaqTitle").on("click", function () {
+  $(".singleFaq").removeClass("active");
+  $(this).parents(".singleFaq").addClass("active");
+});

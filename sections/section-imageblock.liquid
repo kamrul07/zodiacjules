@@ -1,0 +1,68 @@
+<div class="imageBlockWrapper">
+    <div class="imageBlockInner sectionpadding">
+        <div class="wrapper">
+            <div class="imgaeblockArea">
+                {% for block in section.blocks %}
+                
+                <a style="background:url({{ block.settings.image | img_url: 'master' }})" class="singleIMageBlock" href="{{ block.settings.button_link  }}" >
+                    <div class="singleboxInner">
+                        <h2 class="singleboxtitle">{{ block.settings.title  }}</h2>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Image box",
+    "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title"
+    }
+    ],
+    "blocks": [
+      {
+        "type": "imagebox",
+        "name": "Image box",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image box",
+        "category": "image",
+        "settings": {
+          "title": ""
+        },
+        "blocks": [
+          {
+            "type": "imagebox"
+          },
+          {
+            "type": "imagebox"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

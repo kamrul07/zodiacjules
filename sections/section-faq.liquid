@@ -1,0 +1,80 @@
+<div class="faqareWrap">
+    <div class="faqWrapInner sectionpadding">
+        <div class="wrapper">
+            <h2 class="sectionTitle">{{ section.settings.title }}</h2>
+             
+            <div class="faqArea">
+                {% for block in section.blocks %}
+                 <div class="singleFaq">
+                    <div class="singleFaqInner">
+                        <div class="singleFaqTitle">
+                            <h2 >Q. {{ block.settings.title }}</h2> 
+                            <div class="inconRea">
+                                {% include 'icon-pluss' %}
+                                {% include 'icon-minus' %}
+                            </div>
+                        </div>
+                        <div class="singleFaqcontent">
+                        <div class="singleFaqcontentInner">
+                            {{ block.settings.description }}
+                        </div>
+                        </div>
+                    </div>
+                 </div>
+                {% endfor %}    
+        </div>
+    </div>
+</div>
+</div>
+
+{% schema %}
+  {
+    "name": "FAQ builder",
+    "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+        "default": "You’ve got Questions? We’ve got Answers"
+    }
+    ],
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "FAQ item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "How long will a custom order take to make? "
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Sign Date",
+            "default": "<p>Answer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQ item",
+        "category": "image",
+        "settings": {
+          "title": "You’ve got Questions? We’ve got Answers"
+        },
+        "blocks": [
+          {
+            "type": "faq",
+             "settings": {
+             "title": "How long will a custom order take to make?",
+             "description": "<p>Answer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

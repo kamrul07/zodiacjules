@@ -1,0 +1,117 @@
+<div class="infoBoxWrap">
+    <div class="infoBoxInner sectionpadding">
+        <div class="wrapper">
+            <h2 class="sectionTitle">{{ section.settings.title }}</h2>
+            <div class="infoBoxArea">
+                {% for block in section.blocks %}
+                 <div class="singleInfoBox">
+                    <div class="singleInfoBoxInner">
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title }}">
+                        <h2 class="singleInfoTitle">{{ block.settings.title }}</h2> 
+                        <p class="infoBoxDescription">{{ block.settings.description }}</p>
+                        <a href="{{ block.settings.button_link }}" class="btn primary-button">{{ block.settings.button-text }}</a>
+                    </div>
+                 </div>
+                {% endfor %}    
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Information box",
+    "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+        "default": "Services, Events & Information"
+    }
+    ],
+    "blocks": [
+      {
+        "type": "infobox",
+        "name": "Information Box",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Sign Date",
+            "default": "Create your own cosmic statement with our custom zodiac jewelry. "
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "button-text",
+            "label": "Button Text",
+            "default": "Find Out More"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Information box",
+        "category": "image",
+        "settings": {
+          "title": "Services, Events & Information"
+        },
+        "blocks": [
+          {
+            "type": "infobox",
+             "settings": {
+             "title": "Shop With Julie",
+             "description": "Create your own cosmic statement with our custom zodiac jewelry. "
+          }
+          },
+          {
+            "type": "infobox",
+             "settings": {
+             "title": "Monthly Event schedule",
+             "description": "Create your own cosmic statement with our custom zodiac jewelry. "
+          }
+          },
+          {
+            "type": "infobox",
+             "settings": {
+             "title": "Private Event Booking",
+             "description": "Create your own cosmic statement with our custom zodiac jewelry. "
+          }
+          },
+          {
+            "type": "infobox",
+             "settings": {
+             "title": "In the Media",
+             "description": "Create your own cosmic statement with our custom zodiac jewelry. "
+          }
+          },
+          {
+            "type": "infobox",
+             "settings": {
+             "title": "About Us",
+             "description": "Create your own cosmic statement with our custom zodiac jewelry. "
+          }
+          },
+        
+        ]
+      }
+    ]
+  }
+{% endschema %}

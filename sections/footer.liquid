@@ -2,178 +2,119 @@
   role="contentinfo"
   data-section-id="{{ section.id }}"
   data-section-type="footer">
-  {% if section.settings.footer_image %}
-    <div class="footer-logo-wrapper">
-      <a href="{{ routes.root_url }}" class="footer-logo" data-footer-logo>
-        <img src="{{ section.settings.footer_image | img_url: 'x200' }}" alt="{{ section.settings.footer_image.alt | default: shop.name }}"/>
-      </a>
-    </div>
-  {% endif %}
   <div class="wrapper site-footer">
-    <div class="grid grid--uniform">
-
-      {% case section.blocks.size %}
-        {% when 0 %}
-        {% when 1 %}
-          {% assign footer_column_width = 'medium-up--one-half medium-up--push-one-quarter' %}
-        {% when 2 %}
-          {% assign footer_column_width = 'medium-up--one-half' %}
-        {% when 3 %}
-          {% assign footer_column_width = 'medium-up--one-third' %}
-        {% when 4 %}
-            {% assign footer_column_width = 'medium-up--one-quarter' %}
-      {% endcase %}
-
-      {% for block in section.blocks %}
-        {% case block.type %}
-
-          {% when 'linklist' %}
-            {% assign linklist = linklists[block.settings.linklist] %}
-            <div class="grid__item {{ footer_column_width }} footer__block" {{ block.shopify_attributes }}>
-              <p class="uppercase footer__title">{{ linklist.title }}</p>
-              <hr class="hr--underline">
-              <ul class="footer-quicklinks">
-                {% for link in linklist.links %}
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {% endfor %}
-              </ul>
+    <div class="upperFooterWrapper">
+      <div class="upperfooterInner">
+         <div class="singleFooterLeft">
+          <div class="leftFooterInner">
+            <div class="footerLogo">
+              <a href="{{ routes.root_url }}" class="footer-logo" data-footer-logo>
+                <img src="{{ section.settings.footer_image | img_url: 'x200' }}" alt="{{ section.settings.footer_image.alt | default: shop.name }}"/>
+              </a>
             </div>
+            <div class="footerSocial">
+                {% if section.settings.footer_social_enable %}
+                <ul class="footerSocialInner">
+                  {%- assign social_accounts = 'Facebook, Twitter, Tiktok, Pinterest, Instagram, Snapchat, Tumblr, Linkedin, YouTube, Vimeo, Medium, ' | split: ', ' -%}
+                  {%- for social in social_accounts -%}
+                    {%- assign social_handle = social | handleize -%}
+                    {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
 
-          {% when 'page' %}
-            {% assign page = pages[block.settings.page] %}
-            {% if page == blank or page.empty? %}
-              <div class="grid__item {{ footer_column_width }} footer__block" {{ block.shopify_attributes }}>
-                <p class="uppercase footer__title">{{ shop.name }}</p>
-                <hr class="hr--underline">
-                <div class="rte rte--column">{{ 'home_page.onboarding.no_content' | t }}</div>
+                    {%- if settings[social_link] != blank -%}
+                      <li>
+                        <a href="{{ settings[social_link] }}" title="{{ social }}">
+                          {% render 'social-icon' handle: social_handle  %}
+                          <span class="visually-hidden">{{ social }}</span>
+                        </a>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {% endif %}
             </div>
-            {% else %}
-              <div class="grid__item {{ footer_column_width }} footer__block" {{ block.shopify_attributes }}>
-                <p class="uppercase footer__title">{{ page.title | escape }}</p>
-                <hr class="hr--underline">
-                <div class="rte rte--column">{{ page.content }}</div>
-              </div>
-            {% endif %}
-
-          {% when 'text' %}
-            <div class="grid__item {{ footer_column_width }} footer__block" {{ block.shopify_attributes }}>
-              <p class="uppercase footer__title">{{ block.settings.title | escape }}</p>
-              <hr class="hr--underline">
-              <div class="rte rte--column">{{ block.settings.text }}</div>
-            </div>
-
-          {% when 'newsletter' %}
-            <div class="grid__item {{ footer_column_width }} footer__block" {{ block.shopify_attributes }}>
-              <p class="uppercase footer__title">{{ 'layout.footer.newsletter_title' | t }}</p>
-              <hr class="hr--underline">
-              <div class="rte rte--column">
-                {{ block.settings.richtext }}
-              </div>
+            <div class="NewsLetterArea">
+             <div class="footerNewsletter">
+              <p class="newsletterTitle">{{ section.settings.newsletter_title }}</p>
               {% render 'newsletter-form' %}
             </div>
-
-          {% else %}
-        {% endcase %}
-      {% endfor %}
-    </div>
-
-    <div class="grid footer-secondary-wrapper">
-
-      <div class="footer-selects">
-        {%- form 'localization', class: 'popout--footer' -%}
-          {%- if section.settings.show_locale_selector and shop.published_locales.size > 1 -%}
-            <div>
-              <h2 class="visually-hidden" id="lang-heading">
-                {{ 'layout.footer.language' | t }}
-              </h2>
-              <div class="popout" data-popout>
-                <button type="button" class="popout__toggle" aria-expanded="false" aria-controls="lang-list" aria-describedby="lang-heading" data-popout-toggle>
-                  {{ form.current_locale.endonym_name }}
-                  {%- render 'icon-arrow-down' -%}
-                </button>
-                <ul id="lang-list" class="popout-list" data-popout-list>
-                  {% for locale in form.available_locales %}
-                    <li class="popout-list__item {% if locale.iso_code == form.current_locale.iso_code %}popout-list__item--current{% endif %}">
-                      <a class="popout-list__option" href="#" lang="{{ locale.iso_code }}" {% if locale.iso_code == form.current_locale.iso_code %}aria-current="true"{% endif %} data-value="{{ locale.iso_code }}" data-popout-option>
-                        <span>{{ locale.endonym_name }}</span>
-                      </a>
-                    </li>
-                  {%- endfor -%}
-                </ul>
-                <input type="hidden" name="locale_code" id="LocaleSelector" value="{{ form.current_locale.iso_code }}" data-popout-input/>
-              </div>
             </div>
-          {%- endif -%}
+          </div>
+         </div>
+         <div class="singlefooterRight">
+           <div class="rightFooterInner">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'linklist' %}
+                    {% assign linklist = linklists[block.settings.linklist] %}
+                    <div class="footerMenu footer__block" {{ block.shopify_attributes }}>
+                      <p class="footer__Menutitle">{{ linklist.title }}</p>
+                      <ul class="footer-quicklinks">
+                        {% for link in linklist.links %}
+                          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
 
-          {%- if section.settings.show_currency_selector and shop.enabled_currencies.size > 1 -%}
-            <div>
-              <h2 class="visually-hidden" id="currency-heading">
-                {{ 'layout.footer.currency' | t }}
-              </h2>
-              <div class="popout" data-popout>
-                <button type="button" class="popout__toggle" aria-expanded="false" aria-controls="currency-list" aria-describedby="currency-heading" data-popout-toggle>
-                  {{ form.current_currency.iso_code }} {%- if form.current_currency.symbol -%}{{ form.current_currency.symbol }}{%- endif -%}
-                  {%- render 'icon-arrow-down' -%}
-                </button>
-                <ul id="currency-list" class="popout-list" data-popout-list>
-                  {% for currency in form.available_currencies %}
-                    <li class="popout-list__item {% if currency.iso_code == form.current_currency.iso_code %}popout-list__item--current{% endif %}">
-                      <a class="popout-list__option" href="#" {% if currency.iso_code == form.current_currency.iso_code %}aria-current="true"{% endif %} data-value="{{ currency.iso_code }}" data-popout-option>
-                        <span>{{ currency.iso_code }} {%- if currency.symbol -%}{{ currency.symbol }}{%- endif -%}</span>
-                      </a>
-                    </li>
-                  {%- endfor -%}
-                </ul>
-                <input type="hidden" name="currency_code" id="CurrencySelector" value="{{ form.current_currency.iso_code }}" data-popout-input/>
-              </div>
-            </div>
-          {%- endif -%}
-        {%- endform -%}
+                  {% when 'page' %}
+                    {% assign page = pages[block.settings.page] %}
+                    {% if page == blank or page.empty? %}
+                      <div class="grid__item {{ footer_column_width }} footer__block" {{ block.shopify_attributes }}>
+                        <p class="uppercase footer__title">{{ shop.name }}</p>
+                        <hr class="hr--underline">
+                        <div class="rte rte--column">{{ 'home_page.onboarding.no_content' | t }}</div>
+                    </div>
+                    {% else %}
+                      <div class="grid__item {{ footer_column_width }} footer__block" {{ block.shopify_attributes }}>
+                        <p class="uppercase footer__title">{{ page.title | escape }}</p>
+                        <hr class="hr--underline">
+                        <div class="rte rte--column">{{ page.content }}</div>
+                      </div>
+                    {% endif %}
+
+                  {% when 'text' %}
+                    <div class="grid__item {{ footer_column_width }} footer__block" {{ block.shopify_attributes }}>
+                      <p class="uppercase footer__title">{{ block.settings.title | escape }}</p>
+                      <hr class="hr--underline">
+                      <div class="rte rte--column">{{ block.settings.text }}</div>
+                    </div>
+
+                  {% when 'newsletter' %}
+                    <div class="grid__item {{ footer_column_width }} footer__block" {{ block.shopify_attributes }}>
+                      <p class="uppercase footer__title">{{ 'layout.footer.newsletter_title' | t }}</p>
+                      <hr class="hr--underline">
+                      <div class="rte rte--column">
+                        {{ block.settings.richtext }}
+                      </div>
+                      {% render 'newsletter-form' %}
+                    </div>
+
+                  {% else %}
+                {% endcase %}
+              {% endfor %}
+           </div>
+         </div>
       </div>
-
-
-      <ul class="footer-secondary inline-list">
-          <li>&copy; {{ shop.name | link_to: routes.root_url }} {{ 'now' | date: "%Y" }}</li>
-        {% for link in linklists[section.settings.footer_secondary_linklist].links %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-        <!-- Remove the following line to remove 'Powered by Shopify' from your footer -->
-                  <li><a href="https://heyjessromero.com">Designed by Jessica Romero</a></li>
-        <!-- Do not delete below this line -->
-      </ul>
-
-      {% if section.settings.footer_social_enable %}
-        <ul class="footer-social social-icons grid__item inline-list">
-          {%- assign social_accounts = 'Facebook, Twitter, Tiktok, Pinterest, Instagram, Snapchat, Tumblr, Linkedin, YouTube, Vimeo, Medium, ' | split: ', ' -%}
-          {%- for social in social_accounts -%}
-            {%- assign social_handle = social | handleize -%}
-            {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-
-            {%- if settings[social_link] != blank -%}
+    </div>
+    <div class="lowerFooterWrapper">
+      <div class="lowerFooterInner">
+        <div class="paymentArea">
+          {% if section.settings.footer_payment_enable %}
+            {% unless shop.enabled_payment_types == empty %}
+            <ul class="footer-payment payment-icons inline-list">
+              {% for type in shop.enabled_payment_types %}
               <li>
-                <a href="{{ settings[social_link] }}" title="{{ social }}">
-                  {% render 'social-icon' handle: social_handle  %}
-                  <span class="visually-hidden">{{ social }}</span>
-                </a>
+                {{ type | payment_type_svg_tag: class:'payment-icon' }}
+                <span class="visually-hidden">{{ type | capitalize | replace: '_', ' ' }}</span>
               </li>
-            {%- endif -%}
-          {%- endfor -%}
-        </ul>
-      {% endif %}
-
-      {% if section.settings.footer_payment_enable %}
-        {% unless shop.enabled_payment_types == empty %}
-        <ul class="footer-payment payment-icons inline-list">
-          {% for type in shop.enabled_payment_types %}
-          <li>
-            {{ type | payment_type_svg_tag: class:'payment-icon' }}
-            <span class="visually-hidden">{{ type | capitalize | replace: '_', ' ' }}</span>
-          </li>
-          {% endfor %}
-        </ul>
-        {% endunless %}
-      {% endif %}
-
+              {% endfor %}
+            </ul>
+            {% endunless %}
+          {% endif %}
+        </div>
+        <div class="copyRightArea">
+          {{ section.settings.copyright_text  }}
+        </div>
+      </div>
     </div>
   </div>
 </footer>
@@ -208,6 +149,28 @@
       "type": "checkbox",
       "id": "footer_social_enable",
       "label": "Show social icons"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+      
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default":"Stay up to date with launches, promotions and updates."
+    },
+    {
+      "type": "header",
+      "content": "Copyright"
+      
+    },
+    {
+      "type": "richtext",
+      "id": "copyright_text",
+      "label": "Coppyright Text",
+      "default":"<p>© 2024 ZodiacJules all rights reserved.</p>"
     },
     {
       "type": "header",
