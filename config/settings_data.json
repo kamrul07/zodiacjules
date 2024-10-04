@@ -699,14 +699,25 @@
           "title": "Our Best sellers",
           "collection": "cancer"
         }
+      },
+      "section_founder_VndbNm": {
+        "type": "section-founder",
+        "settings": {
+          "quote": "At ZodiacJules, we believe jewelry should be as unique as you are. Our custom charm pieces are crafted with care and intention, turning each piece into a cherished keepsake that tells your story.",
+          "bg-image": "shopify://shop_images/Mask_group_3.png",
+          "founder-img": "shopify://shop_images/Mask_group_2.png",
+          "founder-name": "Julie",
+          "founder-designation": "Founder & Designer"
+        }
       }
     },
     "content_for_index": [
       "16214309328180c397",
+      "product_slider_Fdy66X",
       "16215383423eadcc03",
       "1662999409de73a4df",
       "1662999178c3941b07",
-      "product_slider_Fdy66X"
+      "section_founder_VndbNm"
     ]
   },
   "presets": {
