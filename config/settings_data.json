@@ -1059,13 +1059,21 @@
               "menu-title": "Information",
               "linklist": "information"
             }
+          },
+          "linklist_Wft4jG": {
+            "type": "linklist",
+            "settings": {
+              "menu-title": "Help",
+              "linklist": "help"
+            }
           }
         },
         "block_order": [
           "linklist_K8WkqN",
           "linklist_YXkPr9",
           "linklist_p4zYNJ",
-          "linklist_6eBCQ3"
+          "linklist_6eBCQ3",
+          "linklist_Wft4jG"
         ],
         "settings": {
         }
