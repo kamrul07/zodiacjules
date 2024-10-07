@@ -132,6 +132,7 @@
           "linklist_xfb8yK"
         ],
         "settings": {
+          "footer_image": "shopify://shop_images/zodiacjules.png",
           "footer_secondary_linklist": "footer",
           "footer_payment_enable": true,
           "footer_social_enable": true,
@@ -1026,6 +1027,31 @@
         ],
         "settings": {
           "title": "You’ve got Questions? We’ve got Answers"
+        }
+      },
+      "mobile-menu": {
+        "type": "mobile-menu",
+        "blocks": {
+          "linklist_K8WkqN": {
+            "type": "linklist",
+            "settings": {
+              "menu-title": "Categories",
+              "linklist": "categories"
+            }
+          },
+          "linklist_YXkPr9": {
+            "type": "linklist",
+            "settings": {
+              "menu-title": "Shop by Sign",
+              "linklist": "sign-menu"
+            }
+          }
+        },
+        "block_order": [
+          "linklist_K8WkqN",
+          "linklist_YXkPr9"
+        ],
+        "settings": {
         }
       }
     },
