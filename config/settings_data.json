@@ -119,17 +119,17 @@
               "linklist": "customer-service"
             }
           },
-          "linklist_weeFdY": {
+          "linklist_xfb8yK": {
             "type": "linklist",
             "settings": {
-              "linklist": "footer"
+              "linklist": "main-menu"
             }
           }
         },
         "block_order": [
           "linklist",
           "ac9dd7dc-3215-4987-b198-68aff98e5bf7",
-          "linklist_weeFdY"
+          "linklist_xfb8yK"
         ],
         "settings": {
           "footer_secondary_linklist": "footer",
