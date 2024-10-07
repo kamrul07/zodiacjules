@@ -1045,11 +1045,19 @@
               "menu-title": "Shop by Sign",
               "linklist": "sign-menu"
             }
+          },
+          "linklist_p4zYNJ": {
+            "type": "linklist",
+            "settings": {
+              "menu-title": "Services",
+              "linklist": "services"
+            }
           }
         },
         "block_order": [
           "linklist_K8WkqN",
-          "linklist_YXkPr9"
+          "linklist_YXkPr9",
+          "linklist_p4zYNJ"
         ],
         "settings": {
         }
