@@ -145,6 +145,11 @@ body {
 /*announcements ends*/
 
 /*header start*/
+
+.mobileMenuWrapper {
+  visibility: hidden;
+  opacity: 0;
+}
 .header-override-border .theme__header {
   border-bottom: none;
   box-shadow: 0px 5px 16.3px 0px rgba(0, 0, 0, 0.06);
