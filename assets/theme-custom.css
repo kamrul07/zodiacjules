@@ -145,7 +145,10 @@ body {
 /*announcements ends*/
 
 /*header start*/
-
+.header-override-border .theme__header {
+  border-bottom: none;
+  box-shadow: 0px 5px 16.3px 0px rgba(0, 0, 0, 0.06);
+}
 .header__desktop {
   display: flex;
   width: 100%;
@@ -1398,6 +1401,107 @@ h2.jdgm-carousel-title {
   }
   .mobile-menu-icon.header__desktop__button {
     display: block;
+  }
+  ul.mobileMenu li a {
+    font-size: 16px;
+    line-height: normal;
+    font-family: var(--header-font-family);
+  }
+  ul.mobileMenu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  ul.mobileMenu li {
+    width: 50%;
+    margin-bottom: 18px;
+  }
+  ul.mobileMenu.categoriesmenu {
+    width: 100%;
+  }
+  .singleMobileMenu {
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 23px;
+    padding: 20px 15px;
+  }
+  .singleMobileMenu a.menuItemWithImg-item {
+    width: 48%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .singleMobileMenu a.menuItemWithImg-item span {
+    font-family: var(--header-font-family);
+  }
+  .singleMobileMenu.nor-menu {
+    border: none !important;
+  }
+  .singleMobileMenu.nor-menu ul li {
+    width: 100%;
+  }
+  .singleMobileMenu.nor-menu {
+    width: 48%;
+  }
+  .mobilemenuInner {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+  }
+  .singleMobileMenu .sectionTitle {
+    margin-bottom: 30px;
+    margin-top: 20px;
+  }
+  .mobileMenuWrapper {
+    border-top: 1px solid #dadada;
+  }
+  .mobileMenuWrapper {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    z-index: 999;
+    top: unset;
+    overflow-x: scroll;
+    height: 100vh;
+    padding-bottom: 135px;
+    transition: all 0.3s;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .mobileMenuWrapper.menu-open {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s;
+  }
+  body.menu-open {
+    overflow-y: hidden;
+    position: relative;
+  }
+  .menuIcon {
+    position: absolute;
+    top: -1px;
+    left: 4px;
+    transition: all 0.3s;
+  }
+  .mobile-menu-icon {
+    position: relative;
+    transition: all 0.3s;
+  }
+  .menuclose.menuIcon {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .menu-open .menuclose.menuIcon {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s;
+  }
+  .menu-open .menuOpen.menuIcon {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
   }
 }
 

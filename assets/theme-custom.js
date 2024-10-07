@@ -29,3 +29,11 @@ $(".singleFaqTitle").on("click", function () {
   $(".singleFaq").removeClass("active");
   $(this).parents(".singleFaq").addClass("active");
 });
+$(".menuOpen.menuIcon").on("click", function () {
+  $("body").addClass("menu-open");
+  $(".mobileMenuWrapper").addClass("menu-open");
+});
+$(".menuclose.menuIcon").on("click", function () {
+  $("body").removeClass("menu-open");
+  $(".mobileMenuWrapper").removeClass("menu-open");
+});

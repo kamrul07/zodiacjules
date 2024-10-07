@@ -1,0 +1,71 @@
+<div class="mobileMenuWrapper">
+    <div class="mobilemenuInner">
+        {% for block in section.blocks %}
+                 {% assign linklist = linklists[block.settings.linklist] %}
+                 {% case linklist.handle %}
+                    {% when 'categories' %}
+                <div class="singleMobileMenu cat-menu">
+                <h2 class="sectionTitle">{{ block.settings.menu-title  }}</h2>        
+                <ul class="mobileMenu categoriesmenu">
+                    {% for link in linklist.links %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                </ul> 
+                </div>
+                {% when 'sign-menu' %}
+                <div class="singleMobileMenu sign-menu">
+                <h2 class="sectionTitle">{{ block.settings.menu-title  }}</h2>  
+                <div class="menuItemWithImg">
+                    {% for link in linklist.links %}
+                    <a href='{{ link.url }}' class="menuItemWithImg-item">
+                        <img src="{{ collections[link.handle].image | img_url: '130x130' }}" alt="{{ link.title }}" class="menuItemWithImg-img">
+                        <span class="menuItemWithImg-title">{{ link.title }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+                </div>
+                {% else %}
+                <div class="singleMobileMenu nor-menu">
+                <h2 class="sectionTitle">{{ block.settings.menu-title  }}</h2>  
+                <ul class="mobileMenu normal-menu">
+                    {% for link in linklist.links %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                </ul> 
+                </div>
+                {% endcase %}
+                
+           
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mobile menu",
+  "settings": [
+
+  ],
+  "blocks" : [
+    {
+      "type": "linklist",
+      "name": "Link list",
+      "settings": [
+        {
+        "type": "text",
+        "id": "menu-title",
+        "label": "Menu title",
+        "default": "Categories"
+        },
+        {
+           "type": "link_list",
+           "id": "linklist",
+           "label": "Link list",
+           "default": "main-menu",
+           "info": "This menu won't show dropdown items"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
