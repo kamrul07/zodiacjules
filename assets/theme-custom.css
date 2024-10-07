@@ -147,6 +147,15 @@ body {
 /*header start*/
 
 .mobileMenuWrapper {
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+  top: unset;
+  overflow-x: scroll;
+  height: 100vh;
+  padding-bottom: 135px;
+  transition: all 0.3s;
   visibility: hidden;
   opacity: 0;
 }
