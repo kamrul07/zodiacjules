@@ -1052,12 +1052,20 @@
               "menu-title": "Services",
               "linklist": "services"
             }
+          },
+          "linklist_6eBCQ3": {
+            "type": "linklist",
+            "settings": {
+              "menu-title": "Information",
+              "linklist": "information"
+            }
           }
         },
         "block_order": [
           "linklist_K8WkqN",
           "linklist_YXkPr9",
-          "linklist_p4zYNJ"
+          "linklist_p4zYNJ",
+          "linklist_6eBCQ3"
         ],
         "settings": {
         }
