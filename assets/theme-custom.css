@@ -1503,6 +1503,11 @@ h2.jdgm-carousel-title {
     visibility: hidden;
     transition: all 0.3s;
   }
+  .menu-open .menuOpen.menuIcon {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+  }
 }
 
 /*Header CSS */
