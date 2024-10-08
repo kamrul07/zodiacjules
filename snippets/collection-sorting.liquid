@@ -14,7 +14,7 @@
       {% assign sort_translation = 'collections.general.sort' | t %}
       {% assign currently_selected = collection.sort_options | where: "value", collection.sort_by | first %}
       {{ currently_selected.name | default: sort_translation }}
-      {%- render 'icon-sort' -%}
+      {%- render 'icon-arrow-down' -%}
     </button>
     <ul id="sort-list" class="popout-list" data-popout-list>
       {% for option in collection.sort_options %}

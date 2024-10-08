@@ -5,8 +5,8 @@
 <div data-section-id="{{ section.id }}"
   data-section-type="collection"
   data-sort="{{ section.settings.collection_sorting }}">
-
-  {% if collection.image and section.settings.show_image %}
+ 
+  {% comment %} {% if collection.image and section.settings.show_image %}
     <div class="section--image fade-in-child preventOverflow {{ section.settings.color }}" data-overlay-header>
       <div class="flex-absolute {{ section.settings.text_align }}">
         <div class="wrapper preventOverflowContent">
@@ -28,11 +28,30 @@
         <img src="{{ collection.image | img_url: '1440x' }}" alt="{{ collection.image.alt | default: collection.title }}" class="responsive-wide-image"/>
       </noscript>
     </div>
-  {% endif %}
+  {% endif %} {% endcomment %}
 
   <div class="collection" data-sidebar-toggle>
+       <div class="collectionHeaderWrapper wrapper">
+        <div class="collectionHeaderInner">
+          <div class="collectionHeaderRight" style="background:url({{ collection.image | img_url: 'master' }})">
+            <div class="collectionHeaderRghtInner">
+            </div>
+          </div>
+          <div class="collectionHeaderLeft">
+            <div class="collectionHeaderLeftInner">
+                {% render 'breadcrumb' %}
+                <h1 class="collectionTitle">{{ collection.title }}</h1>
+              {% if section.settings.show_description and collection.description.size > 0 %}
+                <div class="collectionDescription">
+                  {{ collection.description }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="wrapper">
-      <div class="collection__heading--below {{ section.settings.text_align }}">
+      {% comment %} <div class="collection__heading--below {{ section.settings.text_align }}">
         {%- if collection.image == nil or section.settings.show_title_below or section.settings.show_image == false -%}
           {%- if section.settings.show_title -%}
             <h1 class="collection__heading--below h3 title--overlay">{{ collection.title }}</h1>
@@ -45,9 +64,16 @@
             </div>
           {%- endif -%}
         {%- endif -%}
-      </div>
+      </div> {% endcomment %}
 
-      {%- assign collection_sidebar = false -%}
+      <div class="customSortingArea">
+        <div class="customSortingInner">
+          <div class="collection__sort">
+            {% render 'collection-sorting', collection: collection %}
+          </div>
+        </div>
+      </div>
+      {% comment %} {%- assign collection_sidebar = false -%}
       {%- if section.settings.collection_custom_nav_list != blank or section.settings.collection_standard_nav or section.settings.collection_tag_nav -%}
         {%- assign collection_sidebar = true -%}
       {%- endif -%}
@@ -83,7 +109,7 @@
             </div>
           {% endif %}
         </nav>
-      {% endif %}
+      {% endif %} {% endcomment %}
 
       <div class="collection__content">
         {% if collection_sidebar %}
@@ -125,6 +151,14 @@
           </div>
         {% endpaginate %}
       </div>
+      {%- if collection.metafields.custom.product_description.value != blank -%}
+      <div class="collectiontextArea">
+        <div class="collectionTextInner">
+          {{ collection.metafields.custom.product_description | metafield_tag  }}
+        </div>
+      </div>
+      {%- endif -%}
+    
     </div>
   </div>
 </div>
