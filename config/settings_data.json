@@ -659,14 +659,6 @@
           "maxwidth": 1600
         }
       },
-      "1662999178c3941b07": {
-        "type": "instafeed",
-        "settings": {
-          "heading_size": 23,
-          "feed_width": 100,
-          "html_area": ""
-        }
-      },
       "16214309328180c397": {
         "type": "index-hero",
         "settings": {
@@ -1096,8 +1088,7 @@
       "section_imagewith_text_qHUeMb",
       "16215383423eadcc03",
       "section_informationbox_FPpy96",
-      "section_faq_KUhqhN",
-      "1662999178c3941b07"
+      "section_faq_KUhqhN"
     ]
   },
   "presets": {
