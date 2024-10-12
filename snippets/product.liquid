@@ -33,7 +33,7 @@
     {% assign current_variant = product.selected_or_first_available_variant %}
 
     <div class="grid product-single">
-      <div class="grid__item product__media__wrapper {{ product_image_width }}">
+      <div class="grid__item product__media__wrapper {{ product_image_width }} productMediaarea">
         <div class="product__slides" data-product-slideshow>
           {% for media in product.media %}
             {% render 'media', media: media, section: section %}
@@ -63,7 +63,7 @@
         {%- endif -%}
       </div>
 
-      <div class="grid__item {{ product_description_width }}">
+      <div class="grid__item {{ product_description_width }} productContentArea">
         <div class="product__details">
           <div class="product__headline">
             <div class="product__price uppercase h6{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
@@ -141,9 +141,9 @@
             {% assign description_position = 'both' %}
           {% endif  %}
 
-          <div class="product-description rte rte--column">
+          {% comment %} <div class="product-description rte rte--column">
             {{ product_description_content | replace: '<p>[split]</p>', '[split]' | split: '[split]' | first }}
-          </div>
+          </div> {% endcomment %}
 
         </div>
 
@@ -155,7 +155,12 @@
         {%- if section.settings.form_position == 'below' -%}
           {% render 'product-form', product: product, section: section %}
         {%- endif -%}
-
+        {% if section.settings.enable_shipping_info %}
+          <div class="productShippingInfo">
+            {% render 'icon-shipping' %}
+            <p>{{ section.settings.shippiong_info }}</p>
+          </div>
+        {% endif %}
         {% if section.settings.social_enable %}
           {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product.featured_media.preview_image %}
         {% endif %}

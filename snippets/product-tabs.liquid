@@ -45,6 +45,7 @@
       {%- endif -%}
     {% endfor %}
   </ul>
+  <div class="tab-content-wrapper">
   {%- assign count = 0 -%}
   {% for block in section.blocks %}
     {%- if block.type == "tab_description" -%}
@@ -71,6 +72,7 @@
       {%- assign count = count | plus: 1 -%}
     {%- endif -%}
   {% endfor %}
+  </div>
 </div>
 <div class="product-accordion">
   <div class="accordion">

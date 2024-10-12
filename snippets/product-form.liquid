@@ -94,7 +94,27 @@
       {% if current_variant.available  %}
         {% assign sold_out = false %}
       {% endif %}
-
+      {% if product.metafields.custom.custom_selection_box %}
+        {%  assign selectFields = product.metafields.custom.product_select_option.value   %}
+        <div class="customSelectOptios"> 
+          <p class="customOptionTitle">{{ product.metafields.custom.custom_option_title.value  }}</p>
+        <div class="customSelectOptiosInner">
+        {% for field in selectFields %}
+           <div class="singleSelectBox">
+            <label for="properties[{{ field.name }}]">{{ field.name }}</label>
+            <select name="properties[{{ field.name }}]" required>
+              <option value="">Select options </option>
+              {% assign options = field.option |  split: ","  %}
+              {{ options }}
+              {% for option in options %}
+                <option value="{{ option }}">{{ option }}</option>
+              {% endfor %}
+            </select>
+           </div>
+        {% endfor %}
+        </div>
+        </div>
+      {% endif %}
       {% if section.settings.show_quantity %}
         <div class="js-qty quantity-selector">
           <span class="js-qty__adjust js-qty__adjust--minus quantity__minus">&minus;</span>
@@ -119,9 +139,26 @@
       </p>
 
       <div data-product-add-popdown-wrapper class="product-add-popdown"></div>
-
+      {% if template contains 'product'  %}
+        <div class="productContentDescription">
+          {{ product.description }}
+        </div>
+        {%- assign related_product = product.metafields.custom.add_quick_related_product -%}
+        {% if related_product != blank %} 
+        <div class="productQuickAdd">
+          <div class="productQuickInner">
+            <img src="{{ all_products[related_product].featured_image | img_url: '110' }}" alt="{{ all_products[related_product].title }}">
+            <div class="productQuickInfo">
+              <h3>{{ all_products[related_product].title }}</h3>
+              <p>{{ all_products[related_product].price | money}}</p>
+            </div>
+            <p data-id="{{ all_products[related_product].selected_or_first_available_variant.id }}" class="quickButton">Quick Add <span class="loaderWrap"><span class="loader"></span></span></p>
+          </div>
+        </div>
+      {% endif %}
+      {% endif %}
       <div class="add-to-cart__wrapper">
-        <button type="submit" name="add" data-add-to-cart class="btn--outline btn--large btn--full btn--primary uppercase btn--add-to-cart {% if sold_out %} disabled{% endif %}" {% if sold_out %}disabled="true"{% endif %}>
+        <button type="submit" name="add" data-add-to-cart class="primary-button btn--outline btn--large btn--full btn--primary uppercase btn--add-to-cart {% if sold_out %} disabled{% endif %}" {% if sold_out %}disabled="true"{% endif %}>
           <span data-add-to-cart-text>{% if sold_out %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}</span>
           <span class="unicode">•</span>
           <span class="add-to-cart__price"><span data-button-price>{{ current_variant.price | money }}</span></span>
