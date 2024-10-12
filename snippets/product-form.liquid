@@ -103,7 +103,7 @@
            <div class="singleSelectBox">
             <label for="properties[{{ field.name }}]">{{ field.name }}</label>
             <select name="properties[{{ field.name }}]" required>
-              <option value="">Select options </option>
+             
               {% assign options = field.option |  split: ","  %}
               {{ options }}
               {% for option in options %}
