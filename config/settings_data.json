@@ -641,7 +641,7 @@
         "type": "related",
         "settings": {
           "related_products_enable": true,
-          "limit": 4,
+          "limit": 8,
           "product_recommendations_heading": "Related products"
         }
       },
