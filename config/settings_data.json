@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_announcement_bg": "#454851",
@@ -169,10 +169,12 @@
           "align": "product__align-left",
           "variant_form": "dropdown",
           "form_position": "above",
-          "product_breadcrumbs": true,
+          "product_breadcrumbs": false,
           "show_quantity": true,
           "show_remaining": true,
           "enable_payment_button": false,
+          "enable_shipping_info": true,
+          "shippiong_info": "FREE US Shipping Included On This Item",
           "product_show_vendor": false,
           "social_enable": true,
           "product_reviews_enable": true,
@@ -680,15 +682,15 @@
       "product_slider_Fdy66X": {
         "type": "product-slider",
         "settings": {
-          "title": "Our Best sellers",
-          "collection": "cancer"
+          "title": "Featured Collection & Best Sellers",
+          "collection": "featured"
         }
       },
       "section_founder_VndbNm": {
         "type": "section-founder",
         "settings": {
           "quote": "At ZodiacJules, we believe jewelry should be as unique as you are. Our custom charm pieces are crafted with care and intention, turning each piece into a cherished keepsake that tells your story.",
-          "bg-image": "shopify://shop_images/Mask_group_3.png",
+          "bg-image": "shopify://shop_images/Untitled_design_5.png",
           "founder-img": "shopify://shop_images/Mask_group_2.png",
           "founder-name": "Julie",
           "founder-designation": "Founder & Designer"
@@ -700,8 +702,8 @@
           "imagebox_E7rhg9": {
             "type": "imagebox",
             "settings": {
-              "title": "ZOdiac Charms",
-              "image": "shopify://shop_images/Mask_group_4.png",
+              "title": "Zodiac Charms",
+              "image": "shopify://shop_images/Screenshot_2024-10-11_at_12.47.02_PM.png",
               "button_link": "shopify://collections/charms"
             }
           },
@@ -709,7 +711,7 @@
             "type": "imagebox",
             "settings": {
               "title": "Misc Charms",
-              "image": "shopify://shop_images/Mask_group_5.png",
+              "image": "shopify://shop_images/IMG_7776_4b5dae93-5f54-4469-a7b8-dd67f0fdafd0.jpg",
               "button_link": "shopify://collections/misc"
             }
           },
@@ -717,7 +719,7 @@
             "type": "imagebox",
             "settings": {
               "title": "Chains",
-              "image": "shopify://shop_images/Group_1752.png",
+              "image": "shopify://shop_images/IMG_7733.jpg",
               "button_link": "shopify://collections/chains"
             }
           },
@@ -725,7 +727,7 @@
             "type": "imagebox",
             "settings": {
               "title": "Necklaces",
-              "image": "shopify://shop_images/Group_1754.png",
+              "image": "shopify://shop_images/Screenshot_2024-10-11_at_12.54.58_PM.png",
               "button_link": "shopify://collections/necklaces"
             }
           },
@@ -741,7 +743,7 @@
             "type": "imagebox",
             "settings": {
               "title": "Bracelets",
-              "image": "shopify://shop_images/Group_1756.png",
+              "image": "shopify://shop_images/IMG_7664.jpg",
               "button_link": "shopify://collections/bracelets"
             }
           }
