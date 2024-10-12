@@ -1518,6 +1518,9 @@ p.customOptionTitle {
 .grid.product-single {
   display: flex;
 }
+.mobile-zoom-wrapper {
+  background-image: unset !important;
+}
 /*Product page end */
 
 /* tablet CSS */
