@@ -1013,8 +1013,8 @@
           "faq_Whaiqt": {
             "type": "faq",
             "settings": {
-              "title": "How long will a custom order take to make?",
-              "description": "<p>Answer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+              "title": "Can I place an order over the phone?",
+              "description": "<p>The best way to reach us to place an order outside of our website is email: <a href=\"mailto:julie@zodiacjules.com\"><span style=\"text-decoration:underline\">julie@zodiacjules.com</span></a>. </p><p>However, if you prefer please give us a call or text at 818-508-1993 Monday-Friday during normal business hours. Response time on phone messages is around 48hrs.</p>"
             }
           }
         },
