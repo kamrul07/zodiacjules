@@ -1016,6 +1016,13 @@
               "title": "Can I place an order over the phone?",
               "description": "<p>The best way to reach us to place an order outside of our website is email: <a href=\"mailto:julie@zodiacjules.com\"><span style=\"text-decoration:underline\">julie@zodiacjules.com</span></a>. </p><p>However, if you prefer please give us a call or text at 818-508-1993 Monday-Friday during normal business hours. Response time on phone messages is around 48hrs.</p>"
             }
+          },
+          "faq_BentnX": {
+            "type": "faq",
+            "settings": {
+              "title": "Can I get help designing my necklace?",
+              "description": "<p>Julie offers virtual personal shopping appointments to customers who aren’t able to visit one of our in-person shopping experiences. </p><p>You can book your Shop with Julie appointment <a href=\"https://zodiacjules.com/pages/about-me\" title=\"https://zodiacjules.com/pages/about-me\">HERE</a>. </p><p>You can also review our <em>Tips for a Great Stack/Charm Necklace</em> before using our charm builder.</p><p>If you’d like to shop with us in person, please check out our Monthly Pop-Up schedule for the latest locations and days that we’ll be out!</p>"
+            }
           }
         },
         "block_order": [
@@ -1025,7 +1032,8 @@
           "faq_UGPRKT",
           "faq_mRBY68",
           "faq_ENYyri",
-          "faq_Whaiqt"
+          "faq_Whaiqt",
+          "faq_BentnX"
         ],
         "settings": {
           "title": "You’ve got Questions? We’ve got Answers"
