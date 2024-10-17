@@ -968,18 +968,11 @@
       "section_faq_KUhqhN": {
         "type": "section-faq",
         "blocks": {
-          "faq_iePk8k": {
+          "faq_BentnX": {
             "type": "faq",
             "settings": {
-              "title": "What is your jewelry made of?",
-              "description": "<p>Our 14K gold filled chains are designed with sensitive skin in mind. </p><p>Note: Some people are extra sensitive and can only wear pure gold. If that’s you, please email us or check out our pure 14K gold jewelry selection.</p><p>Our vintage glass charms are set in vintage gold plated brass backings.</p><p>Our vintage brass zodiac charms are solid brass.</p><p>Our vintage hearts, letters and misc charms are gold plated brass.</p>"
-            }
-          },
-          "faq_CPGqih": {
-            "type": "faq",
-            "settings": {
-              "title": "Will my jewelry tarnish?",
-              "description": "<p>Your gold filled chains will never tarnish and should last a lifetime.</p><p>Our vintage brass zodiac charms with normal wear and tear will develop a natural patina and tarnish over time. Regularly polishing your charm with one of our polish pads or brass polish will help preserve them, keeping them bright and shiny.  </p><p>While it’s perfectly ok to shower, swim, sweat and spray (perfumes, lotion, etc) while wearing your brass charms, they will tarnish more quickly that way.</p><p>Note: Did you know certain medications and one’s body chemistry can also lead to tarnishing? Of course, this is unavoidable, but it’s good to keep in mind.</p><p>Our gold plated brass charms can last for years with proper care. They do not need to be polished, but may wear and tear more quickly with showering, swimming, sweating and spraying. </p><p>We guarantee all our jewelry within six months of purchase and are happy to replace any item that does not maintain its quality beyond normal wear and tear.</p>"
+              "title": "Can I get help designing my necklace?",
+              "description": "<p>Julie offers virtual personal shopping appointments to customers who aren’t able to visit one of our in-person shopping experiences. </p><p>You can book your Shop with Julie appointment <a href=\"https://zodiacjules.com/pages/about-me\" title=\"https://zodiacjules.com/pages/about-me\">HERE</a>. </p><p>You can also review our <em>Tips for a Great Stack/Charm Necklace</em> before using our charm builder.</p><p>If you’d like to shop with us in person, please check out our Monthly Pop-Up schedule for the latest locations and days that we’ll be out!</p>"
             }
           },
           "faq_mtUeiL": {
@@ -1003,6 +996,20 @@
               "description": "<p>Yes, just select <em>Priority</em> or <em>Rush</em> shipping for US orders OR for international orders select <em>USPS Priority International</em>.</p>"
             }
           },
+          "faq_iePk8k": {
+            "type": "faq",
+            "settings": {
+              "title": "What is your jewelry made of?",
+              "description": "<p>Our 14K gold filled chains are designed with sensitive skin in mind. </p><p>Note: Some people are extra sensitive and can only wear pure gold. If that’s you, please email us or check out our pure 14K gold jewelry selection.</p><p>Our vintage glass charms are set in vintage gold plated brass backings.</p><p>Our vintage brass zodiac charms are solid brass.</p><p>Our vintage hearts, letters and misc charms are gold plated brass.</p>"
+            }
+          },
+          "faq_CPGqih": {
+            "type": "faq",
+            "settings": {
+              "title": "Will my jewelry tarnish?",
+              "description": "<p>Your gold filled chains will never tarnish and should last a lifetime.</p><p>Our vintage brass zodiac charms with normal wear and tear will develop a natural patina and tarnish over time. Regularly polishing your charm with one of our polish pads or brass polish will help preserve them, keeping them bright and shiny.  </p><p>While it’s perfectly ok to shower, swim, sweat and spray (perfumes, lotion, etc) while wearing your brass charms, they will tarnish more quickly that way.</p><p>Note: Did you know certain medications and one’s body chemistry can also lead to tarnishing? Of course, this is unavoidable, but it’s good to keep in mind.</p><p>Our gold plated brass charms can last for years with proper care. They do not need to be polished, but may wear and tear more quickly with showering, swimming, sweating and spraying. </p><p>We guarantee all our jewelry within six months of purchase and are happy to replace any item that does not maintain its quality beyond normal wear and tear.</p>"
+            }
+          },
           "faq_ENYyri": {
             "type": "faq",
             "settings": {
@@ -1016,24 +1023,17 @@
               "title": "Can I place an order over the phone?",
               "description": "<p>The best way to reach us to place an order outside of our website is email: <a href=\"mailto:julie@zodiacjules.com\"><span style=\"text-decoration:underline\">julie@zodiacjules.com</span></a>. </p><p>However, if you prefer please give us a call or text at 818-508-1993 Monday-Friday during normal business hours. Response time on phone messages is around 48hrs.</p>"
             }
-          },
-          "faq_BentnX": {
-            "type": "faq",
-            "settings": {
-              "title": "Can I get help designing my necklace?",
-              "description": "<p>Julie offers virtual personal shopping appointments to customers who aren’t able to visit one of our in-person shopping experiences. </p><p>You can book your Shop with Julie appointment <a href=\"https://zodiacjules.com/pages/about-me\" title=\"https://zodiacjules.com/pages/about-me\">HERE</a>. </p><p>You can also review our <em>Tips for a Great Stack/Charm Necklace</em> before using our charm builder.</p><p>If you’d like to shop with us in person, please check out our Monthly Pop-Up schedule for the latest locations and days that we’ll be out!</p>"
-            }
           }
         },
         "block_order": [
-          "faq_iePk8k",
-          "faq_CPGqih",
+          "faq_BentnX",
           "faq_mtUeiL",
           "faq_UGPRKT",
           "faq_mRBY68",
+          "faq_iePk8k",
+          "faq_CPGqih",
           "faq_ENYyri",
-          "faq_Whaiqt",
-          "faq_BentnX"
+          "faq_Whaiqt"
         ],
         "settings": {
           "title": "You’ve got Questions? We’ve got Answers"
