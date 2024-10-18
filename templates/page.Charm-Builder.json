@@ -175,6 +175,12 @@
           "settings": {
             "collection": "pearls-gemstones"
           }
+        },
+        "charms_aFWVyT": {
+          "type": "charms",
+          "settings": {
+            "collection": "vintage-state-charms"
+          }
         }
       },
       "block_order": [
@@ -196,7 +202,8 @@
         "f1662958-d1d0-4c6e-9ee8-f9fb652003fa",
         "ff1cebe9-1c1c-410f-86c8-8c7e7ee2892e",
         "d6011745-cfc5-4480-bd29-ddd9cf60c718",
-        "charms_7xbhPg"
+        "charms_7xbhPg",
+        "charms_aFWVyT"
       ],
       "settings": {
         "collection1": "chains",
