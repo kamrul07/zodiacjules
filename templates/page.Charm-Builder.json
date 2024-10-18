@@ -12,20 +12,20 @@
     "builder_tips_HgNjn8": {
       "type": "builder-tips",
       "blocks": {
+        "tips_m7QW3K": {
+          "type": "tips",
+          "settings": {
+            "title": "Tip #1 - Choosing a Chain",
+            "description": "<p>For a signature stack necklace, choose any chain you desire!  If you plan to add any of our heavier weight charms like the Vintage Coin, Engraved, or Scalloped Charm we recommend selecting our medium paperclip, rolo or any of the heavy chains. </p><p>Save the light paperclip chain for smaller stacks like a ribbed heart, small glass zodiac, and small letter or number charm.</p><p>For classic charm necklaces we recommend choosing any chain with a circular chain style (avoid the paperclip styles). The light circle charm chain, heavy round chain and rolo chain are all excellent choices.</p>",
+            "tip_image": "shopify://shop_images/IMG_7733.jpg"
+          }
+        },
         "tips_jHht6G": {
           "type": "tips",
           "settings": {
             "title": "Tip #1",
             "description": "<p>Create a trio stack with the largest charm on the bottom. Mix and match glass and brass. Add a fourth charm like a letter, number, pearl or gemstone for an extra pop.</p>",
             "tip_image": "shopify://shop_images/73839CB1-E332-4FBB-B1E0-1E8EC50DF567_1_105_c.jpg"
-          }
-        },
-        "tips_m7QW3K": {
-          "type": "tips",
-          "settings": {
-            "title": "Tip #1 - Choosing a Chain",
-            "description": "<p>For a signature stack necklace, choose any chain you desire!  If you plan to add any of our heavier weight charms like the Vintage Coin, Engraved, or Scalloped Charm we recommend selecting our medium paperclip, rolo or any of the heavy chains. </p><p>Save the light paperclip chain for smaller stacks like a ribbed heart, small glass zodiac, and small letter or number charm.</p>",
-            "tip_image": "shopify://shop_images/IMG_7733.jpg"
           }
         },
         "tips_6DFUY4": {
@@ -46,8 +46,8 @@
         }
       },
       "block_order": [
-        "tips_jHht6G",
         "tips_m7QW3K",
+        "tips_jHht6G",
         "tips_6DFUY4",
         "tips_YgLryz"
       ],
