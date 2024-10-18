@@ -169,6 +169,12 @@
           "settings": {
             "collection": "pisces-charm-builder"
           }
+        },
+        "charms_7xbhPg": {
+          "type": "charms",
+          "settings": {
+            "collection": "pearls-gemstones"
+          }
         }
       },
       "block_order": [
@@ -189,7 +195,8 @@
         "1f656835-aa36-4a67-ab0f-ce36a26b159d",
         "f1662958-d1d0-4c6e-9ee8-f9fb652003fa",
         "ff1cebe9-1c1c-410f-86c8-8c7e7ee2892e",
-        "d6011745-cfc5-4480-bd29-ddd9cf60c718"
+        "d6011745-cfc5-4480-bd29-ddd9cf60c718",
+        "charms_7xbhPg"
       ],
       "settings": {
         "collection1": "chains",
