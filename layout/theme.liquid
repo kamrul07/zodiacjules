@@ -124,10 +124,12 @@
   <script src="//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer="defer"></script>
     <script src="{{ 'html2canvas.js' | asset_url }}" defer="defer"></script> 
      <script src="{{ 'html2canvas.min.js' | asset_url }}" defer="defer"></script> 
-    <script src="{{ 'custom-charm.js' | asset_url }}" defer="defer"></script> 
+      <script src="{{ 'jquery.toast.min.js' | asset_url }}" defer="defer"></script> 
+     <script src="{{ 'custom-charm.js' | asset_url }}" defer="defer"></script> 
     <script src="{{ 'theme-custom.js' | asset_url }}" defer="defer"></script> 
     <link rel="stylesheet"href="//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
    {{ 'custom.css' | asset_url | stylesheet_tag }}
+   {{ 'jquery.toast.min.css' | asset_url | stylesheet_tag }}
    {{ 'theme-custom.css' | asset_url | stylesheet_tag }}
 </head>
 

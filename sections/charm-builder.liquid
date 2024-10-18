@@ -11,11 +11,60 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
+<div class="pageCharmBuilder">
 
- 
+
+ <div class="charmBuilderMainSelect">
+  <div class="charmBuilderSelectInner wrapper">
+     <div class="charmBuilderfirstPart">
+      <div class="charmBuilderfirstPartInner">
+        <div class="singleBuilderSelect" style="background: url({{ section.settings.box1_image |img_url: 'master' }} );">
+          <div class="singleBuilderSelectInner">
+            <h2 class="charmBuilderfirstPartTitle">{{ section.settings.text1 }}</h2>
+            <div class="charmBuilderfirstPartDesc">
+              <p>{{ section.settings.content1 }}</p>
+            </div>
+             <button class="primary-button chainBuilder" >Create Your Own</button>
+          </div>
+        </div>
+        <div class="singleBuilderSelect" style="background: url({{ section.settings.box2_image |img_url: 'master' }}  );">
+          <div class="singleBuilderSelectInner">
+            <h2 class="charmBuilderfirstPartTitle">{{ section.settings.text2 }}</h2>
+            <div class="charmBuilderfirstPartDesc">
+              <p>{{ section.settings.content2 }}</p>
+            </div>
+            <button class="primary-button chainBuilder" >Create Your Own</button>
+          </div>
+        </div>
+      </div>
+     </div>
+     <div class="charmBuildersecondPart">
+      <div class="charmBuildersecondPartInner">
+        <div class="singleBuilderSelect" style="background: url({{ section.settings.box3_image |img_url: 'master' }}  );">
+          <div class="singleBuilderSelectInner">
+            <h2 class="charmBuilderfirstPartTitle">{{ section.settings.text3 }}</h2>
+            <div class="charmBuilderfirstPartDesc">
+              <p>{{ section.settings.content3 }}</p>
+            </div>
+            <button class="primary-button braceletBuilder" >Create Your Own</button>
+          </div>
+        </div>
+        <div class="singleBuilderSelect" style="background: url({{ section.settings.box4_image |img_url: 'master' }}  );">
+          <div class="singleBuilderSelectInner">
+            <h2 class="charmBuilderfirstPartTitle">{{ section.settings.text4 }}</h2>
+            <div class="charmBuilderfirstPartDesc">
+              <p>{{ section.settings.content4 }}</p>
+            </div>
+             <button class="primary-button earringBuilder" >Create Your Own</button>
+          </div>
+        </div>
+      </div>
+     </div>
+  </div>
+ </div>
  
 
-<div class="charm_main_div" currency_symbol="{{ cart.currency.symbol }}">
+<div class="charm_main_div" style="display: none;" currency_symbol="{{ cart.currency.symbol }}">
   <form method="post" action="/cart/add" style="display:none;">
     {% comment %}
   <input  type='hidden' class='items_id1' name='items[0][id]' value=''/>
@@ -29,7 +78,7 @@
   </div>
   <div class="outer_div fist_div">
   <div class="custom-page-width wrapper"> 
-    <div class="nav_top">
+    {% comment %} <div class="nav_top">
     {% for block in section.blocks %}
       {% if block.type == 'txt_img' %}
       <div class="inner_nav">
@@ -39,132 +88,361 @@
       </div>
       {% endif %}
       {% endfor %}
-    </div>
+    </div> {% endcomment %}
     <div class="canvas_outer">
       <div class="left_div">
         <div class="inner">
-        <img class="first_img" src="https://cdn.shopify.com/s/files/1/0268/8365/3667/files/Animation_4.svg?v=1705413094">
-        <img style="display:none;" class="second_img" src="https://cdn.shopify.com/s/files/1/0601/4936/6877/files/Group_188.png?v=1697539294">
+        {% comment %} <img class="first_img" src="https://cdn.shopify.com/s/files/1/0268/8365/3667/files/Animation_4.svg?v=1705413094"> {% endcomment %}
+        <img style="" class="second_img" src="https://cdn.shopify.com/s/files/1/0601/4936/6877/files/Group_188.png?v=1697539294">
           <div class="draggable_outer">
           {% include 'drag-img' %}
           </div>
         </div>
+        <div class="CharmbuilderLower">
+                <div class="charmBulderlowerInner">
+                  <div class="charmNextButton">
+                    <button class="primary-button tipsButton builderNext">Need Help Styling? Click for Tips & Inspiration</button>
+                  </div>
+                </div>
+              </div>
       </div>
       <div class="right_div">
         <div class="inner">
-        <p>All charm necklaces are made to order and will ship within a week. Sizes may slightly vary from digital previews to real products.</p>
-      <div class="button_outer">
-        <span class="first_btn cts">Choose Your Chain</span>
-        <span class="second_btn cts">Choose Your Charms</span>
-      </div>
-          <div class="tab_one" style="display:none;">
+          <div class="tab_one chainTab" >
             <div class="outer_product_tab">
-              
-  {% for product in section.settings.collection1.products %}
-<div class="inner_div" var-id-ft="{{ product.first_available_variant.id }}">
-  <div class="inner_main">
-  <div class="product_img">
-    <img src="{{ product.featured_image |img_url: 'master' }}">
-  </div>
-  <div class="product_contant">
-    <h3 class="product_title">{{ product.title }}</h3>
-    <p class="product_price" price="{{ product.price }}">{{ product.price | money }}</p>
-    {%- unless product.has_only_default_variant -%}
-    <div class="variant_div">
-      <span>Select chain Style</span>
- {%- for option in product.options_with_values -%}  
-      <div class="inner_var">
-     <label>{{ option.name }}</label> 
-   <select>
-     {%- for value in option.values -%}
-       <option>{{ value }}</option>
-       {% endfor %}
-   </select>
-      </div>
-      {%- endfor -%}
-    </div>
-    {% endunless %}
-    <div class="add_btn">
-      <span>Select Chain</span>
-    </div>
-  </div>
-  </div>
-  <div class="var_id" style="display:none;">
-    <select>
- {% for variant in product.variants %}
-   <option vr_id="{{ variant.id }}" op1="{{ variant.option1 }}" op2="{{ variant.option2 }}" tp_op="{{ variant.title }}">{{ variant.title }}</option>
-   {% endfor %}
-    </select>
-  </div>
-</div>
-    {% endfor %}
+                <div class="tabheader chainTabHeader">
+                  <div class="charmBUilderNavigation">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="86" height="14" viewBox="0 0 86 14" fill="none">
+                      <circle cx="6.74642" cy="6.74642" r="6.74642" fill="#D29EB8"/>
+                      <circle cx="45.9982" cy="6.7463" r   ="3.06655" fill="black"/>
+                      <circle cx="82.797" cy="6.74673" r="3.06655" fill="black"/>
+                      <line x1="15.9463" y1="6.74655" x2="39.2521" y2="6.74655" stroke="black" stroke-width="1.22662"/>
+                      <line x1="52.7444" y1="6.74622" x2="76.0502" y2="6.74622" stroke="black" stroke-width="1.22662"/>
+                      </svg>
+                  </div>
+                  <h2 class="tabtitle chaintabTitle">1. Choose your <span> Chain</span></h2>
+                  <p>Select perfect style and size of chain as the base of your custom piece</p>
+                </div>
+                <div class="firstProductSelect">
+                <div class="chainProductWrap chains">
+                  {% for product in section.settings.collection1.products %}
+                  <div class="inner_div" var-id-ft="{{ product.first_available_variant.id }}">
+                    <div class="inner_main">
+                    <div class="product_img">
+                      <img src="{{ product.featured_image |img_url: 'master' }}">
+                    </div>
+                    <div class="product_contant">
+                      <h3 class="product_title">{{ product.title }}</h3>
+                      <p class="product_price" price="{{ product.price }}">{{ product.price | money }}</p>
+                      {%- unless product.has_only_default_variant -%}
+                      <div class="variant_div">
+                        
+                  {%- for option in product.options_with_values -%}  
+                        <div class="inner_var">
+                 
+                      <label>{{ option.name }}</label> 
+                    <select class="chainvalues">
+                      {%- for value in option.values -%}
+                        <option >{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                        </div>
+                        {%- endfor -%}
+                      </div>
+                      {% endunless %}
+                      <div class="add_btn">
+                        <span>Select Chain</span>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="chainVarriant var_id" style="display:none;">
+                      <select>
+                  {% for variant in product.variants %}
+                    <option vr_id="{{ variant.id }}" op1="{{ variant.option1 }}" op2="{{ variant.option2 }}" tp_op="{{ variant.title }}">{{ variant.title }}</option>
+                    {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                {% endfor %}
+                </div>
+                <div class="chainProductWrap bracelets">
+                  {% for product in section.settings.collection2.products %}
+                  <div class="inner_div" var-id-ft="{{ product.first_available_variant.id }}">
+                    <div class="inner_main">
+                    <div class="product_img">
+                      <img src="{{ product.featured_image |img_url: 'master' }}">
+                    </div>
+                    <div class="product_contant">
+                      <h3 class="product_title">{{ product.title }}</h3>
+                      <p class="product_price" price="{{ product.price }}">{{ product.price | money }}</p>
+                      {%- unless product.has_only_default_variant -%}
+                      <div class="variant_div">
+                        
+                  {%- for option in product.options_with_values -%}  
+                        <div class="inner_var">
+                 
+                      <label>{{ option.name }}</label> 
+                    <select class="chainvalues">
+                      {%- for value in option.values -%}
+                        <option >{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                        </div>
+                        {%- endfor -%}
+                      </div>
+                      {% endunless %}
+                      <div class="add_btn">
+                        <span>Select Bracelet</span>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="chainVarriant var_id" style="display:none;">
+                      <select>
+                  {% for variant in product.variants %}
+                    <option vr_id="{{ variant.id }}" op1="{{ variant.option1 }}" op2="{{ variant.option2 }}" tp_op="{{ variant.title }}">{{ variant.title }}</option>
+                    {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                {% endfor %}
+                </div>
+                <div class="chainProductWrap earrings">
+                  {% for product in section.settings.collection3.products %}
+                  <div class="inner_div" var-id-ft="{{ product.first_available_variant.id }}">
+                    <div class="inner_main">
+                    <div class="product_img">
+                      <img src="{{ product.featured_image |img_url: 'master' }}">
+                    </div>
+                    <div class="product_contant">
+                      <h3 class="product_title">{{ product.title }}</h3>
+                      <p class="product_price" price="{{ product.price }}">{{ product.price | money }}</p>
+                      {%- unless product.has_only_default_variant -%}
+                      <div class="variant_div">
+                        
+                  {%- for option in product.options_with_values -%}  
+                        <div class="inner_var">
+                 
+                      <label>{{ option.name }}</label> 
+                    <select class="chainvalues">
+                      {%- for value in option.values -%}
+                        <option >{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                        </div>
+                        {%- endfor -%}
+                      </div>
+                      {% endunless %}
+                      <div class="add_btn">
+                        <span>Select Earring</span>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="chainVarriant var_id" style="display:none;">
+                      <select>
+                  {% for variant in product.variants %}
+                    <option vr_id="{{ variant.id }}" op1="{{ variant.option1 }}" op2="{{ variant.option2 }}" tp_op="{{ variant.title }}">{{ variant.title }}</option>
+                    {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                {% endfor %}
+                </div>
+                </div>
+
+              <div class="CharmbuilderLower">
+                <div class="charmBulderlowerInner">
+                  <div class="charmBackButton">
+                    <p href="" class="chainBack builderPrev">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="7" height="13" viewBox="0 0 7 13" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M6.35455 11.9163C6.3115 11.9595 6.26035 11.9937 6.20404 12.0171C6.14773 12.0405 6.08736 12.0525 6.02639 12.0525C5.96542 12.0525 5.90506 12.0405 5.84874 12.0171C5.79243 11.9937 5.74129 11.9595 5.69823 11.9163L0.136183 6.35427C0.0930192 6.31122 0.0587732 6.26007 0.0354068 6.20376C0.0120398 6.14745 1.21009e-05 6.08708 1.21009e-05 6.02611C1.21009e-05 5.96515 0.0120398 5.90478 0.0354068 5.84847C0.0587732 5.79216 0.0930192 5.74101 0.136183 5.69795L5.69823 0.135905C5.78526 0.0488715 5.90331 -2.33713e-05 6.02639 -2.33713e-05C6.14947 -2.33713e-05 6.26752 0.0488715 6.35455 0.135905C6.44158 0.222939 6.49048 0.340982 6.49048 0.464066C6.49048 0.58715 6.44158 0.705193 6.35455 0.792226L1.11974 6.02611L6.35455 11.26C6.39772 11.3031 6.43196 11.3542 6.45533 11.4105C6.4787 11.4668 6.49072 11.5272 6.49072 11.5882C6.49072 11.6491 6.4787 11.7095 6.45533 11.7658C6.43196 11.8221 6.39772 11.8733 6.35455 11.9163Z" fill="black"/>
+                      </svg>
+                      Back </p>
+                  </div>
+                  <div class="charmNextButton">
+                    <button class="primary-button chainNext builderNext" disabled>Next</button>
+                  </div>
+                </div>
+              </div> 
             </div>
           </div>
           <div class="tab_two" style="display:none;">
             <div class="outer_product_tab_nav">
-              <div class="nav_coll">
-                {% for block in section.blocks %}
-      {% if block.type == 'charms' %}
-        {% assign first_part = block.settings.collection | split: '-' | first %}
-        <span class="coll_nm" nav_val="{{ block.settings.collection }}">{{ first_part }}</span>
-        {% endif %}
+                <div class="tabheader chainTabHeader">
+                  <div class="charmBUilderNavigation">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="14" viewBox="0 0 80 14" fill="none">
+                      <circle cx="39.7464" cy="6.74642" r="6.74642" fill="#D29EB8"/>
+                      <circle cx="3.06655" cy="6.74636" r="3.06655" fill="#D29EB8"/>
+                      <circle cx="76.797" cy="6.74673" r="3.06655" fill="black"/>
+                      <line x1="8" y1="6.74655" x2="31.3058" y2="6.74655" stroke="#D29EB8" stroke-width="1.22662"/>
+                      <line x1="48" y1="6.74619" x2="71.3058" y2="6.74619" stroke="black" stroke-width="1.22662"/>
+                      </svg>
+                  </div>
+                  <h2 class="tabtitle chaintabTitle">Choose Your Charms</h2>
+                  <p>Pick the charms you love and position them on your selected necklace.</p>
+                </div>
+                <div class="nav_coll">
+                  <select name="" id="" class="charmsNav">
+                    <option value="">Select Charm Category</option>
+                  {% for block in section.blocks %}
+                    {% if block.type == 'charms' %}
+                      {% assign first_part = block.settings.collection | split: '-' | first %}
+                      <option value="{{ block.settings.collection }}" nav_val="{{ block.settings.collection }}">{{ first_part }}</option>
+                    {% endif %}
                   {% endfor %}
-              </div>
+                  </select>
+                  {% comment %} {% for block in section.blocks %}
+                    {% if block.type == 'charms' %}
+                      {% assign first_part = block.settings.collection | split: '-' | first %}
+                      <span class="coll_nm" nav_val="{{ block.settings.collection }}">{{ first_part }}</span>
+                    {% endif %}
+                  {% endfor %}  {% endcomment %}
+                </div>
+              <div class="CharmsProductArea">
                {% for block in section.blocks %}
-                      {% if block.type == 'charms' %}
+                {% if block.type == 'charms' %}
                <div class="outer_product_tab" data_val="{{ block.settings.collection }}" style="display:none;">
                   {% for product in block.settings.collection.products %}
-<div class="inner_div test"  var-id-ft="{{ product.first_available_variant.id }}">
-   <div class="inner_main">
-  <div class="product_img">
-    <img src="{{ product.featured_image |img_url: 'master' }}">
-  </div>
-      <div class="product_contant">
-    <h3 class="product_title">{{ product.title }}</h3>
-    <p class="product_price" price="{{ product.price }}">{{ product.price | money }}</p>
-    {%- unless product.has_only_default_variant -%}
-    <div class="variant_div">
-      <span>Select chain Style</span>
- {%- for option in product.options_with_values -%}  
-      <div class="inner_var">
-     <label>{{ option.name }}</label> 
-   <select>
-     {%- for value in option.values -%}
-       <option>{{ value }}</option>
-       {% endfor %}
-   </select>
-      </div>
-      {%- endfor -%}
-            <div class="inner_var">
-              <label>Text</label> 
-             <input type="text" class="properties_txt" name="properties">
-            </div>
-    </div>
-    {% endunless %}
-    <div class="add_btn">
-      <span>Select Charm</span>
-    </div>
-  </div>
-   </div>
-  <div class="var_id" style="display:none;">
-    <select>
- {% for variant in product.variants %}
-   <option vr_id="{{ variant.id }}" op1="{{ variant.option1 }}" op2="{{ variant.option2 }}" tp_op="{{ variant.title }}">{{ variant.title }}</option>
-   {% endfor %}
-    </select>
-  </div>
-</div>
-    {% endfor %}
+                      <div class="inner_div test"  var-id-ft="{{ product.first_available_variant.id }}">
+                        <div class="inner_main">
+                        <div class="product_img">
+                          <img src="{{ product.featured_image |img_url: 'master' }}">
+                        </div>
+                            <div class="product_contant">
+                          <h3 class="product_title">{{ product.title }}</h3>
+                          <p class="product_price" price="{{ product.price }}">{{ product.price | money }}</p>
+                          {%- unless product.has_only_default_variant -%}
+                          <div class="variant_div">
+                            <span style="display:none">Select chain Style</span>
+                      {%- for option in product.options_with_values -%}  
+                            <div class="inner_var">
+                          <label>{{ option.name }}</label> 
+                        <select class="charmSelect">
+                          {%- for value in option.values -%}
+                            <option>{{ value }}</option>
+                            {% endfor %}
+                        </select>
+                            </div>
+                            {%- endfor -%}
+                                  <div class="inner_var" style="display:none;">
+                                    <label>Text</label> 
+                                  <input type="text" class="properties_txt" name="properties">
+                                  </div>
+                          </div>
+                          {% endunless %}
+                          <div class="add_btn">
+                            <span>Select Charm</span>
+                          </div>
+                        </div>
+                        </div>
+                        <div class="charmVarriant var_id" style="display:none;">
+                          <select>
+                      {% for variant in product.variants %}
+                        <option var_img="{{  variant.featured_image |img_url: 'master'  }}"  vr_id="{{ variant.id }}" op1="{{ variant.option1 }}" op2="{{ variant.option2 }}" tp_op="{{ variant.title }}">{{ variant.title }}</option>
+                        {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      {% endfor %}
+                </div>
+                 {% endif %}
+                 {% endfor %}
               </div>
-              {% endif %}
-                    {% endfor %}
+              <div class="CharmbuilderLower">
+                <div class="charmBulderlowerInner">
+                  <div class="charmBackButton">
+                    <p href="" class="builderPrev charmPrev">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="7" height="13" viewBox="0 0 7 13" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M6.35455 11.9163C6.3115 11.9595 6.26035 11.9937 6.20404 12.0171C6.14773 12.0405 6.08736 12.0525 6.02639 12.0525C5.96542 12.0525 5.90506 12.0405 5.84874 12.0171C5.79243 11.9937 5.74129 11.9595 5.69823 11.9163L0.136183 6.35427C0.0930192 6.31122 0.0587732 6.26007 0.0354068 6.20376C0.0120398 6.14745 1.21009e-05 6.08708 1.21009e-05 6.02611C1.21009e-05 5.96515 0.0120398 5.90478 0.0354068 5.84847C0.0587732 5.79216 0.0930192 5.74101 0.136183 5.69795L5.69823 0.135905C5.78526 0.0488715 5.90331 -2.33713e-05 6.02639 -2.33713e-05C6.14947 -2.33713e-05 6.26752 0.0488715 6.35455 0.135905C6.44158 0.222939 6.49048 0.340982 6.49048 0.464066C6.49048 0.58715 6.44158 0.705193 6.35455 0.792226L1.11974 6.02611L6.35455 11.26C6.39772 11.3031 6.43196 11.3542 6.45533 11.4105C6.4787 11.4668 6.49072 11.5272 6.49072 11.5882C6.49072 11.6491 6.4787 11.7095 6.45533 11.7658C6.43196 11.8221 6.39772 11.8733 6.35455 11.9163Z" fill="black"/>
+                      </svg>
+                      Back </p>
+                  </div>
+                  <div class="charmNextButton">
+                    <button class="primary-button CharmNext builderNext" disabled>Next</button>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="tab_three" style="display:none;">
+            <div class="outer_product_tab_nav">
+                <div class="tabheader chainTabHeader">
+                  <div class="charmBUilderNavigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="14" viewBox="0 0 80 14" fill="none">
+                    <circle cx="72.7464" cy="6.74642" r="6.74642" fill="#D29EB8"/>
+                    <circle cx="3.06655" cy="6.74636" r="3.06655" fill="#D29EB8"/>
+                    <circle cx="36.0666" cy="6.74636" r="3.06655" fill="#D29EB8"/>
+                    <line x1="8" y1="6.74655" x2="31.3058" y2="6.74655" stroke="#D29EB8" stroke-width="1.22662"/>
+                    <line x1="41" y1="6.74619" x2="64.3058" y2="6.74619" stroke="#D29EB8" stroke-width="1.22662"/>
+                    </svg>
+                  </div>
+                  <h2 class="tabtitle chaintabTitle">3.Confirm Selection</h2>
+                  <p>Finalize your custom piece with the charms and chain you’ve chosen.<br> 
+                  Our expert jewelers will handcraft your design to ensure it’s uniquely yours. </p>
+                </div>
+              <div class="builderProductList">
+                  <div class="builderProductListInner">
+                    <div class="builderproductLIst">
+                      <div class="buildercharmLIst">
+
+                      </div>
+                      <div class="builderInnerChainList">
+                        <div class="singleBuilderProduct">
+
+                        </div> 
+                      </div>
+                      <div class="BuilderPricelist">
+                        <div class="builderPriceInner">
+                            <div class="builderPriceTitle">Subtotal</div>
+                            <div class="builderPriceValue">{{ cart.currency.iso_code }} <span></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="CharmbuilderLower">
+                <div class="charmBulderlowerInner">
+                  <div class="charmBackButton">
+                    <p href="" class="builderPrev summprev">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="7" height="13" viewBox="0 0 7 13" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M6.35455 11.9163C6.3115 11.9595 6.26035 11.9937 6.20404 12.0171C6.14773 12.0405 6.08736 12.0525 6.02639 12.0525C5.96542 12.0525 5.90506 12.0405 5.84874 12.0171C5.79243 11.9937 5.74129 11.9595 5.69823 11.9163L0.136183 6.35427C0.0930192 6.31122 0.0587732 6.26007 0.0354068 6.20376C0.0120398 6.14745 1.21009e-05 6.08708 1.21009e-05 6.02611C1.21009e-05 5.96515 0.0120398 5.90478 0.0354068 5.84847C0.0587732 5.79216 0.0930192 5.74101 0.136183 5.69795L5.69823 0.135905C5.78526 0.0488715 5.90331 -2.33713e-05 6.02639 -2.33713e-05C6.14947 -2.33713e-05 6.26752 0.0488715 6.35455 0.135905C6.44158 0.222939 6.49048 0.340982 6.49048 0.464066C6.49048 0.58715 6.44158 0.705193 6.35455 0.792226L1.11974 6.02611L6.35455 11.26C6.39772 11.3031 6.43196 11.3542 6.45533 11.4105C6.4787 11.4668 6.49072 11.5272 6.49072 11.5882C6.49072 11.6491 6.4787 11.7095 6.45533 11.7658C6.43196 11.8221 6.39772 11.8733 6.35455 11.9163Z" fill="black"/>
+                      </svg>
+                      Back </p>
+                  </div>
+                  <div class="charmNextButton">
+                    <button class="primary-button addtocartButton builderNext" >Add To Basket</button>
+                  </div>
+                </div>
+              </div> 
             </div>
           </div>
         </div>
       </div>
+      <div class="builderLoader">
+        <div class="lds-ripple"><div></div><div></div></div>
+      </div>
+      <div class="successWrap">
+          <div class="alert-popup-container">
+            <div class="success-checkmark">
+              <div class="check-icon">
+                <span class="icon-line line-tip"></span>
+                <span class="icon-line line-long"></span>
+                <div class="icon-circle"></div>
+                <div class="icon-fix"></div>
+              </div>
+            </div>
+            <div class="alert-popup-title">Success!!!</div>
+            <div class="alert-popup-message">
+              Your imaginary file is safe :)
+            </div>
+            {% comment %} <div class="alert-popup-confirm">
+              <button>OK</button>
+            </div> {% endcomment %}
+          </div>
+      </div>
+
     </div>
   </div>
-    <div class="add_btn_outer">
+    <div class="add_btn_outer" style="display:none">
       <div class="page-width">
        <div class="btn_outer_main">
         <span class="price_totel">Total Price {{ cart.currency.symbol }}<span>0.00</span></span>
@@ -172,6 +450,8 @@
        </div>
       </div>
     </div>
+
+
   </div>
   <div class="cart_item_div second_div" style="display:none;">
     <div class="custom-page-width">
@@ -197,17 +477,116 @@
     </div>
   </div>
 </div>
-  
+</div>  
     
 {% schema %}
   {
     "name": "Charm-Builder",
     "settings": [
+    {
+      "type": "header",
+      "content": "Box 1",
+      "info": "This is the first selection box of the charm builder"
+    },
       {
         "type": "collection",
         "id": "collection1",
-        "label": "collection"
-      }
+        "label": "Collection 1"
+      },
+    {
+      "type": "image_picker",
+      "id": "box1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text1",
+      "label": "Text",
+      "default": "Stack Necklace"
+    },
+    {
+      "type": "textarea",
+      "id": "content1",
+      "label": "Text",
+      "default": "Create a timeless charm necklace with individual pieces that reflect your personality and memories. Each charm hangs elegantly on a classic chain, making it a meaningful keepsake that tells your story."
+    },
+    {
+      "type": "header",
+      "content": "Box 2",
+      "info": "This is the first selection box of the charm builder"
+    },
+    {
+      "type": "image_picker",
+      "id": "box2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text2",
+      "label": "Text",
+      "default": "Traditional Charm Necklace"
+    },
+    {
+      "type": "textarea",
+      "id": "content2",
+      "label": "Text",
+      "default": "Create a timeless charm necklace with individual pieces that reflect your personality and memories. Each charm hangs elegantly on a classic chain, making it a meaningful keepsake that tells your story."
+    },
+    {
+      "type": "header",
+      "content": "Box 3",
+      "info": "This is the first selection box of the charm builder"
+    },
+    {
+      "type": "collection",
+      "id": "collection2",
+      "label": "Collection 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "box3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text3",
+      "label": "Text",
+      "default": "Bracelet"
+    },
+    {
+      "type": "textarea",
+      "id": "content3",
+      "label": "Text",
+      "default": "Create a timeless charm necklace with individual pieces that reflect your personality and memories. Each charm hangs elegantly on a classic chain, making it a meaningful keepsake that tells your story."
+    },
+    {
+      "type": "header",
+      "content": "Box 4",
+      "info": "This is the forth selection box of the charm builder"
+    },
+    {
+      "type": "collection",
+      "id": "collection3",
+      "label": "Collection 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "box4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "text4",
+      "label": "Text",
+      "default": "Earrings"
+    },
+    {
+      "type": "textarea",
+      "id": "content4",
+      "label": "Text",
+      "default": "Create a timeless charm necklace with individual pieces that reflect your personality and memories. Each charm hangs elegantly on a classic chain, making it a meaningful keepsake that tells your story."
+    },
+
     ],
      "blocks": [
      {
