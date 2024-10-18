@@ -1,14 +1,60 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "builder_tips_HgNjn8": {
+      "type": "builder-tips",
+      "blocks": {
+        "tips_jHht6G": {
+          "type": "tips",
+          "settings": {
+            "title": "Tip 1# Tip Title",
+            "description": "<p>Answer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+            "tip_image": "shopify://shop_images/Screenshot_2024-09-05_at_16.35.52.png"
+          }
+        },
+        "tips_m7QW3K": {
+          "type": "tips",
+          "settings": {
+            "title": "Tip 1# Tip Title",
+            "description": "<p>Answer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+            "tip_image": "shopify://shop_images/Screenshot_2024-09-05_at_16.35.52.png"
+          }
+        },
+        "tips_6DFUY4": {
+          "type": "tips",
+          "settings": {
+            "title": "Tip 1# Tip Title",
+            "description": "<p>Answer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+            "tip_image": "shopify://shop_images/Screenshot_2024-09-05_at_16.35.52.png"
+          }
+        },
+        "tips_YgLryz": {
+          "type": "tips",
+          "settings": {
+            "title": "Tip 1# Tip Title",
+            "description": "<p>Answer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+            "tip_image": "shopify://shop_images/Screenshot_2024-09-05_at_16.35.52.png"
+          }
+        }
+      },
+      "block_order": [
+        "tips_jHht6G",
+        "tips_m7QW3K",
+        "tips_6DFUY4",
+        "tips_YgLryz"
+      ],
+      "settings": {
+        "title": "Charm Necklace Advice"
+      }
+    },
     "charm-builder": {
       "type": "charm-builder",
       "blocks": {
@@ -146,11 +192,26 @@
         "d6011745-cfc5-4480-bd29-ddd9cf60c718"
       ],
       "settings": {
-        "collection1": "chains"
+        "collection1": "chains",
+        "box1_image": "shopify://shop_images/image_17.png",
+        "text1": "Stack Necklace",
+        "content1": "Create a timeless charm necklace with individual pieces that reflect your personality and memories. Each charm hangs elegantly on a classic chain, making it a meaningful keepsake that tells your story.",
+        "box2_image": "shopify://shop_images/image_16.png",
+        "text2": "Traditional Charm Necklace",
+        "content2": "Create a timeless charm necklace with individual pieces that reflect your personality and memories. Each charm hangs elegantly on a classic chain, making it a meaningful keepsake that tells your story.",
+        "collection2": "earring-builder",
+        "box3_image": "shopify://shop_images/Screenshot_2024-09-05_at_16.35.52.png",
+        "text3": "Bracelet",
+        "content3": "Create a timeless charm necklace with individual pieces that reflect your personality and memories. Each charm hangs elegantly on a classic chain, making it a meaningful keepsake that tells your story.",
+        "collection3": "earring-builder-1",
+        "box4_image": "shopify://shop_images/image_28.png",
+        "text4": "Earrings",
+        "content4": "Create a timeless charm necklace with individual pieces that reflect your personality and memories. Each charm hangs elegantly on a classic chain, making it a meaningful keepsake that tells your story."
       }
     }
   },
   "order": [
+    "builder_tips_HgNjn8",
     "charm-builder"
   ]
 }
