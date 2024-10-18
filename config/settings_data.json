@@ -906,9 +906,18 @@
           "infobox_QM3bxE": {
             "type": "infobox",
             "settings": {
-              "title": "Shop With Julie",
-              "description": "Let Julie help you design your custom statement piece today.",
+              "title": "Shop With Jules",
+              "description": "Let Jules help you design your custom statement piece today.",
               "image": "shopify://shop_images/Screenshot_2024-10-13_at_5.31.44_PM.png",
+              "button_link": "",
+              "button-text": "Find Out More"
+            }
+          },
+          "infobox_mWrGez": {
+            "type": "infobox",
+            "settings": {
+              "title": "Heading",
+              "description": "Create your own cosmic statement with our custom zodiac jewelry.",
               "button_link": "",
               "button-text": "Find Out More"
             }
@@ -956,6 +965,7 @@
         },
         "block_order": [
           "infobox_QM3bxE",
+          "infobox_mWrGez",
           "infobox_KVhBDf",
           "infobox_b3UTXc",
           "infobox_YyQnQa",
