@@ -672,7 +672,7 @@
           "text_align": "align--middle-center",
           "color": "palette--contrast--dark",
           "link_text": "Shop All",
-          "link": "shopify://collections",
+          "link": "shopify://collections/all",
           "button_style": "primary-button",
           "link_text2": "Charm Builder",
           "link2": "shopify://pages/charm-builder",
