@@ -1488,14 +1488,18 @@ span.jdgm-rev__author {
   margin: 0;
   padding: 0;
   border: unset;
-  text-align: right;
-  background: #ffffff00;
+  text-align: -webkit-right !important;
+  background-color: #fff0;
   box-shadow: none !important;
-  color: black;
+  color: #000;
   font-size: 12px;
   width: 100%;
   position: relative;
   z-index: 99;
+  direction: rtl;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  padding-right: 34px;
 }
 .singleSelectBox label {
   white-space: nowrap;
@@ -2313,6 +2317,10 @@ h2.charmBuilderfirstPartTitle {
 body.tips-active {
   overflow: hidden;
 }
+p.builderPrev svg {
+  position: absolute;
+  left: 3px;
+}
 /*Charm builder end */
 
 /* tablet CSS */
@@ -2463,7 +2471,7 @@ body.tips-active {
   }
   .heroTitle {
     text-shadow: none;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     color: var(--color-dark);
   }
   .primary-button {
@@ -3007,6 +3015,7 @@ body.tips-active {
   }
   button.primary-button.tipsButton.builderNext {
     font-size: 11px;
+    display: none;
   }
   button.primary-button.tipsButton.builderNext {
     font-size: 11px;
@@ -3026,9 +3035,9 @@ body.tips-active {
     width: 100%;
   }
   .firstProductSelect {
-    min-height: 400px;
+    min-height: 100%;
     overflow-y: scroll;
-    max-height: 600px;
+    max-height: 100%;
     padding: 15px;
   }
   .charmBulderlowerInner {
@@ -3047,8 +3056,8 @@ body.tips-active {
     background: white;
   }
   .CharmsProductArea {
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 100%;
+    max-height: 100%;
     overflow-y: scroll;
     padding: 15px;
   }
@@ -3072,6 +3081,24 @@ body.tips-active {
     color: var(--color-dark);
     line-height: normal;
   }
+  p.builderPrev {
+    font-size: 11px !important;
+  }
+  .left_div .charmNextButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 /*Header CSS */
+
+@media only screen and (min-width: 768px) {
+  button.primary-button.selectCharmsButton.builderNext {
+    display: none !important;
+  }
+  button.primary-button.reviewCharmsButton.builderNext {
+    display: none !important;
+  }
+}

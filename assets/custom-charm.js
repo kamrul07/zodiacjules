@@ -66,6 +66,22 @@ $(".charmPrev").click(function () {
   $(".charm_main_div .canvas_outer .right_div .tab_one").show();
   $(".charm_main_div .canvas_outer .right_div .tab_two").hide();
 });
+$(".selectCharmsButton").click(function () {
+  $("html, body").animate(
+    {
+      scrollTop: $(".tab_two").offset().top,
+    },
+    100
+  );
+});
+$(".reviewCharmsButton").click(function () {
+  $("html, body").animate(
+    {
+      scrollTop: $(".tab_three").offset().top,
+    },
+    100
+  );
+});
 //Selection step back button
 $(".summprev").click(function () {
   $(".charm_main_div .canvas_outer .left_div img.first_img").hide();
@@ -73,11 +89,27 @@ $(".summprev").click(function () {
   $(".charm_main_div .canvas_outer .right_div .tab_one").hide();
   $(".charm_main_div .canvas_outer .right_div .tab_two").show();
   $(".charm_main_div .canvas_outer .right_div .tab_three").hide();
+  $("html, body").animate(
+    {
+      scrollTop: $(".tab_two").offset().top,
+    },
+    100
+  );
+  $(".selectCharmsButton").show();
+  $(".reviewCharmsButton").hide();
 });
 //Charm step next button
 $(".CharmNext").click(function () {
   $(".charm_main_div .canvas_outer .right_div .tab_three").show();
   $(".charm_main_div .canvas_outer .right_div .tab_two").hide();
+  $("html, body").animate(
+    {
+      scrollTop: $("#charm-builder").offset().top,
+    },
+    100
+  );
+  $(".selectCharmsButton").hide();
+  $(".reviewCharmsButton").show();
 });
 
 $(".button_outer span.second_btn").click(function () {
@@ -142,6 +174,12 @@ $(".chainNext").click(function () {
   if (cls == true) {
     $(".charm_main_div .canvas_outer .right_div .tab_one").hide();
     $(".charm_main_div .canvas_outer .right_div .tab_two").show();
+    $("html, body").animate(
+      {
+        scrollTop: $(".tab_two").offset().top,
+      },
+      2000
+    );
     // $(".outer_product_tab_nav .nav_coll span.coll_nm:first-child")[0].click();
   } else {
     $.toast({
@@ -309,6 +347,13 @@ $(document).ready(function () {
     $(".charm_main_div .add_btn_outer span.price_totel span").text(price);
     $(".CharmNext").prop("disabled", false);
     selectionData(price);
+    $("html, body").animate(
+      {
+        scrollTop: $("#charm-builder").offset().top,
+      },
+      500
+    );
+    $(".selectCharmsButton").show();
   });
 });
 
