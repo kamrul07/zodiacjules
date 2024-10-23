@@ -665,7 +665,7 @@
         "type": "index-hero",
         "settings": {
           "image": "shopify://shop_images/Mask_group_1.png",
-          "height": "use_screen_two_thirds",
+          "height": "use_pixels_750",
           "overlay_opacity": 25,
           "title": "Vintage Zodiac Jewelry",
           "description": "Embrace Your Star Sign and create custom design-your-own jewelry.",
