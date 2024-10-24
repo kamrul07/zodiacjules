@@ -213,7 +213,7 @@
           "image_height": "use_screen_one_third",
           "overlay_opacity": 20,
           "color": "palette--contrast--dark",
-          "hide_sidebar": true,
+          "hide_sidebar": false,
           "collection_custom_nav_list": "",
           "collection_standard_nav": false,
           "collection_tag_nav": false
