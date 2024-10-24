@@ -626,7 +626,15 @@
  $(function () {
     $(".charm_w").draggable({
        containment: ".charm_main_div .canvas_outer .left_div .inner", 
-      
+        start: function( event, ui ) {
+          $(ui).addClass('dragging');
+        },
+        drag: function(event, ui) {
+            console.log('draging.....');    
+        },
+        stop: function( event, ui ) {
+          $(ui).removeClass('dragging');
+        }
     });
 });
     </script>

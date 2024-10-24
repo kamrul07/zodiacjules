@@ -3090,6 +3090,25 @@ p.builderPrev svg {
     justify-content: center;
     width: 100%;
   }
+  div[id*="charm-builder"] .charm_w img.charm {
+    width: auto;
+    object-fit: contain;
+    height: 80px;
+  }
+  div[id*="charm-builder"] .inner__charm_w {
+    padding-bottom: 0;
+    position: relative;
+  }
+  div[id*="charm-builder"] .inner__charm_w {
+    padding-bottom: 10px;
+    position: relative;
+  }
+  .ui-draggable-dragging {
+    background: #ffffff70;
+    box-shadow: 1px 1px 7px 1px #eee7e7a3;
+    border-radius: 33px;
+    z-index: 99;
+  }
 }
 
 /*Header CSS */
