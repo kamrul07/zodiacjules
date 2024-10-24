@@ -3091,9 +3091,9 @@ p.builderPrev svg {
     width: 100%;
   }
   div[id*="charm-builder"] .charm_w img.charm {
-    width: auto;
+    width: 100px;
     object-fit: contain;
-    height: 80px;
+    height: 100px;
   }
   div[id*="charm-builder"] .inner__charm_w {
     padding-bottom: 0;
