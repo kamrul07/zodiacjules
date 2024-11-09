@@ -305,6 +305,7 @@
                 {% if block.type == 'charms' %}
                <div class="outer_product_tab" data_val="{{ block.settings.collection }}" style="display:none;">
                  {% assign variable_name = 1 %}
+                 {% paginate block.settings.collection.products by 250 %}
                   {% for product in block.settings.collection.products %}
                     {% increment variable_name %}
                       <div class="inner_div test"  var-id-ft="{{ product.first_available_variant.id }}">
@@ -348,6 +349,7 @@
                         </div>
                       </div>
                       {% endfor %}
+                      {% endpaginate %}
                 </div>
                  {% endif %}
                  {% endfor %}
