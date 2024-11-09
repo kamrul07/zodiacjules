@@ -304,7 +304,9 @@
                {% for block in section.blocks %}
                 {% if block.type == 'charms' %}
                <div class="outer_product_tab" data_val="{{ block.settings.collection }}" style="display:none;">
+                 {% assign variable_name = 1 %}
                   {% for product in block.settings.collection.products %}
+                    {% increment variable_name %}
                       <div class="inner_div test"  var-id-ft="{{ product.first_available_variant.id }}">
                         <div class="inner_main">
                         <div class="product_img">
