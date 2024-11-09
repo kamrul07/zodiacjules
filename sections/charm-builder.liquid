@@ -289,7 +289,7 @@
                     {% if block.type == 'charms' %}
                       {% assign first_part = block.settings.collection | split: '-' | first %}
                       
-                      <option value="{{ block.settings.collection }}" nav_val="{{ block.settings.collection }}">{% if first_part == 'vintage' %}States {% else %} {{ first_part }}  {% endif %}}</option>
+                      <option value="{{ block.settings.collection }}" nav_val="{{ block.settings.collection }}">{% if first_part == 'vintage' %}States {% else %} {{ first_part }}  {% endif %}</option>
                     {% endif %}
                   {% endfor %}
                   </select>
