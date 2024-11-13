@@ -256,9 +256,9 @@
         "box4_image": "shopify://shop_images/Earring.jpg",
         "text4": "Earrings",
         "content4": "Design your own earrings. Select from hundreds of vintage charms, freshwater pearls and authentic gemstones.",
-        "step1text": "Select your desired chain and length or earring wires to create your custom jewelry.",
-        "step2text": "Select the charms you love and position them on your selected chain or earring wires. You can select to of the same charm by tapping the select button twice.",
-        "step3text": "Finalize your personalized jewelry and add to cart. A preview image will be available in your cart. Jules will handcraft your design to ensure it’s just right!"
+        "step1text": "Select your desired chain & length or earring wires.",
+        "step2text": "Select charms. Position them on chain or earring wires. To select charm twice, tap select button twice.",
+        "step3text": "Confirm you custom jewelry design & add to cart. A preview image will be available in cart. Jules will handcraft your design to ensure it’s just right!"
       }
     }
   },
