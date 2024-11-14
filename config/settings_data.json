@@ -221,18 +221,15 @@
       },
       "blog": {
         "type": "blog",
-        "settings": {
-        }
+        "settings": {}
       },
       "article": {
         "type": "article",
-        "settings": {
-        }
+        "settings": {}
       },
       "index-product": {
         "type": "index-product",
-        "settings": {
-        }
+        "settings": {}
       },
       "index-collection": {
         "type": "index-collection",
@@ -458,28 +455,23 @@
         "blocks": {
           "index-logos-0": {
             "type": "logo_image",
-            "settings": {
-            }
+            "settings": {}
           },
           "index-logos-1": {
             "type": "logo_image",
-            "settings": {
-            }
+            "settings": {}
           },
           "index-logos-2": {
             "type": "logo_image",
-            "settings": {
-            }
+            "settings": {}
           },
           "index-logos-3": {
             "type": "logo_image",
-            "settings": {
-            }
+            "settings": {}
           },
           "index-logos-4": {
             "type": "logo_image",
-            "settings": {
-            }
+            "settings": {}
           }
         },
         "block_order": [
@@ -735,7 +727,7 @@
             "type": "imagebox",
             "settings": {
               "title": "Earrings",
-              "image": "shopify://shop_images/Earring.jpg",
+              "image": "shopify://shop_images/pickleballjules_tvp-85.jpg",
               "button_link": "shopify://collections/earrings"
             }
           },
@@ -1093,8 +1085,7 @@
           "linklist_Wft4jG",
           "linklist_gBqBGP"
         ],
-        "settings": {
-        }
+        "settings": {}
       }
     },
     "content_for_index": [
