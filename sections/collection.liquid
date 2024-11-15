@@ -33,7 +33,7 @@
   <div class="collection" data-sidebar-toggle>
        <div class="collectionHeaderWrapper wrapper">
         <div class="collectionHeaderInner">
-          <div class="collectionHeaderRight" style="background:url({{ collection.image | img_url: 'master' }})">
+          <div class="collectionHeaderRight" {% if collection.title == "products" %} style="background:url({{ collection.image | img_url: 'master' }})" {% else %} style="background:url({{ collection.image | img_url: 'master' }})" {% endif %}}>
             <div class="collectionHeaderRghtInner">
             </div>
           </div>
