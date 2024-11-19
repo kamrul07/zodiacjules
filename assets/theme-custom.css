@@ -1613,7 +1613,9 @@ p.customOptionTitle {
   object-position: bottom;
 }
 .product_contant p.product_price {
-  display: none;
+    /* display: none; */
+    text-align: center !important;
+    font-size: 11px !important;
 }
 
 .outer_product_tab .inner_div:hover .product_img {
