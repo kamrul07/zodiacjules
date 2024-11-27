@@ -156,7 +156,7 @@
             "type": "tab_richtext",
             "settings": {
               "title": "Shipping",
-              "raw_content": "<p>Free Shipping within the United States.</p><p>$17 Flat-rate Shipping fee for rest of the world. </p>"
+              "raw_content": "<p>Free Shipping on orders over $50 within the United States.</p><p>Priority & Rush shipping upgrades available.</p><p>Standard USPS international shipping rates for the rest of the world. </p>"
             }
           }
         },
