@@ -103,6 +103,12 @@
             "collection": "misc"
           }
         },
+        "charms_caCmMf": {
+          "type": "charms",
+          "settings": {
+            "collection": "nature"
+          }
+        },
         "charms_VKfbLr": {
           "type": "charms",
           "settings": {
@@ -195,7 +201,6 @@
         },
         "f1662958-d1d0-4c6e-9ee8-f9fb652003fa": {
           "type": "charms",
-          "disabled": true,
           "settings": {
             "collection": "capricorn"
           }
@@ -221,6 +226,7 @@
         "charms_iJL6Ke",
         "ff984b60-4270-48fe-8820-aa6b1dca9d06",
         "1096ba17-ce36-4a10-be61-410186f2c661",
+        "charms_caCmMf",
         "charms_VKfbLr",
         "charms_7xbhPg",
         "charms_tWgEGk",
