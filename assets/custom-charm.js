@@ -39,10 +39,12 @@ $(".button_outer span.first_btn").click(function () {
 
 $(".singleBuilderSelectInner button").click(function () {
   if ($(this).hasClass("chainBuilder")) {
+    $(".charm_main_div .canvas_outer .left_div .inner img.second_img").hide();
     $(".chainProductWrap").hide();
     $(".chainProductWrap.chains").show();
     $(".charm_main_div .chain_var_id").attr("productType", "Chain");
     $(".tab_one h2.tabtitle.chaintabTitle span").text("Chain");
+    $(".charm_main_div .canvas_outer .left_div .inner img.second_img.chainimgs").show();
   }
   if ($(this).hasClass("braceletBuilder")) {
     $(".chainProductWrap").hide();
