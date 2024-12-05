@@ -47,16 +47,20 @@ $(".singleBuilderSelectInner button").click(function () {
     $(".charm_main_div .canvas_outer .left_div .inner img.second_img.chainimgs").show();
   }
   if ($(this).hasClass("braceletBuilder")) {
+    $(".charm_main_div .canvas_outer .left_div .inner img.second_img").hide();
     $(".chainProductWrap").hide();
     $(".chainProductWrap.bracelets").show();
     $(".charm_main_div .chain_var_id").attr("productType", "Bracelet");
     $(".tab_one h2.tabtitle.chaintabTitle span").text("Bracelet");
+    $(".charm_main_div .canvas_outer .left_div .inner img.second_img.braceImgs").show();
   }
   if ($(this).hasClass("earringBuilder")) {
+    $(".charm_main_div .canvas_outer .left_div .inner img.second_img").hide();
     $(".chainProductWrap").hide();
     $(".chainProductWrap.earrings").show();
     $(".charm_main_div .chain_var_id").attr("productType", "Earring");
     $(".tab_one h2.tabtitle.chaintabTitle span").text("Earring");
+    $(".charm_main_div .canvas_outer .left_div .inner img.second_img.earringsimg").show();
   }
   $(".charm_main_div").show();
   $(".charmBuilderMainSelect").hide();
