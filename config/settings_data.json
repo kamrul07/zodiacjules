@@ -901,7 +901,7 @@
               "title": "Shop With Jules",
               "description": "Let Jules help you design your custom statement piece today.",
               "image": "shopify://shop_images/Screenshot_2024-10-13_at_5.31.44_PM.png",
-              "button_link": "",
+              "button_link": "shopify://pages/about-me",
               "button-text": "Find Out More"
             }
           },
