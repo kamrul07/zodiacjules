@@ -941,7 +941,7 @@
               "title": "About Us",
               "description": "Our story of collecting vintage charms.",
               "image": "shopify://shop_images/F9A387DE-EC1B-421A-AF29-82335003A56D_1_105_c.jpg",
-              "button_link": "",
+              "button_link": "shopify://pages/about-me-1",
               "button-text": "Find Out More"
             }
           }
