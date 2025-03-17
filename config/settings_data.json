@@ -911,7 +911,7 @@
               "title": "Monthly Event schedule",
               "description": "View our seasonal venues, locations and hours.",
               "image": "shopify://shop_images/EF2E0082-F74D-4CB5-8B88-E077A8C24435_1_105_c.jpg",
-              "button_link": "",
+              "button_link": "shopify://pages/monthly-pop-ups",
               "button-text": "Find Out More"
             }
           },
